@@ -1,0 +1,38 @@
+page{
+  background-color: #F9F9F9;
+}
+.space-between{
+    height: 15rpx;
+}
+
+/*  自定义tabbar样式*/
+ 
+.tabbar {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+ 
+.tabbar-item {
+  flex-grow: 1;
+  padding: 6rpx 0;
+  text-align: center;
+}
+ 
+.tabbar-icon {
+  width: 46rpx;
+  height: 46rpx;
+  display: block;
+  margin: 0 auto;
+}
+ 
+.tabbar-text {
+  font-size: 24rpx;
+  /* color: #515050; */
+}
+/* z字体颜色A3 */
+.font-color-A3{
+  color: #A3A3A3;
+}

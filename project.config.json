@@ -1,0 +1,150 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": false,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.0.0",
+	"appid": "wx8bd56331432dd08b",
+	"projectname": "%E6%B4%BB%E5%8A%A8",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/startAct/startAct",
+					"pathName": "pages/startAct/startAct",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/region/region",
+					"pathName": "pages/region/region",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "pages/substartAct/substartAct",
+					"pathName": "pages/substartAct/substartAct",
+					"query": "theam=ac_detail",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/tabbar/tabbar",
+					"pathName": "pages/tabbar/tabbar",
+					"query": "theam=ac_detail",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "pages/startSelAct/startSelAct",
+					"pathName": "pages/startSelAct/startSelAct",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/videoplay/videoplay",
+					"pathName": "pages/videoplay/videoplay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "pages/agent/index/index",
+					"pathName": "pages/agent/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/stock/stock",
+					"pathName": "pages/agent/stock/stock",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/stockdetails/stockdetails",
+					"pathName": "pages/agent/stockdetails/stockdetails",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/stockgsdetails/stockgsdetails",
+					"pathName": "pages/agent/stockgsdetails/stockgsdetails",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/stockadd/stockadd",
+					"pathName": "pages/agent/stockadd/stockadd",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/goodlist/goodlist",
+					"pathName": "pages/agent/goodlist/goodlist",
+					"scene": null
+				}
+			]
+		}
+	}
+}

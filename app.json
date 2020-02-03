@@ -1,0 +1,53 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/me/me",
+        "pages/template/tabbar",
+        "pages/login/login",
+        "pages/agent/index/index",
+        "pages/agent/me/me",
+        "pages/agent/stock/stock",
+        "pages/agent/stockdetails/stockdetails",
+        "pages/agent/stockgsdetails/stockgsdetails",
+        "pages/agent/stocklog/stocklog",
+        "pages/agent/stockadd/stockadd",
+        "pages/agent/goodlist/goodlist"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#FFFFFF",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "测试",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false
+    },
+    "networkTimeout": {
+        "request": 20000,
+        "connectSocket": 20000,
+        "uploadFile": 20000,
+        "downloadFile": 20000
+    },
+    "tabBar": {
+        "selectedColor": "#fff",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": ""
+            },
+            {
+                "pagePath": "pages/me/me",
+                "text": ""
+            },
+            {
+                "pagePath": "pages/index/index",
+                "text": ""
+            }
+        ]
+    },
+    "debug": false,
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "sitemapLocation": "sitemap.json"
+}
