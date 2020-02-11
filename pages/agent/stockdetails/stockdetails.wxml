@@ -1,0 +1,56 @@
+<!--仓库详情-->
+<view class="header">
+	<scroll-view class="scroll-view_H" scroll-x="true">
+		<view class="classify">
+			<view wx:for="{{option_list}}" wx:key="key" class="classify-son {{option_active == index?'act':''}}" bindtap="option_select" data-num="{{index}}">{{item.name}}</view>
+		</view>
+	</scroll-view>
+	<view class="right">
+		<image src="/pages/images/xiangxia.png"></image>
+	</view>
+</view>
+<!-- 商品列表 -->
+<view class="mian">
+	<view class="mian-item" bindtap="goodsitem">
+		<view>
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="title">你好你好你好你好你好你好你好你好你好你好你好你好你好..</view>
+		<view class="stock-num">1000件</view>
+	</view>
+    <view class="mian-item">
+		<view>
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="title">你好你好你好你好你好你好你好你好你好你好你好你好你好..</view>
+		<view class="stock-num">1000件</view>
+	</view>
+    <view class="mian-item">
+		<view>
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="title">你好你好你好你好你好你好你好你好你好你好你好你好你好..</view>
+		<view class="stock-num">1000件</view>
+	</view>
+    <view class="mian-item">
+		<view>
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="title">你好你好你好你好你好你好你好你好你好你好你好你好你好..</view>
+		<view class="stock-num">1000件</view>
+	</view>
+    <view class="mian-item">
+		<view>
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="title">你好你好你好你好你好你好你好你好你好你好你好你好你好..</view>
+		<view class="stock-num">1000件</view>
+	</view>
+    <view class="mian-item">
+		<view>
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="title">你好你好你好你好你好你好你好你好你好你好你好你好你好..</view>
+		<view class="stock-num">1000件</view>
+	</view>
+</view>

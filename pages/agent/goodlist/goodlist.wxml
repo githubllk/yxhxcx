@@ -1,0 +1,19 @@
+<!-- 商品列表 -->
+<view>
+	<radio-group class="radio-group" bindchange="xuanbind">
+		<view wx:for="{{goodlist}}" wx:key="key" class="main">
+			<view class="left">
+				<radio class="radio" value="{{index}}" data-name="{{item.name}}" color="#bda54f"></radio>
+			</view>
+			<view class="middle">
+				<image src="{{item.image}}"></image>
+			</view>
+			<view class="right">
+				<text>{{item.name}}</text>
+			</view>
+		</view>
+	</radio-group>
+</view>
+<view class="foot" bindtap="quedingbind">
+	<text>确定</text>
+</view>

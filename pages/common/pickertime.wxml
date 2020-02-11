@@ -1,0 +1,17 @@
+<template name="pickertime">
+    <view style="background-color:#F7F7F7;display:flex;align-items: center;height:100rpx;font-size:34rpx;position: fixed;bottom: 376rpx;width: 100%;color:#666666;">
+      <view bindtap="paickerQuxiao" style="margin-left: 50rpx">取消</view>
+      <view bindtap="paickerQueding" style="margin-left: 514rpx">确定</view>
+    </view>
+    <picker-view indicator-style="" style="" value="{{array.value}}" data-name="activeTime" bindchange="inputVal">
+            <picker-view-column>
+                <view wx:for="{{array.years}}" wx:key="key" >{{item}}年</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{array.months}}" wx:key="key" >{{item}}月</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{array.days}}" wx:key="key" >{{item}}日</view>
+            </picker-view-column>
+        </picker-view>
+</template>

@@ -1,0 +1,88 @@
+<view class="shadow" hidden="{{hiddenn}}" bindtap="shadowbind">
+</view>
+<view class="classify-sel bgc-white">
+	<view class="good-left">商品分类</view>
+	<view class="good-right" bindtap="classifyselbind">
+		<text>{{classifytext}}</text>
+		<image src="../../images/xiangyou.png"></image>
+	</view>
+</view>
+<view class="classify-sel bgc-white">
+	<view class="good-left">名称</view>
+	<view class="good-right goodname"><input placeholder="{{goodname?goodname:'请输入'}}" style="width:120rpx" placeholder-style="color:#BDBDBD"></input></view>
+</view>
+<!-- 封面图 -->
+<view class="cover bgc-white">
+	<text >商品封面图</text>
+	<view class="cover-image">
+		<image src="../../images/cover-default.png"></image>
+	</view>
+</view>
+<!-- banner图 -->
+<view class="banner bgc-white">
+	<text >商品轮播图</text>
+	<view class="banner-list" wx:for="{{bannerlist}}" wx:key="key">
+		<view class="banner-image">
+			<image src="../../images/banner-default.png"></image>
+		</view>
+		<view class="banner-right">
+			<image wx:if="{{index > 0}}" src="../../images/arrows-shang.png"></image>
+			<image wx:if="{{(index > 0 && index + 1 < bannerlist.length)&&(bannerlist.length >= 2)}}" src="../../images/arrows-xia.png"></image>
+			<image wx:if="{{index > 0}}" src="../../images/del.png"></image>
+		</view>
+	</view>
+	<view class="addbanner-button" bindtap="addbanner" hidden="{{addbannerhide}}">
+		添加轮播图
+	</view>
+</view>
+<!-- 添加规格 -->
+<view class="specs bgc-white">
+	<view>商品规格</view>
+	<view wx:for="{{specslist}}" wx:key="key">
+		<view class="specs-top">
+			<view class="specs-name-i"><input placeholder-class="specs-inputp" placeholder="{{item.specsname?'':'请输入名称'}}" value="{{item.specsname}}" style="width:240rpx;margin-left:20rpx" bindblur="numinputbind" bindconfirm="numinputbind" data-index="{{index}}" data-specs="1"></input></view>
+			<view class="btn" wx:if="{{!index}}" bindtap="specsaddbind">添加</view>
+			<view class="btn-del" wx:else bindtap="specsdelbind" data-index="{{index}}">删除</view>
+		</view>
+		<view class="tow-spece" wx:for="{{item.attrlist}}" wx:for-index="attrindex" wx:for-item="attritem" wx:key="attrkey">
+			<view>二级规格</view>
+			<view class="specs-name-i">
+				<input placeholder-class="specs-inputp" placeholder="{{attritem.attrname?'':'请输入名称'}}" value="{{attritem.attrname}}" style="width:240rpx;margin-left:20rpx" bindblur="numinputbind" bindconfirm="numinputbind" data-index="{{index}}" data-type="attrname" data-specs="2" data-attrindex="{{attrindex}}"></input>
+			</view>
+			<view class="specs-name-i specs-flex">
+				<input placeholder-class="specs-inputp" type="number" placeholder="{{attritem.attrprice?'':'请输入'}}" value="{{attritem.attrprice}}" style="width:240rpx;margin-left:20rpx" bindblur="numinputbind" bindconfirm="numinputbind" data-index="{{index}}" data-type="attrprice" data-specs="2" data-attrindex="{{attrindex}}"></input>
+				<text>¥</text>
+			</view>
+			<image data-index="{{index}}" data-attrindex="{{attrindex}}" bindtap="attrdelbind" src="../../images/del.png" style="width:28rpx;height:28rpx;padding-right:30rpx;"></image>
+		</view>
+		<view class="tow-btn" data-index="{{index}}" bindtap="attraddbind">添加二级规格</view>
+		<view class="hr"></view>
+	</view>
+</view>
+<!-- 详情 -->
+<view class="textarea bgc-white">
+	<view>商品详情</view>
+	<view class="textarea-main">
+	<!-- bindstatuschange="onStatusChange" --> 
+	<!-- editor高度自适应 -->
+	<editor id="editor" class='editor_area' placeholder="请输入" show-img-size show-img-toolbar showImgResize  bindready="onEditorReady" bindinput='setEditor'>
+        </editor>
+	<image bindtap="insertImage" class="editor-image" src="../../images/textarea-img.png" style="width:48rpx;height:38rpx"></image>
+	</view>
+</view>
+<view class="foot">确定</view>
+
+
+
+<!-- 选择组件 -->
+<view class="picker-view" hidden="{{hiddenn}}">
+	<view style="background-color:#F7F7F7;display:flex;align-items: center;height:100rpx;font-size:34rpx;position: fixed;bottom: 376rpx;width: 100%;color:#666666;">
+		<view bindtap="paickerQuxiao" style="margin-left: 50rpx">取消</view>
+		<view bindtap="paickerQueding" style="margin-left: 514rpx">确定</view>
+	</view>
+	<picker-view indicator-style="" style="" value="{{val}}" data-name="activeTime" bindchange="inputVal">
+		<picker-view-column>
+			<view wx:for="{{array}}" wx:key="key">{{item.name}}</view>
+		</picker-view-column>
+	</picker-view>
+</view>

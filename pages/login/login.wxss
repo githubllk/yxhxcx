@@ -1,0 +1,71 @@
+/* pages/login/login.wxss */
+
+page {
+    height: 100%;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    position: fixed;
+    top: 100rpx;
+    left: 296rpx;
+}
+
+.logo image {
+    width: 160rpx;
+    height: 148rpx;
+}
+
+.header {
+    width: 100%;
+    height: 100%;
+}
+
+.header::before {
+    z-index: -1;
+    position: absolute;
+}
+
+.main {
+    display: flex;
+    position: fixed;
+    left: 100rpx;
+    width: 550rpx;
+    color: #BDBDBD;
+}
+
+.phone {
+    top: 366rpx;
+    padding-bottom: 24rpx;
+    border-bottom: 2rpx #fff solid;
+}
+
+.main input {
+    margin-left: 24rpx;
+}
+
+.mima {
+    top: 472rpx;
+    padding-bottom: 24rpx;
+    border-bottom: 2rpx #fff solid;
+}
+
+.phone image {
+    height: 36rpx;
+    width: 24rpx;
+}
+
+.mima image {
+    margin-top: 8rpx;
+    height: 32rpx;
+    width: 24rpx;
+}
+
+.btn {
+    top: 670rpx;
+}
+
+.submit {
+    background-image: linear-gradient(to right, #BDA54F, #9E722D);
+}

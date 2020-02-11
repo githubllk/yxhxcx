@@ -1,0 +1,63 @@
+<view class="shadow" hidden="{{hiddenn}}" bindtap="shadowbind">
+</view>
+<view class="main">
+	<view class="main-list">
+		<view class="stock-sel">
+			<view class="stock-left">仓库选择</view>
+			<view class="stock-right" bindtap="stockselbind">
+				<text>{{stocktext}}</text>
+				<image src="../../images/xiangyou.png"></image>
+			</view>
+		</view>
+		<view class="stock-sel">
+			<view class="stock-left">商品分类</view>
+			<view class="stock-right" bindtap="classifyselbind">
+				<text>{{classifytext}}</text>
+				<image src="../../images/xiangyou.png"></image>
+			</view>
+		</view>
+		<view class="stock-sel">
+			<view class="stock-left">商品选择</view>
+			<view class="stock-right" bindtap="goodselbind">
+				<text class="goodsel">{{goodtext}}</text>
+				<image src="../../images/xiangyou.png"></image>
+			</view>
+		</view>
+		<view class="stock-sel">
+			<view class="stock-left">规格属性</view>
+			<view class="stock-right" bindtap="attrselbind">
+				<text>{{attrtext}}</text>
+				<image src="../../images/xiangyou.png"></image>
+			</view>
+		</view>
+		<view class="stock-sel">
+			<view class="stock-left">数量</view>
+			<view class="stock-right">
+				<view hidden="{{!hiddenn}}">
+					<input placeholder="{{form.num?form.num:'请输入'}}" type="number" placeholder-style="color:#BDBDBDFF; font-size:28rpx; align-items: center;line-height: 90rpx;" bindblur="numinputbind" bindconfirm="numinputbind"></input>
+				</view>
+				<view style=" width: 100rpx;margin-right: 25rpx; text-align:left; color:#BDBDBDFF" hidden="{{hiddenn}}">
+					{{form.num?form.num:'请输入'}}
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="foot" bindtap="rukubind">
+	入库
+</view>
+<view class="picker-view" hidden="{{hiddenn}}">
+	<view style="background-color:#F7F7F7;display:flex;align-items: center;height:100rpx;font-size:34rpx;position: fixed;bottom: 376rpx;width: 100%;color:#666666;">
+		<view bindtap="paickerQuxiao" style="margin-left: 50rpx">取消</view>
+		<view bindtap="paickerQueding" style="margin-left: 514rpx">确定</view>
+	</view>
+	<picker-view indicator-style="" style="" value="{{val}}" data-name="activeTime" bindchange="inputVal">
+		<picker-view-column>
+			<view wx:for="{{array}}" wx:key="key">{{item.name}}</view>
+		</picker-view-column>
+        <picker-view-column wx:if="{{isattr}}">
+			<view wx:for="{{attritem}}" wx:key="key">{{item.name}}</view>
+		</picker-view-column>
+	</picker-view>
+</view>

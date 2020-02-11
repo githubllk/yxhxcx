@@ -1,0 +1,35 @@
+.main{
+    height: 224rpx;
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+}
+.left{
+    line-height: 224rpx;
+    margin: 0 20rpx 0 30rpx;
+}
+.left radio{
+    width: 40rpx;
+    height: 40rpx;
+}
+.middle{
+    margin-top: 30rpx;
+}
+.middle image{
+    width: 164rpx;
+    height: 164rpx;
+}
+.right{
+    margin: 30rpx 0 0 20rpx;
+}
+.foot{
+    font-size: 32rpx;
+    color: #fff;
+    background-image: linear-gradient(to right, #bda54f, #9e722d);
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    position: fixed;
+    bottom: 0rpx;
+    width: 100%;
+}

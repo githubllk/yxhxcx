@@ -1,0 +1,52 @@
+<!--库存管理-->
+<view>
+	<view class="stock-list">
+		<view class="stock-left">
+			<view class="stock-top">
+				<view class="stock-name">北京仓库</view>
+				<view class="stock-goods">155种商品</view>
+			</view>
+			<view class="stock-bottom">
+				<view class="stock-phone">13535353535</view>
+				<view class="stock-num">总库存100000件</view>
+			</view>
+		</view>
+		<view class="stock-right">
+			<image src="/pages/images/xiangyou.png"></image>
+		</view>
+	</view>
+    <view class="stock-list" bindtap="stockjump">
+		<view class="stock-left">
+			<view class="stock-top">
+				<view class="stock-name">北京仓库</view>
+				<view class="stock-goods">155种商品</view>
+			</view>
+			<view class="stock-bottom">
+				<view class="stock-phone">13535353535</view>
+				<view class="stock-num">总库存100000件</view>
+			</view>
+		</view>
+		<view class="stock-right">
+			<image src="/pages/images/xiangyou.png"></image>
+		</view>
+	</view>
+    <view class="stock-list">
+		<view class="stock-left">
+			<view class="stock-top">
+				<view class="stock-name">北京仓库</view>
+				<view class="stock-goods">155种商品</view>
+			</view>
+			<view class="stock-bottom">
+				<view class="stock-phone">13535353535</view>
+				<view class="stock-num">总库存100000件</view>
+			</view>
+		</view>
+		<view class="stock-right">
+			<image src="/pages/images/xiangyou.png"></image>
+		</view>
+	</view>
+    <view class="foot">
+        <view class="log" bindtap="stocklogbind">出入库记录</view>
+        <view class="ruku" bindtap="stockaddbind">入库</view>
+    </view>
+</view>

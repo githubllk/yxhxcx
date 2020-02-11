@@ -1,0 +1,41 @@
+
+.main{
+  display: flex;
+  background-color: #fff;
+  height: 112rpx;
+  line-height: 112rpx;
+  justify-content: space-between;
+  padding: 0 30rpx 0 30rpx;
+  font-size: 32rpx;
+  border: 2rpx #F5F5F5 solid;
+}
+.add{
+  color: #A3A3A3;
+}
+
+.right{
+  display: flex;
+  align-items: center;
+  color: #A3A3A3;
+}
+.right input{
+  width :170rpx;
+}
+.right image{
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 20rpx;
+  
+}
+
+.foot{
+  font-size: 32rpx;
+  color: #fff;
+  background-image: linear-gradient(to right, #bda54f, #9e722d);
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+}

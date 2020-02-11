@@ -1,0 +1,7 @@
+<import src="../template/tabbar.wxml" />
+<view wx:if="{{role == 'agent'}}">
+  <import src="/pages/agent/me/me.wxml" />
+  <template is="agentme" data="{{agentarray}}"/>
+</view>
+
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>

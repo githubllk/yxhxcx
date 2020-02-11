@@ -1,0 +1,73 @@
+/* pages/agent/stockdetails/stockdetails.wxss */
+page{
+    font-size: 28rpx;
+}
+.header {
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    border-top: 2rpx solid #F0F0F0;
+    border-bottom: 2rpx solid #F0F0F0;
+    height: 98rpx;
+    color: #666666;
+
+}
+
+.scroll-view_H {
+    white-space: nowrap;
+    width: 90%;
+}
+
+.classify {
+    height: 98rpx;
+    margin-left: 14rpx;
+    display: flex;
+}
+
+.classify-son {
+    margin: 26rpx;
+}
+
+.classify-son.act {
+    color: #b79547;
+    border-bottom: 6rpx solid;
+    border-bottom-color: linear-gradient(to right, #bda54f, #9e722d);
+    border-radius: 4rpx;
+    height: 66rpx;
+}
+
+
+.right {
+    /* position: fixed; */
+    /* right: 30rpx; */
+    line-height: 98rpx;
+    background-color: #fff;
+    margin-left: 10rpx;
+}
+
+.right image {
+    height: 16rpx;
+    width: 28rpx;
+}
+.mian{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 13rpx;
+}
+.mian-item{
+    width: 340rpx;
+    margin: 11rpx;
+}
+.title{
+    height: 80rpx;
+    overflow:hidden
+}
+.stock-num{
+    font-size: 32rpx;
+    color: #B79547;
+}
+.mian-item image{
+    width: 340rpx;
+    height: 340rpx;
+}

@@ -1,0 +1,19 @@
+<!-- 登陆 -->
+<view class="header" style="background-image: url('{{bgi}}');">
+<view class="logo">
+ <image src="{{logo}}"></image>
+</view>
+<view class="main phone">
+	<image src="../images/phone.png"></image>
+	<input type="numbeer" focus="true" placeholder="请输入手机号"></input>
+</view>
+<view class="main mima">
+	<image src="../images/mima.png"></image>
+	<input type="numbeer" focus="true" placeholder="请输入密码" password="ture"></input>
+</view>
+<view class="main btn">
+	<button type="submit" class="submit" style="width:550rpx;color:#fff;hight:88rpx;">
+		登陆
+	</button>
+</view>
+</view>

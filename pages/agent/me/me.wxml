@@ -1,0 +1,28 @@
+<!--pages/agent/me/me.wxml-->
+<template name="agentme">
+	<view class="main white-bgc">
+		<view>北京总代理</view>
+		<view>15223232323</view>
+	</view>
+	<navigator url="/pages/agent/me/me">
+
+		<view class="password white-bgc">
+			<view>修改密码</view>
+			<view>
+				<image src="/pages/images/xiangyou.png" style="height:25rpx;width:25rpx;"></image>
+			</view>
+		</view>
+	</navigator>
+
+	<view class="foot">
+		退出登录
+	</view>
+</template>
+<!-- 普通代理 -->
+<view class="general-agent ">
+	<view class="pass white-bgc"> <input type="password" placeholder="请设置6-16位字母.数字新密码" placeholder-class="gai-place" ></input> </view>
+	<view class="pass white-bgc"> <input type="password" placeholder="请再次输入密码" placeholder-class="gai-place"></input> </view>
+    <view class="foot">
+		保存
+	</view>
+</view>

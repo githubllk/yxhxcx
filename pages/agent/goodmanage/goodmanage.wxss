@@ -1,0 +1,148 @@
+/* pages/agent/goodmanage/goodmanage.wxss */
+.header {
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    border-top: 2rpx solid #F0F0F0;
+    border-bottom: 2rpx solid #F0F0F0;
+    height: 98rpx;
+    color: #666666;
+    font-size: 28rpx;
+}
+
+.scroll-view_H {
+    white-space: nowrap;
+    width: 90%;
+}
+
+.classify {
+    height: 98rpx;
+    margin-left: 14rpx;
+    display: flex;
+}
+
+.classify-son {
+    margin: 26rpx;
+}
+
+.classify-son.act {
+    color: #b79547;
+    border-bottom: 6rpx solid;
+    border-bottom-color: linear-gradient(to right, #bda54f, #9e722d);
+    border-radius: 4rpx;
+    height: 66rpx;
+}
+
+
+.right {
+    /* position: fixed; */
+    /* right: 30rpx; */
+    line-height: 98rpx;
+    background-color: #fff;
+    margin-left: 10rpx;
+}
+
+.right image {
+    height: 16rpx;
+    width: 28rpx;
+}
+
+.main {
+    margin-top: 18rpx;
+    background-color: #fff;
+    /* height: 358rpx; */
+
+}
+
+.good-top {
+    height: 256rpx;
+    display: flex;
+    padding-top: 30rpx;
+}
+
+.good-right {
+    display: flex;
+    flex-flow: column;
+    margin: 0 20rpx 0 20rpx;
+    height: 196rpx;
+    justify-content: space-between;
+}
+
+.good-left image {
+    width: 196rpx;
+    height: 196rpx;
+    margin-left: 30rpx;
+}
+
+.title {
+    font-size: 30rpx;
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pieces {
+    font-size: 28rpx;
+    color: #B79547;
+}
+
+.price {
+    font-size: 28rpx;
+    color: #F63256;
+}
+
+.good-button {
+    display: flex;
+    padding-left: 196rpx;
+    border-top: #F5F5F5 2rpx solid;
+    height: 100rpx;
+}
+
+.bor {
+    width: 154rpx;
+    font-size: 24rpx;
+    border-radius: 8rpx;
+    text-align: center;
+    height: 54rpx;
+    line-height: 54rpx;
+    margin-top: 24rpx;
+}
+.good-edit{
+}
+.color-b7{
+    border: 2rpx solid #B79547;
+    margin-right: 30rpx;
+    color: #B79547;
+}
+.color-a3{
+    border: 2rpx solid #A3A3A3;
+    margin-right: 30rpx;
+    color: #A3A3A3;
+}
+
+
+
+.foot {
+    display: flex;
+    position: fixed;
+    bottom: 0rpx;
+    justify-content: space-between;
+    width: 100%;
+    height: 98rpx;
+    text-align: center;
+    border-top: 2rpx #eeeeee solid;
+}
+
+.fenlei {
+    width: 50%;
+    line-height: 98rpx;
+    color: #B79547;
+}
+
+.addgood {
+    width: 50%;
+    line-height: 98rpx;
+    color: #fff;
+    background-image: linear-gradient(to right, #bda54f, #9e722d);
+}

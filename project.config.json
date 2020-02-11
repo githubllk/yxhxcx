@@ -142,6 +142,48 @@
 					"id": -1,
 					"name": "pages/agent/goodlist/goodlist",
 					"pathName": "pages/agent/goodlist/goodlist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/goodmanage/goodmanage",
+					"pathName": "pages/agent/goodmanage/goodmanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/classifymanage/classifymanage",
+					"pathName": "pages/agent/classifymanage/classifymanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/gooddetail/gooddetail",
+					"pathName": "pages/agent/gooddetail/gooddetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/ordermanage/ordermanage",
+					"pathName": "pages/agent/ordermanage/ordermanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/orderdetail/orderdetail",
+					"pathName": "pages/agent/orderdetail/orderdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/me/me",
+					"pathName": "pages/me/me",
 					"scene": null
 				}
 			]

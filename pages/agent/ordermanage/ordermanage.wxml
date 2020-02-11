@@ -1,0 +1,45 @@
+<view class="header white-bgc">
+	<view class="subnav {{option_active == 1?'act':''}}" bindtap="option_select" data-num="1">代收款</view>
+	<view class="subnav {{option_active == 2?'act':''}}" bindtap="option_select" data-num="2">待出库</view>
+	<view class="subnav {{option_active == 3?'act':''}}" bindtap="option_select" data-num="3">待收货</view>
+	<view class="subnav {{option_active == 4?'act':''}}" bindtap="option_select" data-num="4">已完成</view>
+</view>
+<view class="order-list  white-bgc">
+	<view class="order-sn">
+		<view>订单编号:
+			<text>123456789012345678901</text>
+		</view>
+	</view>
+	<navigator url="../orderdetail/orderdetail" hover-class="none">
+		<view class="main-list">
+			<view class="main-left">
+				<image src="../../images/lll.jpg"></image>
+			</view>
+			<view class="main-right">
+				<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+				<view class="main-attr">
+					<text class="attr-name">黑色</text>
+					<text class="attr-g">100g</text>
+				</view>
+				<view class="main-attr bom">
+					<view class="price">¥<text>1366.00</text></view>
+					<text class="num">X1</text>
+				</view>
+			</view>
+		</view>
+	</navigator>
+
+	<view class="order-btn" wx:if="{{option_active == 1}}">
+		<view class="cancle o-btn">取消订单</view>
+		<view class="affirm o-btn">已收款</view>
+	</view>
+	<view wx:else class="order-btn1">
+		<view class="entrepot">北京仓库</view>
+		<view class="order-status">
+			<text wx:if="{{option_active == 2}}">待出库</text>
+			<text wx:elif="{{option_active == 3}}">已出库</text>
+			<text wx:elif="{{option_active == 4}}">已完成</text>
+		</view>
+	</view>
+
+</view>

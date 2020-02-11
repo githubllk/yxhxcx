@@ -36,3 +36,6 @@ page{
 .font-color-A3{
   color: #A3A3A3;
 }
+.white-bgc{
+  background-color: #fff;
+}

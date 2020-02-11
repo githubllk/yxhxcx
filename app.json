@@ -11,7 +11,12 @@
         "pages/agent/stockgsdetails/stockgsdetails",
         "pages/agent/stocklog/stocklog",
         "pages/agent/stockadd/stockadd",
-        "pages/agent/goodlist/goodlist"
+        "pages/agent/goodlist/goodlist",
+        "pages/agent/goodmanage/goodmanage",
+        "pages/agent/classifymanage/classifymanage",
+        "pages/agent/gooddetail/gooddetail",
+        "pages/agent/ordermanage/ordermanage",
+        "pages/agent/orderdetail/orderdetail"
     ],
     "window": {
         "navigationBarBackgroundColor": "#FFFFFF",
