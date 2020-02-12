@@ -1,3 +1,4 @@
+/* 普通总代理 */
 .main{
   text-align: center;
   height: 200rpx;
@@ -27,4 +28,56 @@
   color: #242424;
   font-size: 28rpx;
 
+}
+
+/* 总代理 */
+
+.sole-agent {
+  margin: 20rpx 30rpx 20rpx 30rpx;
+  width: 690rpx;
+  height: 326rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.sole-agent-title {
+  margin-left: 30rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  border-bottom: 2rpx solid rgba(245, 245, 245, 1);
+}
+
+.sole-agent-icon {
+  display: flex;
+}
+
+.btn {
+  /* margin-left: 22rpx; */
+  width: 228rpx;
+  height: 228rpx;
+  display: flex;
+  align-items: center;
+  /*垂直居中*/
+  justify-content: center;
+  /*水平居中*/
+  flex-direction: column;
+}
+
+.btn text {
+  margin-top: 28rpx;
+}
+
+.btn.cen {
+  border-left: 2rpx solid rgba(245, 245, 245, 1);
+  border-right: 2rpx solid rgba(245, 245, 245, 1);
+}
+
+.bottom {
+  display: flex;
+  font-size: 28rpx;
+  width: 690rpx;
+  height: 100rpx;
+  margin: 20rpx 30rpx 0 30rpx;
+  line-height: 100rpx;
+  justify-content: space-between;
 }

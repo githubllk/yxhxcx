@@ -184,6 +184,20 @@
 					"id": -1,
 					"name": "pages/me/me",
 					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/me/me",
+					"pathName": "pages/agent/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/custommanage/custommanage",
+					"pathName": "pages/agent/custommanage/custommanage",
 					"scene": null
 				}
 			]

@@ -1,0 +1,31 @@
+/* pages/agent/customlevel/customlevel.wxss */
+.main{
+    display: flex;
+    justify-content: space-between;
+    height: 112rpx;
+    line-height: 112rpx;
+    font-size: 28rpx;
+    padding-left: 30rpx;
+    color: #BDBDBD;
+    margin-top: 2rpx;
+}
+.left{
+    color: #000;
+}
+.main input {
+    margin-top: 24rpx;
+    margin-left: 20rpx;
+    width: 140rpx;
+    color: #BDBDBD;
+}
+.foot {
+    font-size: 32rpx;
+    color: #fff;
+    background-image: linear-gradient(to right, #bda54f, #9e722d);
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    width: 100%;
+    bottom: 0rpx;
+    position: fixed;
+  }

@@ -4,7 +4,7 @@
 		<view>北京总代理</view>
 		<view>15223232323</view>
 	</view>
-	<navigator url="/pages/agent/me/me">
+	<navigator hover-class="none" url="/pages/agent/me/me">
 
 		<view class="password white-bgc">
 			<view>修改密码</view>
@@ -18,11 +18,58 @@
 		退出登录
 	</view>
 </template>
+
 <!-- 普通代理 -->
-<view class="general-agent ">
-	<view class="pass white-bgc"> <input type="password" placeholder="请设置6-16位字母.数字新密码" placeholder-class="gai-place" ></input> </view>
+<view class="general-agent" wx:if="{{agent}}">
+	<view class="pass white-bgc"> <input type="password" placeholder="请设置6-16位字母.数字新密码" placeholder-class="gai-place"></input> </view>
 	<view class="pass white-bgc"> <input type="password" placeholder="请再次输入密码" placeholder-class="gai-place"></input> </view>
-    <view class="foot">
+	<view class="foot">
 		保存
 	</view>
 </view>
+<!-- 总代理 -->
+
+<template name="soleagentme">
+	<view class="sole-agent white-bgc">
+		<view class="sole-agent-title">新建</view>
+		<view class="sole-agent-icon">
+			<view class="btn" bindtap="agentbind" data-type="1">
+				<image src="/pages/images/agent-add.png" style="width:74rpx;height:64rpx"></image>
+				<text>新建总代理</text>
+			</view>
+			<view class="btn cen" bindtap="agentbind" data-type="2">
+				<image src="/pages/images/agent-add-kg.png" style="width:60rpx;height:60rpx"></image>
+				<text>新建库管</text>
+			</view>
+			<view class="btn" bindtap="agentbind" data-type="3">
+				<image class="dingdan" src="/pages/images/agent-add-jxs.png" style="width:52rpx;height:60rpx"></image>
+				<text>新建经销商</text>
+			</view>
+		</view>
+	</view>
+	<view class="sole-agent white-bgc">
+		<view class="sole-agent-title">管理</view>
+		<view class="sole-agent-icon">
+			<view class="btn" bindtap="agentbind" data-type="4">
+				<image src="/pages/images/agent-m.png" style="width:54rpx;height:60rpx"></image>
+				<text>总代理管理</text>
+			</view>
+			<view class="btn cen" bindtap="agentbind" data-type="5">
+				<image src="/pages/images/agent-m-kg.png" style="width:56rpx;height:60rpx"></image>
+				<text>库管管理</text>
+			</view>
+			<view class="btn" bindtap="agentbind" data-type="6">
+				<image class="dingdan" src="/pages/images/agent-m-jxs.png" style="width:60rpx;height:60rpx"></image>
+				<text>经销商管理</text>
+			</view>
+		</view>
+	</view>
+	<navigator hover-class="none" url="/pages/agent/customlevel/customlevel">
+		<view class="bottom white-bgc">
+			<view style=" margin-left: 30rpx;">经销商会员等级管理</view>
+			<view>
+				<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx; margin-right: 28rpx;"></image>
+			</view>
+		</view>
+	</navigator>
+</template>

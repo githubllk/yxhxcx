@@ -1,0 +1,28 @@
+/* pages/agent/custommanage/custommanage.wxss */
+.main{
+    display: flex;
+    justify-content: space-between;
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 28rpx;
+    padding-left: 30rpx;
+    color: #666666;
+    margin-top: 2rpx;
+}
+.main input {
+    margin-top: 24rpx;
+    width: 140rpx;
+}
+.foot {
+    font-size: 32rpx;
+    color: #fff;
+    background-image: linear-gradient(to right, #bda54f, #9e722d);
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    bottom: 170rpx;
+    position: fixed;
+    width: 630rpx;
+    border-radius: 8rpx;
+    margin-left: 60rpx;
+}

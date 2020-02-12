@@ -1,0 +1,43 @@
+<!--pages/agent/customlevel/customlevel.wxml-->
+<view wx:if="{{type=='list'}}">
+	<view class="main white-bgc" >
+		<view class="left">青铜</view>
+		<view class="right" style="margin-right:20rpx;" bindtap="userlevelbind" data-id="{{id}}">
+			<text>8折</text>
+			<image src="/pages/images/del.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
+		</view>
+	</view>
+	<view class="foot" bindtap="adduserlevelbind">
+		添加会员等级
+	</view>
+</view>
+<view wx:else="{{type=='edit'}}">
+	<view class="main white-bgc">
+		<view class="left">会员等级名称</view>
+		<view class="right">
+			<input placeholder-style="color: #BDBDBD;" placeholder="{{qsr}}"></input>
+		</view>
+	</view>
+    <view class="main white-bgc">
+		<view class="left">会员等级折扣</view>
+		<view class="right" style="margin-right:20rpx;" bindtap="selbind" data-type="agent">
+			<text>{{leveltext?leveltext:qsr}}</text>
+			<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
+		</view>
+	</view>
+	<view class="foot">
+		确定
+	</view>
+    <!-- 选择组件 -->
+	<view class="picker-view" hidden="{{hiddenn}}">
+		<view style="background-color:#F7F7F7;display:flex;align-items: center;height:100rpx;font-size:34rpx;position: fixed;bottom: 376rpx;width: 100%;color:#666666;">
+			<view bindtap="paickerQuxiao" style="margin-left: 50rpx">取消</view>
+			<view bindtap="paickerQueding" style="margin-left: 514rpx">确定</view>
+		</view>
+		<picker-view indicator-style="" style="" value="{{val}}" data-name="activeTime" bindchange="inputVal">
+			<picker-view-column>
+				<view wx:for="{{arr}}" wx:key="key">{{item.name}}</view>
+			</picker-view-column>
+		</picker-view>
+	</view>
+</view>

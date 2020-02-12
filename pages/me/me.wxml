@@ -3,5 +3,9 @@
   <import src="/pages/agent/me/me.wxml" />
   <template is="agentme" data="{{agentarray}}"/>
 </view>
+<view wx:if="{{role == 'soleagentme'}}">
+  <import src="/pages/agent/me/me.wxml" />
+  <template is="soleagentme" data="{{agentarray}}"/>
+</view>
 
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>

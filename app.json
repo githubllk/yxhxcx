@@ -16,7 +16,9 @@
         "pages/agent/classifymanage/classifymanage",
         "pages/agent/gooddetail/gooddetail",
         "pages/agent/ordermanage/ordermanage",
-        "pages/agent/orderdetail/orderdetail"
+        "pages/agent/orderdetail/orderdetail",
+        "pages/agent/custommanage/custommanage",
+        "pages/agent/customlevel/customlevel"
     ],
     "window": {
         "navigationBarBackgroundColor": "#FFFFFF",
