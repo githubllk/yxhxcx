@@ -107,7 +107,7 @@ App({
         }
       ]
     },
-    warehouse: {  //库管
+    keeper: {  //库管
       "color": "#515050",
       "selectedColor": "#B79547",
       "backgroundColor": "white",
@@ -115,21 +115,22 @@ App({
       "position": "bottom",
       "list": [
         {
-          "pagePath": "/pages/warehouse/index/index",
+          "pagePath": "/pages/index/index",
           "text": "首页",
           "iconPath": "/pages/images/index.png",
           "selectedIconPath": "/pages/images/index-active.png",
+          "clas": "tabbar-item",
           "active": true
 
         },{
-          "pagePath": "/pages/warehouse/index/index",
+          "pagePath": "/pages/keeper/ruku/ruku",
           "text": "入库",
           "iconPath": "/pages/images/ruku.png",
           "selectedIconPath": "/pages/images/ruku-active.png",
           "clas": "tabbar-item",
           "active": true
         },{
-          "pagePath": "/pages/warehouse/index/index",
+          "pagePath": "/pages/keeper/chuku/chuku",
           "text": "出库",
           "iconPath": "/pages/images/chuku.png",
           "selectedIconPath": "/pages/images/chuku-active.png",

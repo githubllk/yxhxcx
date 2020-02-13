@@ -1,0 +1,44 @@
+<import src="/pages/template/tabbar.wxml" />
+<view class="r-header white-bgc">
+    <view class="{{option_active == 1?'act':''}}" bindtap="option_select" data-num="1">待出库</view>
+    <view class="{{option_active == 2?'act':''}}" bindtap="option_select" data-num="2">已出库</view>
+</view>
+<view class="main white-bgc">
+	<view class="main-list">
+		<view class="main-left">
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="main-right">
+			<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+			<view class="main-attr">
+				<text class="attr-name">黑色</text>
+				<text class="attr-g">100g</text>
+				<text class="attr-piece">10000件</text>
+			</view>
+			<view class="main-attr down">
+				<text>张三</text>
+                <view class="r-btn">确认出库</view>
+			</view>
+		</view>
+	</view>
+    <view class="main-list">
+		<view class="main-left">
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="main-right">
+			<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+			<view class="main-attr">
+				<text class="attr-name">黑色</text>
+				<text class="attr-g">100g</text>
+				<text class="attr-piece">10000件</text>
+			</view>
+			<view class="main-attr down">
+				<text>张三22222222</text>
+                <view class="r-btn">确认出库</view>
+			</view>
+		</view>
+	</view>
+
+</view>
+
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>

@@ -108,8 +108,7 @@
     line-height: 54rpx;
     margin-top: 24rpx;
 }
-.good-edit{
-}
+
 .color-b7{
     border: 2rpx solid #B79547;
     margin-right: 30rpx;

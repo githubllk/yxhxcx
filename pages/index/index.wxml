@@ -3,6 +3,10 @@
   <import src="/pages/agent/index/index.wxml" />
   <template is="agentindex" data="{{agentarray}}"/>
 </view>
+<view wx:elif="{{role == 'keeper'}}">
+  <import src="/pages/keeper/index/index.wxml" />
+  <template is="keeperindex" data="{{keeperarray}}"/>
+</view>
 <view wx:else>
   <view class="space-between"></view>
   <view class="header">

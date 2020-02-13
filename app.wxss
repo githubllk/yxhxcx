@@ -73,3 +73,7 @@ picker-view-column view {
   top: 0rpx;
   background-color: #0000004D;
 }
+/* 增加底部高度 */
+.blank{
+  height: 150rpx;
+}

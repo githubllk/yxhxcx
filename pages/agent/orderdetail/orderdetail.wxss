@@ -175,9 +175,7 @@ page {
     bottom: 0;
 
 }
-.blank{
-    height: 120rpx;
-}
+
 .cancel {
     width: 50%;
     line-height: 98rpx;

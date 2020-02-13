@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    agentarray:{
+    agentarray: {
       array: array.pickertime(),
       option_active: 1,
       isCustomTime: false,
@@ -19,6 +19,65 @@ Page({
     year: '',
     month: '',
     day: '',
+    keeperarray: {
+      option_active: 0,
+      option_list: [{
+        'id': 1,
+        'name': '折扣系列',
+      }, {
+        'id': 2,
+        'name': '新品上市',
+      }, {
+        'id': 3,
+        'name': '高级系列',
+      }, {
+        'id': 4,
+        'name': '青铜系列',
+      }, {
+        'id': 5,
+        'name': '钻石上市',
+      },],
+      goodlist:[
+        {
+          'id':1,
+          'good_name':'你好你好你好你好你好你好你好你好你好你好你好你好你好..',
+          'pieces':1000,
+          'price': 1000.00,
+          'image': '/pages/images/lll.jpg',
+          'status':1
+        },{
+          'id':2,
+          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
+          'pieces':2000,
+          'image': '/pages/images/lll.jpg',
+          'price': '2000.00',
+          'status':8
+        },
+        {
+          'id':3,
+          'good_name':'你好你好你好你好你好你好你好你好你好你好你好你好你好..',
+          'pieces':1000,
+          'price': 1000.00,
+          'image': '/pages/images/lll.jpg',
+          'status':1
+        },{
+          'id':4,
+          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
+          'pieces':2000,
+          'image': '/pages/images/lll.jpg',
+          'price': '2000.00',
+          'status':8
+        },
+        {
+          'id':5,
+          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
+          'pieces':2000,
+          'image': '/pages/images/lll.jpg',
+          'price': '2000.00',
+          'status':8
+        },
+      ]
+    }
   },
 
   /**
@@ -27,9 +86,9 @@ Page({
   onLoad: function (options) {
     wx.hideTabBar()
     this.setData({
-      role: 'agent'
+      role: 'keeper'
     })
-    app.onTabBar('agent');
+    app.onTabBar('keeper');
   },
 
   /**
@@ -109,7 +168,7 @@ Page({
     } else {
       var startValue = this.data.agentarray.array.value
     }
-     
+
     this.setData({
       'agentarray.showpickertime': 1,
       'agentarray.startDatesel': 1,
@@ -185,20 +244,31 @@ Page({
       'agentarray.showpickertime': 0
     })
   },
-  stockbind: function(e){
+  stockbind: function (e) {
     let type = e.currentTarget.dataset.type
     let url
-    if(type == 1){
-      url = '../agent/stock/stock' 
-    }else if(type==2){
-      url = '../agent/goodmanage/goodmanage' 
+    if (type == 1) {
+      url = '../agent/stock/stock'
+    } else if (type == 2) {
+      url = '../agent/goodmanage/goodmanage'
     } else if (type == 3) {
       url = '../agent/ordermanage/ordermanage'
     }
     wx.navigateTo({
       url: url,
     })
-  }
-  
+  },
+
   // --------------------------------------- 经销商 -----------------------------------------
+
+
+
+  // --------------------------------------- 库管 -----------------------------------------
+
+  goodsitem:function(e){
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/keeper/stockgsdetails/stockgsdetails?id='+id,
+    })
+  },
 })

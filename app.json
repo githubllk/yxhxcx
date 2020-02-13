@@ -18,7 +18,10 @@
         "pages/agent/ordermanage/ordermanage",
         "pages/agent/orderdetail/orderdetail",
         "pages/agent/custommanage/custommanage",
-        "pages/agent/customlevel/customlevel"
+        "pages/agent/customlevel/customlevel",
+        "pages/keeper/index/index",
+        "pages/keeper/ruku/ruku",
+        "pages/keeper/chuku/chuku"
     ],
     "window": {
         "navigationBarBackgroundColor": "#FFFFFF",
@@ -46,6 +49,14 @@
             },
             {
                 "pagePath": "pages/index/index",
+                "text": ""
+            },
+            {
+                "pagePath": "pages/keeper/ruku/ruku",
+                "text": ""
+            },
+            {
+                "pagePath": "pages/keeper/chuku/chuku",
                 "text": ""
             }
         ]

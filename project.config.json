@@ -198,6 +198,20 @@
 					"id": -1,
 					"name": "pages/agent/custommanage/custommanage",
 					"pathName": "pages/agent/custommanage/custommanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/keeper/ruku/ruku",
+					"pathName": "pages/keeper/ruku/ruku",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/keeper/chuku/chuku",
+					"pathName": "pages/keeper/chuku/chuku",
 					"scene": null
 				}
 			]
