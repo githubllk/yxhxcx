@@ -1,0 +1,75 @@
+/* pages/dealer/index/index.wxss */
+.d-header{
+    display: flex;   
+}
+.search {
+    height: 60rpx;
+    display: flex;
+    margin-left: 54rpx;
+    line-height: 60rpx;
+    width: 554rpx;
+    background: rgba(247, 247, 247, 1);
+    border-radius: 8rpx;
+    margin-top: 20rpx;
+}
+.search-left{
+    margin: 6rpx 14rpx 0 20rpx;
+}
+.search-right{
+    margin-top: 10rpx;
+}
+
+.search image {
+    width: 30rpx;
+    height: 30rpx;
+}
+.search input{
+    color: #999999;
+    font-size: 28rpx;
+}
+.search-btn{
+    color: #242424;
+    margin: 28rpx 0 0 24rpx;
+}
+
+
+.d-nav {
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    border-bottom: 2rpx solid #F0F0F0;
+    height: 98rpx;
+    color: #666666;
+    font-size: 28rpx;
+}
+
+/* .scroll-view_H {
+    white-space: nowrap;
+    width: 90%;
+}
+
+.classify {
+    height: 92rpx;
+    margin-left: 14rpx;
+    display: flex;
+}
+
+.classify-son {
+    margin: 26rpx;
+}
+
+.classify-son.act {
+    color: #b79547;
+    border-bottom: 6rpx solid;
+    border-bottom-color: linear-gradient(to right, #bda54f, #9e722d);
+    border-radius: 4rpx;
+    height: 66rpx;
+} */
+
+.d-nav-right {
+    /* position: fixed; */
+    /* right: 30rpx; */
+    line-height: 92rpx;
+    margin-left: 10rpx;
+
+}

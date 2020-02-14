@@ -155,7 +155,7 @@ App({
       "position": "bottom",
       "list": [
         {
-          "pagePath": "/pages/dealer/index/index",
+          "pagePath": "/pages/index/index",
           "text": "首页",
           "iconPath": "/pages/images/index.png",
           "selectedIconPath": "/pages/images/index-active.png",
@@ -163,14 +163,14 @@ App({
 
         },
         {
-          "pagePath": "/pages/dealer/shoppingcart/shoppingcart",
+          "pagePath": "/pages/dealer/shopping/shopping",
           "text": "购物车",
           "iconPath": "/pages/images/shoppingcart.png",
           "selectedIconPath": "/pages/images/shoppingcart-active.png",
           "active": false
         },
         {
-          "pagePath": "/pages/dealer/me/me",
+          "pagePath": "/pages/me/me",
           "text": "我的",
           "iconPath": "/pages/images/my.png",
           "selectedIconPath": "/pages/images/my-active.png",

@@ -1,7 +1,7 @@
 <import src="/pages/template/tabbar.wxml" />
 <view class="r-header white-bgc">
-    <view class="{{option_active == 1?'act':''}}" bindtap="option_select" data-num="1">待出库</view>
-    <view class="{{option_active == 2?'act':''}}" bindtap="option_select" data-num="2">已出库</view>
+	<view class="{{option_active == 1?'act':''}}" bindtap="option_select" data-num="1">待出库</view>
+	<view class="{{option_active == 2?'act':''}}" bindtap="option_select" data-num="2">已出库</view>
 </view>
 <view class="main white-bgc">
 	<view class="main-list">
@@ -17,11 +17,16 @@
 			</view>
 			<view class="main-attr down">
 				<text>张三</text>
-                <view class="r-btn">确认出库</view>
+				<view wx:if="{{option_active==1}}" class="r-btn">
+					<navigator hover-class="none" url="../shipments/shipments">
+						出库
+					</navigator>
+				</view>
+				<view wx:else class="r-red">18:40:30 2019/08/20</view>
 			</view>
 		</view>
 	</view>
-    <view class="main-list">
+	<view class="main-list">
 		<view class="main-left">
 			<image src="../../images/lll.jpg"></image>
 		</view>
@@ -33,8 +38,9 @@
 				<text class="attr-piece">10000件</text>
 			</view>
 			<view class="main-attr down">
-				<text>张三22222222</text>
-                <view class="r-btn">确认出库</view>
+				<text>张三好</text>
+				<view wx:if="{{option_active==1}}" class="r-btn">出库</view>
+				<view wx:else class="r-red">18:40:30 2019/08/20</view>
 			</view>
 		</view>
 	</view>

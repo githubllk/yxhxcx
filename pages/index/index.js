@@ -77,6 +77,65 @@ Page({
           'status':8
         },
       ]
+    },
+    dealerarray: {
+      option_active: 0,
+      option_list: [{
+        'id': 1,
+        'name': '折扣系列',
+      }, {
+        'id': 2,
+        'name': '新品上市',
+      }, {
+        'id': 3,
+        'name': '高级系列',
+      }, {
+        'id': 4,
+        'name': '青铜系列',
+      }, {
+        'id': 5,
+        'name': '钻石上市',
+      },],
+      goodlist:[
+        {
+          'id':1,
+          'good_name':'你好你好你好你好你好你好你好你好你好你好你好你好你好..',
+          'pieces':1000,
+          'price': 1000.00,
+          'image': '/pages/images/lll.jpg',
+          'status':1
+        },{
+          'id':2,
+          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
+          'pieces':2000,
+          'image': '/pages/images/lll.jpg',
+          'price': '2000.00',
+          'status':8
+        },
+        {
+          'id':3,
+          'good_name':'你好你好你好你好你好你好你好你好你好你好你好你好你好..',
+          'pieces':1000,
+          'price': 1000.00,
+          'image': '/pages/images/lll.jpg',
+          'status':1
+        },{
+          'id':4,
+          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
+          'pieces':2000,
+          'image': '/pages/images/lll.jpg',
+          'price': '2000.00',
+          'status':8
+        },
+        {
+          'id':5,
+          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
+          'pieces':2000,
+          'image': '/pages/images/lll.jpg',
+          'price': '2000.00',
+          'status':8
+        },
+      ]
     }
   },
 
@@ -86,9 +145,9 @@ Page({
   onLoad: function (options) {
     wx.hideTabBar()
     this.setData({
-      role: 'keeper'
+      role: 'dealer'
     })
-    app.onTabBar('keeper');
+    app.onTabBar('dealer');
   },
 
   /**
@@ -260,8 +319,11 @@ Page({
   },
 
   // --------------------------------------- 经销商 -----------------------------------------
-
-
+  d_option_select:function(e){
+    this.setData({
+      'dealerarray.option_active': e.target.dataset.num,
+    })
+  },
 
   // --------------------------------------- 库管 -----------------------------------------
 

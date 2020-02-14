@@ -75,7 +75,7 @@
 
 }
 
-.right image {
+.d-nav-right image {
     height: 48rpx;
     width: 48rpx;
     margin-top: 22rpx;
@@ -87,6 +87,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-left: 13rpx;
+    margin-top: 20rpx;
 }
 .mian-item{
     width: 340rpx;
@@ -100,6 +101,7 @@
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     word-break: break-all;
+    font-size: 28rpx;
 }
 .stock-num{
     font-size: 32rpx;
@@ -108,4 +110,5 @@
 .mian-item image{
     width: 340rpx;
     height: 340rpx;
+    border-radius: 4rpx;
 }

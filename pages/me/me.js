@@ -7,9 +7,9 @@ Page({
   onLoad: function (options) {
     wx.hideTabBar()
     this.setData({
-      role: 'soleagentme'
+      role: 'keeper'
     })
-    app.onTabBar('agent');
+    app.onTabBar('keeper');
 
   },
   onReady: function () {

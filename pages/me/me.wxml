@@ -7,5 +7,9 @@
   <import src="/pages/agent/me/me.wxml" />
   <template is="soleagentme" data="{{agentarray}}"/>
 </view>
+<view wx:if="{{role == 'keeper'}}">
+  <import src="/pages/keeper/me/me.wxml" />
+  <template is="keeperme" data="{{keeperarray}}"/>
+</view>
 
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>

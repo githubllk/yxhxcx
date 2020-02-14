@@ -21,7 +21,10 @@
         "pages/agent/customlevel/customlevel",
         "pages/keeper/index/index",
         "pages/keeper/ruku/ruku",
-        "pages/keeper/chuku/chuku"
+        "pages/keeper/chuku/chuku",
+        "pages/keeper/shipments/shipments",
+        "pages/dealer/index/index",
+        "pages/dealer/shopping/shopping"
     ],
     "window": {
         "navigationBarBackgroundColor": "#FFFFFF",
@@ -48,7 +51,7 @@
                 "text": ""
             },
             {
-                "pagePath": "pages/index/index",
+                "pagePath": "pages/dealer/shopping/shopping",
                 "text": ""
             },
             {

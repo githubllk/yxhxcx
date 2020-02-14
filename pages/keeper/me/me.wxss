@@ -1,0 +1,26 @@
+/* pages/agent/me/me.wxss */
+.foot {
+    font-size: 32rpx;
+    color: #fff;
+    background-image: linear-gradient(to right, #bda54f, #9e722d);
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    bottom: 170rpx;
+    position: fixed;
+    width: 630rpx;
+    border-radius: 8rpx;
+    margin-left: 60rpx;
+}
+
+.pass {
+    height: 90rpx;
+    line-height: 90rpx;
+    margin-bottom: 2rpx;
+}
+
+.pass input {
+    padding: 24rpx 0 0 30rpx;
+    font-size: 28rpx;
+    color: #BDBDBD;
+}

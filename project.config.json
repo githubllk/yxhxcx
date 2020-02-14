@@ -212,6 +212,13 @@
 					"id": -1,
 					"name": "pages/keeper/chuku/chuku",
 					"pathName": "pages/keeper/chuku/chuku",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/keeper/shipments/shipments",
+					"pathName": "pages/keeper/shipments/shipments",
 					"scene": null
 				}
 			]

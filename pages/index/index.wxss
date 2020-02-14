@@ -3,7 +3,7 @@
 @import "/pages/agent/index/index.wxss";
 
 /* ***********************经销商 ***************************** */
-
+@import "/pages/dealer/index/index.wxss";
 
 /* ***********************库管 ***************************** */
 @import "/pages/keeper/index/index.wxss";

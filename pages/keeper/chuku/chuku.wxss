@@ -98,4 +98,12 @@
 .main-attr.down {
     align-items: center;
     margin-top: 38rpx;
+    position: relative;
+}
+.r-red {
+    color: #F63256;
+    margin-left: 84rpx;
+    position: absolute;
+    right: 30rpx;
+
 }
