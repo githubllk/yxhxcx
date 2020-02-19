@@ -9,6 +9,7 @@ export default {
     //首页链接
     indexUrl: '/api/v2/index',
     getRegionlistUrl: '/api/xcx/region/getregionlist',//获取地址列表
+    getcitylist: '/common/tool/getcitylist',//三级联动
     ptUploadImage: '/common/image_upload/uploadpic', //普通上传图片
     ossUPloadImage: '/common/image_upload/uploadosspic', //oss上传图片
     loginUrl: "/api/common/login/xcxsignin",

@@ -1,98 +1,100 @@
 <!--pages/agent/index/index.wxml-->
 <!-- <import src="/pages/template/tabbar.wxml" /> -->
 <template name="agentindex">
-  <view class="header">
-    <view class="btn" bindtap="stockbind" data-type="1">
-      <image src="/pages/images/kucunguanli.png"></image>
-      <text>库存管理</text>
-    </view>
-    <view class="btn" bindtap="stockbind" data-type="2">
-      <image src="/pages/images/shangpinguanli.png"></image>
-      <text>商品管理</text>
-    </view>
-    <view class="btn" bindtap="stockbind" data-type="3">
-      <image class="dingdan" src="/pages/images/dingdanguanli.png"></image>
-      <text>订单管理</text>
-    </view>
-  </view>
-  <view class="nav">
-    <view class="subnav {{agentarray.option_active == 1?'act':''}}" bindtap="option_select" data-num="1">今日</view>
-    <view class="subnav {{agentarray.option_active == 2?'act':''}}" bindtap="option_select" data-num="2">本周</view>
-    <view class="subnav {{agentarray.option_active == 3?'act':''}}" bindtap="option_select" data-num="3">本月</view>
-    <view class="subnav {{agentarray.option_active == 4?'act':''}}" bindtap="option_select" data-num="4">自定义</view>
-  </view>
-  <view wx:if="{{agentarray.isCustomTime}}" class="customtime">
-    <view style="margin-left:30rpx;">
-      <view class="picker-view" bindtap="startDatebind">{{agentarray.startDate?agentarray.startDate:'开始时间'}}</view>
-    </view>
-    <view>
-      <text>~</text>
-    </view>
-    <view>
-      <view class="picker-view" bindtap="endDatebind">{{agentarray.endDate?agentarray.endDate:'结束时间'}}</view>
-    </view>
-  </view>
-  <view class="pickertime-bottom" wx:if="{{agentarray.showpickertime}}">
-    <import src="/pages/common/pickertime.wxml" />
-    <template is="pickertime" data="{{array:agentarray.array}}" />
-  </view>
-  <!-- 统计中间 -->
-  <view class="statistics">
-    <!-- 营业额 -->
-    <view class="turnover">
-      <view class="turnover-son">
-        <text style="color:#A3A3A3">营业额</text>
-        <text style="color:#B79547">￥1000.00</text>
-      </view>
-    </view>
-    <!-- 总量 -->
-    <view class="statistics-center">
-      <view class="main-gross">
-        <view class="main-gross-son gross-right">
-          <text class="gross-font font-color-A3">下单总量</text>
-          <text class="gross-num">1000</text>
-        </view>
-        <view class="main-gross-son">
-          <text class="font-color-A3">下单总量</text>
-          <text>1000</text>
-        </view>
-      </view>
-      <view class="main-gross">
-        <view class="main-gross-son gross-right">
-          <text class="gross-font font-color-A3">入库总量</text>
-          <text class="gross-num">1000</text>
-        </view>
-        <view class="main-gross-son">
-          <text class="font-color-A3">出库总量</text>
-          <text>1000</text>
-        </view>
-      </view>
-    </view>
-  </view>
-  <!-- 代收款 -->
-  <view class="statistics-bottom">
-    <view class="btn">
-      <text>代收款</text>
-      <text>10</text>
-    </view>
-    <view class="btn">
-      <text>待出库</text>
-      <text>10</text>
-    </view>
-    <view class="btn">
-      <text>待收货</text>
-      <text>10</text>
-    </view>
-  </view>
-  <!-- 经销商统计 -->
-  <view class="dealer-statistics">
-    <view class="btn1">
-      经销商统计
-    </view>
-    <view class="btn2">
-      <text>18</text>
-      <image src="/pages/images/xiangyou.png"></image>
-    </view>
-  </view>
-  <!-- <template is="tabBar" data="{{agentarray.tabBar:tabBar}}"></template> -->
+	<view class="header">
+		<view class="btn" bindtap="stockbind" data-type="1">
+			<image src="/pages/images/kucunguanli.png"></image>
+			<text>库存管理</text>
+		</view>
+		<view class="btn" bindtap="stockbind" data-type="2">
+			<image src="/pages/images/shangpinguanli.png"></image>
+			<text>商品管理</text>
+		</view>
+		<view class="btn" bindtap="stockbind" data-type="3">
+			<image class="dingdan" src="/pages/images/dingdanguanli.png"></image>
+			<text>订单管理</text>
+		</view>
+	</view>
+	<view class="nav">
+		<view class="subnav {{agentarray.option_active == 1?'act':''}}" bindtap="option_select" data-num="1">今日</view>
+		<view class="subnav {{agentarray.option_active == 2?'act':''}}" bindtap="option_select" data-num="2">本周</view>
+		<view class="subnav {{agentarray.option_active == 3?'act':''}}" bindtap="option_select" data-num="3">本月</view>
+		<view class="subnav {{agentarray.option_active == 4?'act':''}}" bindtap="option_select" data-num="4">自定义</view>
+	</view>
+	<view wx:if="{{agentarray.isCustomTime}}" class="customtime">
+		<view style="margin-left:30rpx;">
+			<view class="picker-view" bindtap="startDatebind">{{agentarray.startDate?agentarray.startDate:'开始时间'}}</view>
+		</view>
+		<view>
+			<text>~</text>
+		</view>
+		<view>
+			<view class="picker-view" bindtap="endDatebind">{{agentarray.endDate?agentarray.endDate:'结束时间'}}</view>
+		</view>
+	</view>
+	<view class="pickertime-bottom" wx:if="{{agentarray.showpickertime}}">
+		<import src="/pages/common/pickertime.wxml" />
+		<template is="pickertime" data="{{array:agentarray.array}}" />
+	</view>
+	<!-- 统计中间 -->
+	<view class="statistics">
+		<!-- 营业额 -->
+		<view class="turnover">
+			<view class="turnover-son">
+				<text style="color:#A3A3A3">营业额</text>
+				<text style="color:#B79547">￥1000.00</text>
+			</view>
+		</view>
+		<!-- 总量 -->
+		<view class="statistics-center">
+			<view class="main-gross">
+				<view class="main-gross-son gross-right">
+					<text class="gross-font font-color-A3">下单总量</text>
+					<text class="gross-num">1000</text>
+				</view>
+				<view class="main-gross-son">
+					<text class="font-color-A3">下单总量</text>
+					<text>1000</text>
+				</view>
+			</view>
+			<view class="main-gross">
+				<view class="main-gross-son gross-right">
+					<text class="gross-font font-color-A3">入库总量</text>
+					<text class="gross-num">1000</text>
+				</view>
+				<view class="main-gross-son">
+					<text class="font-color-A3">出库总量</text>
+					<text>1000</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 代收款 -->
+	<view class="statistics-bottom">
+		<view class="btn">
+			<text>代收款</text>
+			<text>10</text>
+		</view>
+		<view class="btn">
+			<text>待出库</text>
+			<text>10</text>
+		</view>
+		<view class="btn">
+			<text>待收货</text>
+			<text>10</text>
+		</view>
+	</view>
+	<!-- 经销商统计 -->
+	<view class="dealer-statistics">
+		<navigator hover-class="none" url="/pages/agent/dealercount/dealercount">
+			<view class="btn1">
+				经销商统计
+			</view>
+			<view class="btn2">
+				<text>18</text>
+				<image src="/pages/images/xiangyou.png"></image>
+			</view>
+		</navigator>
+	</view>
+	<!-- <template is="tabBar" data="{{agentarray.tabBar:tabBar}}"></template> -->
 </template>

@@ -1,0 +1,103 @@
+/* pages/dealer/search/search.wxss */
+.d-header{
+    display: flex;   
+}
+.search {
+    height: 60rpx;
+    display: flex;
+    margin-left: 54rpx;
+    line-height: 60rpx;
+    width: 554rpx;
+    background: rgba(247, 247, 247, 1);
+    border-radius: 8rpx;
+    margin-top: 20rpx;
+}
+.search-left{
+    margin: 6rpx 14rpx 0 20rpx;
+}
+.search-right{
+    margin-top: 10rpx;
+}
+
+.search image {
+    width: 30rpx;
+    height: 30rpx;
+}
+.search input{
+    color: #999999;
+    font-size: 28rpx;
+}
+.search-btn{
+    color: #242424;
+    margin: 28rpx 0 0 24rpx;
+}
+
+
+
+.top{
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 28rpx;
+}
+.c6{
+    color: #666666;
+    margin-left: 30rpx;
+}
+.main{
+    color: #242424;
+    padding-left: 30rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2rpx solid #F5F5F5;
+}
+.main image{
+    margin-right: 30rpx;
+}
+.clear{
+    width: 394rpx;
+    height: 74rpx;
+    margin: 80rpx 0 0 170rpx;
+    text-align: center;
+    line-height: 74rpx;
+    color: #7A7A7A;
+    font-size: 28rpx;
+}
+
+.nodata image{
+    width: 369rpx;
+    height: 224rpx;
+    margin: 52rpx 0 0 176rpx;
+}
+.nodata text{
+    margin: 40rpx 0 0 264rpx;
+    font-size:28rpx;
+}
+
+.d-good{
+    display: flex;
+    width: 100%;
+    height: 196rpx;
+    padding: 30rpx;
+    position: relative;
+    color: #242424;
+}
+.d-good-left{
+    display: flex;
+    margin-right: 20rpx;
+}
+.d-good-left image{
+    height: 196rpx;
+    width: 196rpx;
+}
+
+.d-good-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.jian{
+    position: absolute;
+    color: #BDBDBD;
+    right: 90rpx;
+}

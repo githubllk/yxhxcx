@@ -22,7 +22,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.0.0",
-	"appid": "wx8bd56331432dd08b",
+	"appid": "wx57c42361fa7f8017",
 	"projectname": "%E6%B4%BB%E5%8A%A8",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -219,6 +219,98 @@
 					"id": -1,
 					"name": "pages/keeper/shipments/shipments",
 					"pathName": "pages/keeper/shipments/shipments",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/shopping/shopping",
+					"pathName": "pages/dealer/shopping/shopping",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/search/search",
+					"pathName": "pages/dealer/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/gooddetail/gooddetail",
+					"pathName": "pages/dealer/gooddetail/gooddetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/orderdetail/orderdetail",
+					"pathName": "pages/dealer/orderdetail/orderdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/orderdetail/orderdetail",
+					"pathName": "pages/dealer/orderdetail/orderdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/addrmanage/addrmanage",
+					"pathName": "pages/dealer/addrmanage/addrmanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 30,
+					"name": "pages/dealer/addradd/addradd",
+					"pathName": "pages/dealer/addradd/addradd",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/orderdetail-d/orderdetail",
+					"pathName": "pages/dealer/orderdetail-d/orderdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/ordermanage/ordermanage",
+					"pathName": "pages/dealer/ordermanage/ordermanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/shopping/shopping",
+					"pathName": "pages/dealer/shopping/shopping",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/me/me",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/dealercount/dealercount",
+					"pathName": "pages/agent/dealercount/dealercount",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/dealercountd/dealercountd",
+					"pathName": "pages/agent/dealercountd/dealercountd",
+					"query": "",
 					"scene": null
 				}
 			]

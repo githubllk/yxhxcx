@@ -1,0 +1,114 @@
+<view class="container-column buydes-dialog-container" wx:if="{{showModalStatus}}"  bindtap="hideModal">
+	<view class="buydes-dialog-container-top"></view>
+</view>
+<view class="detail-header">
+	<swiper class="swiperWrap" indicator-color="#ffffff" indicator-active-color="#12DCC8" indicator-dots autoplay circular>
+		<block wx:for="{{imgs}}" wx:key="kkk">
+			<swiper-item>
+				<image src="{{item}}"></image>
+			</swiper-item>
+		</block>
+	</swiper>
+</view>
+<view class="main white-bgc">
+	<view class="title">
+		哈哈哈哈哈哈哈哈哈哈或或或或或或或或哈哈或或或或或或或或
+	</view>
+	<view class="price-num">
+		<text class="price">¥1600.22</text>
+		<text>1000件</text>
+	</view>
+</view>
+<view class="d-title white-bgc">
+	商品详情
+</view>
+<view class="detail white-bgc">
+	<text>eeeee</text>
+	<image src="../../images/search-blank.png"></image>
+	<image src="../../images/search-blank.png"></image>
+	<image src="../../images/search-blank.png"></image>
+</view>
+<view class="blank"></view>
+<view class="foot">
+	<view class="addcart white-bgc" bindtap="addcartbind">加入购物车</view>
+	<view class="buy" bindtap="showModal">立即购买</view>
+</view>
+<!-- <view class="buy" bindtap="buybind">立即购买</view> -->
+
+<view class="container-column ">
+
+	<view animation="{{animationData}}" wx:if="{{showModalStatus}}" class="buydes-dialog-container-bottom">
+		<view class="white-bgc">
+			<view class="arrr-top">
+				<view class="attr-image">
+					<image src="../../images/lll.jpg"></image>
+				</view>
+				<view class="price">¥1662.33 </view>
+			</view>
+			<scroll-view scroll-y="true" style="height: 300rpx;">
+				<view class="attr-list">
+					<view class="attr-btn">
+						褐色
+					</view>
+					<view class="attr-btn act">
+						褐色
+					</view>
+					<view class="attr-btn">
+						褐色
+					</view>
+					<view class="attr-btn">
+						褐色
+					</view>
+				</view>
+				<view class="attr-list">
+					<view class="attr-btn">
+						褐色
+					</view>
+					<view class="attr-btn act">
+						褐色
+					</view>
+					<view class="attr-btn">
+						褐色
+					</view>
+					<view class="attr-btn">
+						褐色
+					</view>
+					<view class="attr-btn">
+						褐色
+					</view>
+					<view class="attr-btn">
+						褐色
+					</view>
+					<view class="attr-btn">
+						褐色
+					</view>
+					<view class="attr-btn">
+						褐色
+					</view>
+					<view class="attr-btn">
+						褐色
+					</view>
+					<view class="attr-btn">
+						褐色
+					</view>
+				</view>
+
+			</scroll-view>
+			<view class="attr-num">
+				<view class="font-color-A3">数量</view>
+				<view class="btn-box">
+					<view wx:if="{{num>0}}" class="jiannum" bindtap="numminus">-</view>
+					<input placeholder-class="num" type="number" value="{{num?num:0}}" data-good_key="{{index}}" data-attr_key="{{itemkey}}" bindblur="inputeditstock" bindconfirm="inputeditstock"></input>
+					<view class="jia" bindtap="numadd" data-good_key="{{index}}" data-attr_key="{{itemkey}}">+</view>
+				</view>
+			</view>
+		</view>
+		<navigator hover-class="none" url="../orderdetail/orderdetail">
+			<view class="qd-btn">
+				确定
+			</view>
+		</navigator>
+
+	</view>
+	<!-- <image bindtap="showModal"  src="../../images/search-blank.png" /> -->
+</view>

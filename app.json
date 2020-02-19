@@ -1,9 +1,9 @@
 {
     "pages": [
+        "pages/login/login",
         "pages/index/index",
         "pages/me/me",
         "pages/template/tabbar",
-        "pages/login/login",
         "pages/agent/index/index",
         "pages/agent/me/me",
         "pages/agent/stock/stock",
@@ -24,7 +24,17 @@
         "pages/keeper/chuku/chuku",
         "pages/keeper/shipments/shipments",
         "pages/dealer/index/index",
-        "pages/dealer/shopping/shopping"
+        "pages/dealer/shopping/shopping",
+        "pages/dealer/search/search",
+        "pages/dealer/gooddetail/gooddetail",
+        "pages/dealer/orderdetail/orderdetail",
+        "pages/dealer/addrmanage/addrmanage",
+        "pages/dealer/addradd/addradd",
+        "pages/dealer/orderdetail-d/orderdetail",
+        "pages/dealer/ordermanage/ordermanage",
+        "pages/dealer/me/me",
+        "pages/agent/dealercount/dealercount",
+        "pages/agent/dealercountd/dealercountd"
     ],
     "window": {
         "navigationBarBackgroundColor": "#FFFFFF",

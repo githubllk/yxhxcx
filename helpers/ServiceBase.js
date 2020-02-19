@@ -472,6 +472,65 @@ class ServiceBase {
             },
             response: (response) => {
                 response.responseTimestamp = new Date().getTime()
+                console.log('拦截器:',response)
+                if (response.data.code === '-1') {
+                    // 接口异常
+                    console.log('服务端错误 联系管理员');
+                }
+                if (response.data.code == 40001) {
+                    console.log('app_key错误');
+                }
+                if (response.data.code == 40002) {
+                    console.log('sign签名错误');
+                }
+                if (response.data.code == 40007) {
+                    wx.showToast({
+                        title: '未设置定位',
+                        icon: 'none',
+                        duration: 2000
+                    })
+                }
+                if (response.data.code == 40000) {
+                    console.log(response.data.msg)
+                    wx.showToast({
+                        title: response.data.msg,
+                        icon: 'none',
+                        duration: 2000
+                    })
+                }
+                if (response.data.code == 40002) {
+                    console.log(response.data.msg)
+                    // wx.showToast({
+                    //     title: response.data.msg,
+                    //     icon: 'none',
+                    //     duration: 2000
+                    // })
+                }
+                if (response.data.code == 40003) {
+                    app.globalData.user = {};
+                    wx.removeStorageSync('token');
+                    console.log('token验证失败');
+                    app.globalData.isLogin = false
+                    //   wx.reLaunch({
+                    //       url: './../setInfo/setInfo'
+                    //   })
+                    if (!app.globalData.isLogin) {
+                        app.isLogin();
+                    }
+                    else {
+                        console.log(3333)
+                    }
+                    console.log(app.globalData.isLogin)
+                    return false
+                }
+                if (response.data.code == 40004) {
+                    wx.hideLoading();
+                    console.log('API接口参数错误');
+                }
+                if (response.data.code == 40005) {
+                    wx.hideLoading();
+                    console.log('数据不存在 例如404');
+                }
                 if (response.statusCode === 401) {
                     wx.removeStorageSync('openId')
                     wx.redirectTo({

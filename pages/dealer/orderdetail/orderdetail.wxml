@@ -1,0 +1,100 @@
+<navigator hover-class="none" url="../addrmanage/addrmanage">
+	<view class="addr white-bgc">
+		<view class="o-left">
+			<image src="../../images/dingwei.png"></image>
+		</view>
+		<view class="addr-detail">请添加收货地址</view>
+		<view class="o-right">
+			<image src="../../images/xiangyou.png"></image>
+		</view>
+	</view>
+</navigator>
+<view class="o-main">
+	<view class="order-sn white-bgc">
+		<view>订单编号:123456789012345678901</view>
+	</view>
+	<view class="main-list">
+		<view class="main-left">
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="main-right">
+			<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+			<view class="main-attr">
+				<text class="attr-name">黑色</text>
+				<text class="attr-g  l30">100g</text>
+			</view>
+			<view class="main-attr">
+				<text class="price">¥1466.99</text>
+				<text class="o-right" style="color:#000">X10</text>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="o-main">
+	<view class="order-sn white-bgc">
+		<view>订单编号:123456789012345678901</view>
+	</view>
+	<view class="main-list">
+		<view class="main-left">
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="main-right">
+			<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+			<view class="main-attr">
+				<text class="attr-name">黑色</text>
+				<text class="attr-g  l30">100g</text>
+			</view>
+			<view class="main-attr">
+				<text class="price">¥1466.99</text>
+				<text class="o-right" style="color:#000">X10</text>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="o-main">
+	<view class="order-sn white-bgc">
+		<view>订单编号:123456789012345678901</view>
+	</view>
+	<view class="main-list">
+		<view class="main-left">
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="main-right">
+			<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+			<view class="main-attr">
+				<text class="attr-name">黑色</text>
+				<text class="attr-g  l30">100g</text>
+			</view>
+			<view class="main-attr">
+				<text class="price">¥1466.99</text>
+				<text class="o-right" style="color:#000">X10</text>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="o-main">
+	<view class="order-sn white-bgc">
+		<view>订单编号:123456789012345678901</view>
+	</view>
+	<view class="main-list">
+		<view class="main-left">
+			<image src="../../images/lll.jpg"></image>
+		</view>
+		<view class="main-right">
+			<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+			<view class="main-attr">
+				<text class="attr-name">黑色</text>
+				<text class="attr-g  l30">100g</text>
+			</view>
+			<view class="main-attr">
+				<text class="price">¥1466.99</text>
+				<text class="o-right" style="color:#000">X10</text>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="blank"></view>
+<view class="foot">
+	<view class="fenlei">合计<text class="price">¥1666.22</text></view>
+	<view class="addgood" bindtap="buybind">下单</view>
+</view>

@@ -143,11 +143,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var role = wx.getStorageSync('role')[0]
+    console.log(role)
+
     wx.hideTabBar()
     this.setData({
-      role: 'dealer'
+      role: role
     })
-    app.onTabBar('dealer');
+    app.onTabBar(role);
   },
 
   /**
@@ -324,7 +327,12 @@ Page({
       'dealerarray.option_active': e.target.dataset.num,
     })
   },
-
+  goodsitembind:function(e){
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/dealer/gooddetail/gooddetail?id='+id,
+    })
+  },
   // --------------------------------------- 库管 -----------------------------------------
 
   goodsitem:function(e){

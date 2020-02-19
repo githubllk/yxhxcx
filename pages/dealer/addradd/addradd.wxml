@@ -1,0 +1,47 @@
+<!--pages/dealer/addradd/addradd.wxml-->
+<view class="shadow" hidden="{{hiddenn}}" bindtap="shadowbind"></view>
+	
+	<view class="main white-bgc">
+		<view class="left">姓名</view>
+		<view class="right">
+			<input placeholder="{{qsr}}"></input>
+		</view>
+	</view>
+	<view class="main white-bgc">
+		<view class="left">联系电话</view>
+		<view class="right">
+			<input placeholder="{{qsr}}"></input>
+		</view>
+	</view>
+    <view class="main white-bgc">
+		<view class="left">城市</view>
+		<view class="right" style="margin-right:20rpx;" bindtap="selbind" data-type="agent">
+			<text>{{agenttext?agenttext:qsr}}</text>
+			<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
+		</view>
+	</view>
+	<view class="main white-bgc">
+		<view class="left">收货地址</view>
+		<view class="right">
+			<input placeholder="{{qsr}}"></input>
+		</view>
+	</view>
+	<!-- 选择组件 -->
+	<view class="picker-view" hidden="{{hiddenn}}">
+		<view style="background-color:#F7F7F7;display:flex;align-items: center;height:100rpx;font-size:34rpx;position: fixed;bottom: 376rpx;width: 100%;color:#666666;">
+			<view bindtap="paickerQuxiao" style="margin-left: 50rpx">取消</view>
+			<view bindtap="paickerQueding" style="margin-left: 514rpx">确定</view>
+		</view>
+        <!--  -->
+		<picker-view indicator-style="" style="" value="{{val}}" data-name="activeTime" bindchange="inputVal">
+			<picker-view-column >
+				<view wx:for="{{provincearr}}" wx:key="key">{{item.name}}</view>
+			</picker-view-column>
+            <picker-view-column >
+				<view wx:for="{{cityarr}}" wx:key="key">{{item.name}}</view>
+			</picker-view-column>
+            <picker-view-column>
+				<view wx:for="{{countyarr}}" wx:key="key">{{item.name}}</view>
+			</picker-view-column>
+		</picker-view>
+	</view>

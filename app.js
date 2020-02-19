@@ -167,7 +167,7 @@ App({
           "text": "购物车",
           "iconPath": "/pages/images/shoppingcart.png",
           "selectedIconPath": "/pages/images/shoppingcart-active.png",
-          "active": false
+          "active": true
         },
         {
           "pagePath": "/pages/me/me",
@@ -201,7 +201,8 @@ App({
           "active": true
         }
       ]
-    }
+    },
+    
   },
   // WxValidate: (rules, messages) => new WxValidate(rules, messages),
   HttpResource: (url, paramDefaults, actions, options) => new HttpResource(url, paramDefaults, actions, options).init(),

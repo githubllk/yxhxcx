@@ -1,0 +1,8 @@
+<!--pages/agent/dealercount/dealercount.wxml-->
+<view class="main white-bgc" bindtap="dealerdetailbind">
+		<view class="left">北京经销商</view>
+		<view class="right" style="margin-right:20rpx;" bindtap="selbind" data-type="agent">
+			<text>1323232323</text>
+			<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
+		</view>
+	</view>

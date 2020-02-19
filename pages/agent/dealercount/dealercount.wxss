@@ -1,0 +1,14 @@
+/* pages/agent/dealercount/dealercount.wxss */
+.main{
+    display: flex;
+    justify-content: space-between;
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 28rpx;
+    padding-left: 30rpx;
+    color: #333333;
+    margin-top: 2rpx;
+}
+.right{
+    margin-right: 30rpx;
+}

@@ -1,0 +1,51 @@
+<view class="d-header white-bgc">
+	<view class="search">
+		<view class="search-left">
+			<image src="/pages/images/search.png"></image>
+		</view>
+		<view class="search-right">
+			<input placeholder-style="color:#999999" placeholder="请输入商品名称" data-store="{{inputValue}}" value="{{inputValue}}" bindinput='searchInput' bindconfirm="searchbind"></input>
+		</view>
+	</view>
+	<view class="search-btn" bindtap="searchbind">
+		搜索
+	</view>
+</view>
+<view hidden="{{modalHidden}}">
+	<view class="top c6">
+		历史记录
+	</view>
+	<view class="top">
+		<view class="main white-bgc" wx:for="{{getSearch}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
+			<text wx:if="{{itemName != ''}}" data-text="{{itemName}}" bindtap='this_value'>{{itemName}} </text>
+			<view>
+				<image src="../../images/del.png" style="height:28rpx;width:28rpx"></image>
+			</view>
+		</view>
+		<view class="clear white-bgc" bindtap="clearsearchbind">
+			清空历史记录
+		</view>
+	</view>
+</view>
+<view hidden="{{!modalHidden}}">
+	<view class="nodata" wx:if="{{goodlist.length<=0}}">
+		<view>
+			<image src="../../images/search-blank.png" style=""></image>
+		</view>
+		<view><text class="font-color-A3">没有搜到相关产品</text></view>
+	</view>
+	<view class="d-good white-bgc" bindtap="gooddetailbind" data-goodid="{{item.id}}" wx:for="{{goodlist}}" wx:key="key">
+		<view class="d-good-left">
+			<image src="{{item.image}}"></image>
+		</view>
+		<view class="d-good-right">
+			<view>
+				<text>{{item.title}}</text>
+			</view>
+			<view class="d-good-b">
+                <text class="price">¥{{item.price}}</text>
+                <text class="jian">{{item.num}}件</text>
+			</view>
+		</view>
+	</view>
+</view>

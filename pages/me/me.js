@@ -2,15 +2,22 @@
 const app = getApp()
 Page({
   data: {
-
+    admin : 0
   },
   onLoad: function (options) {
+    var rolearr = wx.getStorageSync('role')
+    let role = rolearr[0]
+    if(role=='agent'&&rolearr[1]==='soleagent'){
+      this.setData({
+        admin:'soleagent'
+      })
+    }
     wx.hideTabBar()
     this.setData({
-      role: 'keeper'
+      role: role,
+      admin:this.data.admin
     })
-    app.onTabBar('keeper');
-
+    app.onTabBar(role);
   },
   onReady: function () {
     // 页面渲染完成
@@ -35,5 +42,11 @@ Page({
   },
   
   //end
+  logout(){
+    wx.reLaunch({
+      url: '/pages/login/login'
+    })
+    wx.clearStorage()
+  },
 
 })

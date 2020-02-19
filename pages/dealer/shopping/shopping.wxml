@@ -1,2 +1,50 @@
-<!--pages/dealer/shopping/shopping.wxml-->
-<text>pages/dealer/shopping/shopping.wxml</text>
+<import src="/pages/template/tabbar.wxml" />
+<view wx:if="{{list}}" >
+	<view class="main-list white-bgc" wx:for="{{list}}" wx:key="key">
+		<view class="a-left" bindtap="selectList" data-index="{{index}}">
+			<image src="../../images/xuanzhong.png" wx:if="{{item.selected}}"></image>
+			<image src="../../images/xuan.png" wx:else></image>
+		</view>
+		<view class="main-left">
+			<image src="{{item.image}}"></image>
+		</view>
+		<view class="main-right">
+			<view class="main-title">{{item.title}}</view>
+			<view class="main-attr">
+				<view class="attr-name">黑色</view>
+				<view class="attr-g">100g</view>
+				<view class="btn-box">
+					<view wx:if="{{item.num>0}}" class="jiannum" bindtap="btn_minus" data-index="{{index}}">-</view>
+                    <label class="num"  bindinput='input_num' data-index="{{index}}">{{item.num}}</label>
+					<!-- <input placeholder-class="num" type="number" value="{{item.num?item.num:0}}" data-good_key="{{index}}" data-attr_key="{{itemkey}}" bindblur="inputeditstock" bindconfirm="inputeditstock"></input> -->
+					<view class="jia" bindtap="btn_add" data-index="{{index}}" data-attr_key="{{itemkey}}">+</view>
+				</view>
+			</view>
+			<view class="main-attr">
+				<view class="price">¥<text>{{item.price}}</text></view>
+				<view class="bom" bindtap="deletes">
+					<image src="../../images/del.png"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="foot">
+		<view class="cancel white-bgc">
+			<view class="quanxuan" bindtap="selectAll">
+				<image src="../../images/xuan.png"></image>
+			</view>
+             <view class="qx-text">全选</view>
+             <view class="heji">合计:¥{{totalPrice}}</view>
+		</view>
+		<view class="confirm" bindtap="confirmorderbind">下单</view>
+	</view>
+</view>
+<view class="z-kong" wx:else>
+	<view class="kong">
+		<image src="../../images/gouwchekong.png"></image>
+	</view>
+	<view class="s-font font-color-A3">购物车还是空的...</view>
+	<view class="s-btn">去逛逛</view>
+</view>
+
+<template is="tabBar" data="{{tabBar:tabBar}}"></template>

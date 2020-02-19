@@ -1,0 +1,67 @@
+/* pages/dealer/addrmanage/addrmanage.wxss */
+.df {
+    display: flex;
+}
+
+.addr-list {
+    height: 120rpx;
+    font-size: 24rpx;
+    position: relative;
+    margin-bottom: 20rpx;
+}
+
+.a-left {
+    margin-left: 30rpx;
+    line-height: 120rpx;
+
+}
+
+.a-left image {
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.a-cen {
+    margin: 20rpx 0 0 20rpx;
+}
+
+.a-top {
+    font-size: 28rpx;
+}
+
+.a-right {
+    position: fixed;
+    right: 30rpx;
+    margin: 20rpx 0 0 20rpx;
+    border-left: 2rpx solid #F5F5F5;
+    padding-left: 30rpx;
+
+}
+
+.a-bottom {
+    color: rgba(163, 163, 163, 1);
+}
+
+.a-edit {
+    color: #B79547;
+
+}
+
+.a-del {
+    color: #666666;
+    margin-top: 12rpx;
+
+}
+
+.add-btn {
+    width: 334rpx;
+    height: 52rpx;
+    margin-left: 208rpx;
+    text-align: center;
+    line-height: 52rpx;
+    margin-top: 70rpx;
+    color: #666666;
+    font-size: 26rpx;
+    border-radius: 10rpx;
+    border: 2rpx solid rgba(235, 235, 235, 1);
+}

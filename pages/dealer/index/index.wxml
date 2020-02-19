@@ -1,18 +1,21 @@
 <template name="dealerindex">
-	<view class="d-header white-bgc">
-		<view class="search">
-			<view class="search-left">
-				<image src="/pages/images/search.png"></image>
+	<navigator hover-class="none" url="/pages/dealer/search/search">
+		<view class="d-header white-bgc">
+			<view class="search">
+				<view class="search-left">
+					<image src="/pages/images/search.png"></image>
+				</view>
+				<view class="search-right">
+					<input placeholder-style="color:#999999" placeholder="请输入商品名称"></input>
+				</view>
 			</view>
-			<view class="search-right">
-				<input placeholder-style="color:#999999" placeholder="请输入商品名称"></input>
+			<view class="search-btn">
+				搜索
 			</view>
 		</view>
-        <view class="search-btn">
-            搜索
-        </view>
-	</view>
-    <view class="d-nav white-bgc">
+	</navigator>
+
+	<view class="d-nav white-bgc">
 		<scroll-view class="scroll-view_H" scroll-x="true">
 			<view class="classify">
 				<view wx:for="{{dealerarray.option_list}}" wx:key="key" class="classify-son {{dealerarray.option_active == index?'act':''}}" bindtap="d_option_select" data-num="{{index}}">{{item.name}}</view>
@@ -22,8 +25,8 @@
 			<image src="/pages/images/xiangxia.png"></image>
 		</view>
 	</view>
-    <view class="k-main" >
-		<view class="mian-item" bindtap="goodsitem" data-id="{{item.id}}" wx:for="{{dealerarray.goodlist}}" wx:key="key">
+	<view class="k-main">
+		<view class="mian-item" bindtap="goodsitembind" data-id="{{item.id}}" wx:for="{{dealerarray.goodlist}}" wx:key="key">
 			<view>
 				<image src="{{item.image}}"></image>
 			</view>
@@ -31,5 +34,5 @@
 			<view class="stock-num">{{item.price}}件</view>
 		</view>
 	</view>
-    <view class="blank"></view>
+	<view class="blank"></view>
 </template>

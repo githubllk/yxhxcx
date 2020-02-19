@@ -1,0 +1,112 @@
+/* pages/agent/dealercountd/dealercountd.wxss */
+
+.nav {
+    display: flex;
+    margin-top: 20rpx;
+    background-color: #fff;
+    /* height: 90rpx; */
+    justify-content: space-around;
+    padding-top: 24rpx;
+  }
+  
+  .subnav {
+    color: #bdbdbd;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    text-align: center;
+    width: 88rpx;
+  }
+  
+  .subnav.act {
+    padding-bottom: 26rpx;
+    color: #b79547;
+    border-bottom: 6rpx solid;
+    border-bottom-color: linear-gradient(to right, #bda54f, #9e722d);
+    border-radius: 4rpx;
+  }
+  
+  .statistics {
+    margin-top: 2rpx;
+    background-color: #fff;
+  }
+  
+  .turnover {
+    height: 128rpx;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+  }
+  
+  .turnover-son {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20rpx;
+  }
+  
+  .main-gross {
+    display: flex;
+    border-top: 2rpx solid #f5f5f5;
+    text-align: center;
+    height: 130rpx;
+    width: 690rpx;
+    margin-left: 30rpx;
+  }
+  
+  .main-gross-son {
+    display: flex;
+    flex-direction: column;
+    width: 374rpx;
+    justify-content: center;
+  }
+  
+  .gross-right {
+    border-right: 2rpx solid #f5f5f5;
+  }
+  
+.customtime {
+    display: flex;
+    height: 100rpx;
+    align-content: center;
+    background-color: #fff;
+    color: #a3a3a3;
+    padding-top: 20rpx;
+  }
+  
+  .customtime text {
+    margin: 0 10rpx 0 10rpx;
+    font-size: 24rpx;
+  }
+  
+  .customtime .picker-view {
+    width: 200rpx;
+    height: 60rpx;
+    background-color: #f7f7f7f7;
+    border-radius: 8rpx;
+    font-size: 28rpx;
+    padding-left: 20rpx;
+    line-height: 60rpx;
+  }
+  
+  /* .pickertime-bottom {
+  } */
+  
+  picker-view {
+    background-color: #fff;
+    padding: 0;
+    width: 100%;
+    height: 376rpx;
+    bottom: 0;
+    position: fixed;
+    z-index: 9999;
+  }
+  
+  picker-view-column view {
+    vertical-align: middle;
+    font-size: 34rpx;
+    line-height: 24rpx;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

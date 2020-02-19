@@ -12,7 +12,7 @@
 		</view>
 	</navigator>
 
-	<view class="foot">
+	<view class="foot"  bindtap="logout">
 		退出登录
 	</view>
 </template>
