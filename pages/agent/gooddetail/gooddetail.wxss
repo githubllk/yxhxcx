@@ -241,6 +241,8 @@ picker-view-column view {
   padding: 20rpx 0 0 30rpx;
   margin-top: 20rpx;
   color: #666;
+  /* ------新加 */
+  /* height: 80vh; */
 }
 
 .editor_area {
@@ -248,14 +250,17 @@ picker-view-column view {
   width: 690rpx;
   padding-top: 10rpx;
   background-color: #F7F7F7;
-  height: 240rpx;
+  /* height: 240rpx; */
+  /* ------新加 */
+  height:100%;
 }
 /* editor 样式 */
 .ql-container {
   box-sizing: border-box;
-  font-size: 28rpx;
+  font-size: 30rpx;
   overflow: auto;
   padding: 20rpx 0 0 20rpx;
+  color: #000;
   min-height: 240rpx;
 }
 
@@ -264,7 +269,10 @@ picker-view-column view {
   background: rgba(247, 247, 247, 1);
   margin-top: 20rpx;
   position: relative;
-  height: auto;
+  /* height: auto; */
+  /* ------新加 */
+  /* height: 70vh; */
+  height: 90%;
 }
 .editor-image{
   position: absolute;

@@ -1,4 +1,6 @@
 // pages/agent/custommanage/custommanage.js
+const App = getApp()
+var util = require('../../../utils/util.js');
 Page({
 
     /**
@@ -34,6 +36,9 @@ Page({
         agentext: '',
         usertext: '',
         arrlist: [],
+        agentval: [0],
+        userval: [0],
+        edit: 0
     },
 
     /**
@@ -59,39 +64,46 @@ Page({
             case 4:
                 title = '总代理管理'
                 type_ = 1
-                this.setData({
-                    arrlist: [
-                        { 'name': '北京总代理', 'id': '1', 'phone': '12323232323', },
-                        { 'name': '河北总代理', 'id': '2', 'phone': '15555555555', }
-                    ]
-                })
                 break;
             case 5:
                 title = '库管管理'
                 type_ = 2
-                this.setData({
-                    arrlist: [
-                        { 'name': '北京库管', 'id': '1', 'phone': '12323232323', },
-                        { 'name': '河北库管', 'id': '2', 'phone': '15555555555', }
-                    ]
-                })
                 break;
             case 6:
                 title = '经销商管理'
                 type_ = 3
-                this.setData({
-                    arrlist: [
-                        { 'name': '北京经销商', 'id': '1', 'phone': '12323232323', },
-                        { 'name': '河北经销商', 'id': '2', 'phone': '15555555555', }
-                    ]
-                })
+
                 break;
             default:
                 break;
         }
-        console.log(title)
+        if (type_ == 1 || type_ == 2 || type_ == 3) {
+            App.HttpService.getData(App.Config.customListUrl, { 'type': type_ }).then(data => {
+                if (data.code == 0) {
+                    this.setData({
+                        arrlist: data.data
+                    })
+                }
+            });
+        }
+        if (type == 3 || type == 6) {
+            App.HttpService.getData(App.Config.customListUrl, { 'type': 1, 'issel': 1 }).then(data => {
+                if (data.code == 0) {
+                    this.setData({
+                        agentarr: data.data
+                    })
+                }
+            });
+            App.HttpService.getData(App.Config.customLevelUrl).then(data => {
+                if (data.code == 0) {
+                    this.setData({
+                        userarr: data.data
+                    })
+                }
+            });
+        }
         this.setData({
-            type_: type_
+            type_: type_,
         })
         wx.setNavigationBarTitle({
             title: title,
@@ -181,18 +193,37 @@ Page({
         })
     },
     paickerQueding: function () { //确定按钮
-        console.log(this.data.val)
+
+
+        let isagent = this.data.isagent
+        let agenttext
+        let usertext
+        if (isagent) {
+            let val = this.data.agentval ? this.data.agentval : [0]
+            agenttext = this.data.agentarr[val[0]].username
+            this.setData({
+                agentval: val,
+                agenttext: agenttext,
+            })
+        } else {
+            let val = this.data.userval ? this.data.userval : [0]
+            usertext = this.data.userarr[val[0]].name
+            this.setData({
+                userval: val,
+                usertext: usertext,
+            })
+        }
         this.setData({
             hiddenn: 1,
         })
     },
     inputVal: function (e) {
-        let val = e.detail.value ? e.detail.value : '[0]'
+        let val = e.detail.value ? e.detail.value : [0]
         let isagent = this.data.isagent
         let agenttext
         let usertext
         if (isagent) {
-            agenttext = this.data.agentarr[val[0]].name
+            agenttext = this.data.agentarr[val[0]].username
             this.setData({
                 agentval: val,
                 agenttext: agenttext,
@@ -208,11 +239,85 @@ Page({
     },
     //管理列表 点击事件
     managebind: function (e) {
-        console.log(e)
         let type = e.currentTarget.dataset.type
-        let id = e.currentTarget.dataset.id
-        this.setData({
-            type: type
-        })
-    }
+        let admin_id = e.currentTarget.dataset.id
+        //获取详情
+        let param = []
+        param.admin_id = admin_id
+        param.type = type
+        App.HttpService.getData(App.Config.customDetailUrl, param).then(data => {
+            if (data.code == 0) {
+                if (type == 3) {
+                    this.setData({
+                        userval: [data.data.userval],
+                        usertext: data.data.grade_name,
+                        agentval: [data.data.agentval],
+                        agenttext: data.data.username,
+                    })
+                }
+                this.setData({
+                    type: type,
+                    admin_id: admin_id,
+                    detail: data.data,
+                    edit: 1
+                })
+            }
+        });
+
+    },
+    //新建/修改按钮
+    formSubmit(e) {
+        const that = this
+        const type = that.data.type
+        let param = []
+        param = e.detail.value
+        let url
+        if (type == 1) { //总代理
+            url = 4
+        } else if (type == 2) { // 库管
+            url = 5
+        } else if (type == 3) { // 经销商
+            url = 6
+            param.pid = that.data.agentarr[that.data.agentval[0]].id
+            param.grade_id = that.data.userarr[that.data.userval[0]].id
+        }
+        let url_ = App.Config.addCustomUrl
+        if (that.data.edit) {
+            url_ = App.Config.customEditlUrl
+            param.id = that.data.detail.id
+        }
+        param.type = type
+        App.HttpService.postData(url_, param).then(data => {
+
+            if (data.code == 0) {
+                // wx.navigateTo({
+                //     url: '/pages/agent/custommanage/custommanage?type=' + url,
+                // })
+                wx.switchTab({
+                    url: '/pages/me/me',
+                })
+            }
+        });
+    },
+    delbind(e) {
+        let param = {}
+        param.title = '提示'
+        param.content = '是否真的要删除'
+        param.showCancel = true
+        param.cb_confirm = (res) => { //确定
+            App.HttpService.postData(App.Config.customDelUrl, {'id':this.data.detail.id}).then(data => {
+                if (data.code == 0) {
+                    wx.switchTab({
+                        url: '/pages/me/me',
+                    })
+                }
+            });
+        }
+        param.cb_cancel = (res) => { //取消
+
+        }
+
+        util.tip(param)
+    },
+    
 })

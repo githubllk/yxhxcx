@@ -2,47 +2,27 @@
 	<view class="{{option_active == 1?'act':''}}" bindtap="option_select" data-num="1">入库记录</view>
 	<view class="{{option_active == 2?'act':''}}" bindtap="option_select" data-num="2">出库记录</view>
 </view>
-<view class="main">
+<view class="main" wx:for="{{list}}" wx:key="key">
 	<view class="main-list">
 		<view class="main-left">
-			<image src="../../images/lll.jpg"></image>
+			<image src="{{item.cover_image}}"></image>
 		</view>
 		<view class="main-right">
-			<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+			<view class="main-title">{{item.goods_name}}</view>
 			<view class="main-attr">
-				<text class="attr-name">黑色</text>
-				<text class="attr-g">100g</text>
-				<text class="attr-piece">10000件</text>
+				<text class="attr-name">{{item.spec_name}}</text>
+				<text class="attr-g">{{item.spec_item_name}}</text>
+				<text class="attr-piece">{{item.count}}件</text>
 			</view>
 			<view class="main-attr">
-				<text>18:40:30 2019/08/20</text>
+				<text>{{item.create_time}}</text>
 			</view>
 		</view>
 	</view>
 	<view class="main-stock">
 		<view class="stock">北京仓库</view>
-		<view class="pending">待入库</view>
-	</view>
-</view>
-<view class="main">
-	<view class="main-list">
-		<view class="main-left">
-			<image src="../../images/lll.jpg"></image>
-		</view>
-		<view class="main-right">
-			<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
-			<view class="main-attr">
-				<text class="attr-name">黑色</text>
-				<text class="attr-g">100g</text>
-				<text class="attr-piece">10000件</text>
-			</view>
-			<view class="main-attr">
-				<text>18:40:30 2019/08/20</text>
-			</view>
-		</view>
-	</view>
-	<view class="main-stock">
-		<view class="stock">北京仓库</view>
-		<view class="success">入库成功</view>
+		<view wx:if="{{item.status==0}}" class="pending">待入库</view>
+		<view wx:else class="success">入库成功</view>
+
 	</view>
 </view>

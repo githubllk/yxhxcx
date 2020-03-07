@@ -1,5 +1,5 @@
 // pages/login/login.js
-const app = getApp()
+const App = getApp()
 Page({
 
     /**
@@ -68,33 +68,49 @@ Page({
 
     },
     submit(e) {
-        let phone = e.detail.value.phone
-        let pwd = e.detail.value.pwd
-        let role
-        let isgoto = false
-        console.log(phone)
-        if (phone == '13111111111') {
-            role = ['agent','soleagent']
-            isgoto = true
-        }else if(phone == '13222222222'){
-            role = ['agent','0']
-            isgoto = true
-        }else if(phone == '13333333333'){
-            role = ['dealer','0']
-            isgoto = true
-        }else if(phone == '13444444444'){
-            role = ['keeper','0']
-            isgoto = true
-        }
-        if (isgoto) {
-            wx.setStorage({
-                data: role,
-                key: 'role',
-            })
-            wx.switchTab({
-              url: '/pages/index/index',
-            })
-        }
+        let param = []
+        param.mobile = e.detail.value.phone
+        param.password = e.detail.value.pwd
+        App.HttpService.postData(App.Config.loginUrl, param).then(dataa => {
+            if (dataa.code == 0) {
+                const data = dataa.data
+                let role
+                let isgoto = false
+                if (data.role == 1) {
+                    if(data.type==1){
+                        role = ['agent', 'soleagent']
+                        isgoto = true
+                    }else{
+                        role = ['agent', '0']
+                        isgoto = true
+                    }
+                } else if (data.role == 2) {
+                    role = ['keeper', '0']
+                    isgoto = true
+                } else if (data.role == 3) {
+                    role = ['dealer', '0']
+                    isgoto = true
+                }
+                if (isgoto) {
+                    wx.setStorage({
+                        data: role,
+                        key: 'role',
+                    })
+                    wx.setStorage({
+                        data: data.token,
+                        key: 'token',
+                    })
+                    wx.switchTab({
+                        url: '/pages/index/index',
+                    })
+                }
+                // this.setData({
+                //     countyarr: data.data.list,
+                //     value: [provinceNum, cityNum, 0],
+                // })
+            }
+        })
+
 
     }
 })

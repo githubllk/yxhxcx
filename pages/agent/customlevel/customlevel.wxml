@@ -1,9 +1,9 @@
 <!--pages/agent/customlevel/customlevel.wxml-->
 <view wx:if="{{type=='list'}}">
-	<view class="main white-bgc" >
-		<view class="left">青铜</view>
-		<view class="right" style="margin-right:20rpx;" bindtap="userlevelbind" data-id="{{id}}">
-			<text>8折</text>
+	<view class="main white-bgc" wx:for="{{list}}" wx:key="key" bindtap="detailbind" data-id="{{item.id}}">
+		<view class="left">{{item.name}}</view>
+		<view class="right" style="margin-right:20rpx;" bindtap="userlevelbind" >
+			<text>{{item.discount}}折</text>
 			<image src="/pages/images/del.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
 		</view>
 	</view>
@@ -15,7 +15,7 @@
 	<view class="main white-bgc">
 		<view class="left">会员等级名称</view>
 		<view class="right">
-			<input placeholder-style="color: #BDBDBD;" placeholder="{{qsr}}"></input>
+			<input bindblur="inputbind" bindconfirm="inputbind" placeholder-style="color: #BDBDBD;" value="{{detail.name}}"  placeholder="{{qsr}}"></input>
 		</view>
 	</view>
     <view class="main white-bgc">
@@ -25,8 +25,8 @@
 			<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
 		</view>
 	</view>
-	<view class="foot">
-		确定
+	<view class="foot" bindtap="submit">
+		{{detail?'修改':'确定'}}
 	</view>
     <!-- 选择组件 -->
 	<view class="picker-view" hidden="{{hiddenn}}">
@@ -36,7 +36,7 @@
 		</view>
 		<picker-view indicator-style="" style="" value="{{val}}" data-name="activeTime" bindchange="inputVal">
 			<picker-view-column>
-				<view wx:for="{{arr}}" wx:key="key">{{item.name}}</view>
+				<view wx:for="{{arr}}" wx:key="key">{{item.name}}折</view>
 			</picker-view-column>
 		</picker-view>
 	</view>

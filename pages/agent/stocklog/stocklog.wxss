@@ -60,6 +60,12 @@
     color: #A3A3A3;
     margin-top: 20rpx;
 }
+.attr-g{
+    margin: 0 30rpx 0 30rpx;
+}
+.attr-piece{
+    color: #B79547;
+}
 
 .main-stock {
     display: flex;

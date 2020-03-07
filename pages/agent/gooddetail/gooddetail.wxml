@@ -1,5 +1,4 @@
-<view class="shadow" hidden="{{hiddenn}}" bindtap="shadowbind">
-</view>
+<view class="shadow" hidden="{{hiddenn}}" bindtap="shadowbind"></view>
 <view class="classify-sel bgc-white">
 	<view class="good-left">商品分类</view>
 	<view class="good-right" bindtap="classifyselbind">
@@ -9,29 +8,31 @@
 </view>
 <view class="classify-sel bgc-white">
 	<view class="good-left">名称</view>
-	<view class="good-right goodname"><input placeholder="{{goodname?goodname:'请输入'}}" style="width:120rpx" placeholder-style="color:#BDBDBD"></input></view>
+	<view class="good-right goodname">
+		<input placeholder="{{goodname?goodname:'请输入'}}" data-name="goods_name" style="width:120rpx" bindblur="setinputbind" bindconfirm="setinputbind" placeholder-style="color:#BDBDBD" value="{{form.goods_name}}"></input>
+	</view>
 </view>
 <!-- 封面图 -->
 <view class="cover bgc-white">
 	<text >商品封面图</text>
-	<view class="cover-image">
-		<image src="../../images/cover-default.png"></image>
+	<view class="cover-image" bindtap="uploadimgbind">
+		<image src="{{coverImage}}"></image>
 	</view>
 </view>
 <!-- banner图 -->
 <view class="banner bgc-white">
 	<text >商品轮播图</text>
 	<view class="banner-list" wx:for="{{bannerlist}}" wx:key="key">
-		<view class="banner-image">
-			<image src="../../images/banner-default.png"></image>
+		<view class="banner-image" bindtap="uploadbimgbind" data-key="{{index}}">
+			<image src="{{item.image}}"></image>
 		</view>
 		<view class="banner-right">
-			<image wx:if="{{index > 0}}" src="../../images/arrows-shang.png"></image>
-			<image wx:if="{{(index > 0 && index + 1 < bannerlist.length)&&(bannerlist.length >= 2)}}" src="../../images/arrows-xia.png"></image>
-			<image wx:if="{{index > 0}}" src="../../images/del.png"></image>
+			<image wx:if="{{index > 0}}" src="../../images/arrows-shang.png" bindtap="shangimgbind" data-key="{{index}}"></image>
+			<image wx:if="{{( index + 1 < bannerlist.length)&&(bannerlist.length >= 1)}}" src="../../images/arrows-xia.png" bindtap="xiaimgbind" data-key="{{index}}"></image>
+			<image wx:if="{{index > 0}}" src="../../images/del.png" bindtap="delimgbind" data-key="{{index}}"></image>
 		</view>
 	</view>
-	<view class="addbanner-button" bindtap="addbanner" hidden="{{addbannerhide}}">
+	<view class="addbanner-button" bindtap="addbanner" hidden="{{bannerlist.length>=3}}">
 		添加轮播图
 	</view>
 </view>
@@ -42,7 +43,7 @@
 		<view class="specs-top">
 			<view class="specs-name-i"><input placeholder-class="specs-inputp" placeholder="{{item.specsname?'':'请输入名称'}}" value="{{item.specsname}}" style="width:240rpx;margin-left:20rpx" bindblur="numinputbind" bindconfirm="numinputbind" data-index="{{index}}" data-specs="1"></input></view>
 			<view class="btn" wx:if="{{!index}}" bindtap="specsaddbind">添加</view>
-			<view class="btn-del" wx:else bindtap="specsdelbind" data-index="{{index}}">删除</view>
+			<view class="btn-del" wx:else bindtap="specsdelbind" data-index="{{index}}" data-spec_id="{{item.id}}" data-goods_id="{{form.id}}">删除</view>
 		</view>
 		<view class="tow-spece" wx:for="{{item.attrlist}}" wx:for-index="attrindex" wx:for-item="attritem" wx:key="attrkey">
 			<view>二级规格</view>
@@ -53,24 +54,24 @@
 				<input placeholder-class="specs-inputp" type="number" placeholder="{{attritem.attrprice?'':'请输入'}}" value="{{attritem.attrprice}}" style="width:240rpx;margin-left:20rpx" bindblur="numinputbind" bindconfirm="numinputbind" data-index="{{index}}" data-type="attrprice" data-specs="2" data-attrindex="{{attrindex}}"></input>
 				<text>¥</text>
 			</view>
-			<image data-index="{{index}}" data-attrindex="{{attrindex}}" bindtap="attrdelbind" src="../../images/del.png" style="width:28rpx;height:28rpx;padding-right:30rpx;"></image>
+			<image data-index="{{index}}" data-attrindex="{{attrindex}}" data-spec_item_id="{{attritem.id}}" data-goods_id="{{form.id}}" bindtap="attrdelbind" src="../../images/del.png" style="width:28rpx;height:28rpx;padding-right:30rpx;"></image>
 		</view>
 		<view class="tow-btn" data-index="{{index}}" bindtap="attraddbind">添加二级规格</view>
 		<view class="hr"></view>
 	</view>
 </view>
 <!-- 详情 -->
-<view class="textarea bgc-white">
+<view class="textarea bgc-white" >
 	<view>商品详情</view>
 	<view class="textarea-main">
-	<!-- bindstatuschange="onStatusChange" --> 
-	<!-- editor高度自适应 -->
-	<editor id="editor" class='editor_area' placeholder="请输入" show-img-size show-img-toolbar showImgResize  bindready="onEditorReady" bindinput='setEditor'>
-        </editor>
-	<image bindtap="insertImage" class="editor-image" src="../../images/textarea-img.png" style="width:48rpx;height:38rpx"></image>
+		<!-- bindstatuschange="onStatusChange" -->
+		<!-- editor高度自适应 -->
+		<editor id="editor" class='editor_area' placeholder="请输入" show-img-size show-img-toolbar showImgResize bindready="onEditorReady" bindinput='setEditor'>
+		</editor>
+		<image bindtap="insertImage" class="editor-image" src="../../images/textarea-img.png" style="width:48rpx;height:38rpx" bindtap='editorjs' data-bind="insertImage"></image>
 	</view>
 </view>
-<view class="foot">确定</view>
+<view class="foot" bindtap="submitbind">确定</view>
 
 
 

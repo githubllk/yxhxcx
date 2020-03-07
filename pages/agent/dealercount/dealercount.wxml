@@ -1,8 +1,8 @@
 <!--pages/agent/dealercount/dealercount.wxml-->
-<view class="main white-bgc" bindtap="dealerdetailbind">
-		<view class="left">北京经销商</view>
-		<view class="right" style="margin-right:20rpx;" bindtap="selbind" data-type="agent">
-			<text>1323232323</text>
-			<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
-		</view>
+<view class="main white-bgc" bindtap="dealerdetailbind" data-dealer_id="{{item.id}}" wx:for="{{list}}" wx:key="key">
+	<view class="left">{{item.dealer_name}}</view>
+	<view class="right" style="margin-right:20rpx;" data-type="agent">
+		<text>{{item.mobile}}</text>
+		<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
 	</view>
+</view>

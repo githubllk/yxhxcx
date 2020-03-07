@@ -1,24 +1,11 @@
 // pages/agent/goodlist/goodlist.js
+const App = getApp()
 Page({
     /**
      * 页面的初始数据
      */
     data: {
-        goodlist: [
-            {
-                'id': '1',
-                'name': '1小小小我西欧奥西欧小熊艾奥小嘻嘻嘻我嘻嘻嘻嘻嘻嘻嘻',
-                'image': '/pages/images/lll.jpg'
-            }, {
-                'id': '2',
-                'name': '2小小小我西欧奥西欧小熊艾奥小嘻嘻嘻我嘻嘻嘻嘻嘻嘻嘻',
-                'image': '/pages/images/lll.jpg'
-            }, {
-                'id': '3',
-                'name': '3小小小我西欧奥西欧小熊艾奥小嘻嘻嘻我嘻嘻嘻嘻嘻嘻嘻',
-                'image': '/pages/images/lll.jpg'
-            },
-        ],
+        goodlist: [],
         xuan: '/pages/images/xuan.png',
         xuanzhong: '/pages/images/xuanzhong.png'
     },
@@ -27,7 +14,29 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        if (options.category_id == 'undefined' || !options.category_id) {
+            wx.showModal({
+                title: '提示',
+                content: '请先选择分类',
+                showCancel: false,
+                success(res) {
+                    if (res.confirm) {
+                        wx.navigateBack({
+                            delta: 1
+                        })
+                    }
+                }
+            })
+        }
+        App.HttpService.getData(App.Config.getGoodsListUrl, {
+            'category_id': options.category_id,
+        }).then(data => {
+            if (data.code == 0) {
+                this.setData({
+                    goodlist: data.data
+                })
+            }
+        });
     },
 
     /**
@@ -85,12 +94,21 @@ Page({
         this.setData({
             'selgood': selgood
         })
-       
+
     },
     quedingbind: function () {
         let good = this.data.selgood
-        wx.navigateTo({
-            url: '../stockadd/stockadd?goodid=' + good.id + '&goodname=' + good.name,
+        let stockadd = wx.getStorageSync('stockadd')
+        stockadd['goods_id'] = good.id
+        stockadd['goods_name'] = good.goods_name
+        stockadd['cover_image'] = good.cover_image
+            wx.setStorage({
+                data: stockadd,
+                key: 'stockadd',
+            })
+        // 返回上一页
+        wx.navigateBack({
+            delta: 1
         })
     }
 })

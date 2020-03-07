@@ -1,16 +1,9 @@
 <view wx:if="{{type=='list'}}">
-	<view class="main" bindtap="editbind" data-id="1">
-		<view class="left">新品上架</view>
+	<view class="main" bindtap="editbind" data-id="1" wx:for="{{list}}" wx:key="key" data-id="{{item.id}}"data-id="{{item.id}}">
+		<view class="left">{{item.name}}</view>
 		<view class="right">
-			<view>15种商品</view>
-			<image src="../../images/del.png" catchtap="delbind"></image>
-		</view>
-	</view>
-	<view class="main">
-		<view class="left">新品上架</view>
-		<view class="right">
-			<view>15种商品</view>
-			<image src="../../images/del.png"></image>
+			<view>{{item.goods_count}}种商品</view>
+			<image src="../../images/del.png" catchtap="delbind" data-count="{{item.goods_count}}" data-id="{{item.id}}"data-index="{{index}}"></image>
 		</view>
 	</view>
 </view>
@@ -18,15 +11,16 @@
 	<view class="main add">
 		<view class="left">名称</view>
 		<view class="right">
-			<input placeholder="请输入"></input>
+			<input bindblur="inputbind" bindconfirm="inputbind" placeholder="请输入" ></input>
 		</view>
 	</view>
 </view>
 <view wx:elif="{{type=='edit'}}">
 	<view class="main add">
 		<view class="left">名称</view>
+		<input hidden value="{{detail.id}}"></input>
 		<view class="right">
-			<input placeholder="{{name?name:'请输入'}}"></input>
+			<input bindblur="inputbind" bindconfirm="inputbind" placeholder="{{name?name:'请输入'}}" value="{{detail.name}}"></input>
 		</view>
 	</view>
 </view>

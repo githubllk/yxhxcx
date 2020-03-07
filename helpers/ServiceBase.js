@@ -72,9 +72,25 @@ class ServiceBase {
             }
             return promise
         }
+        const app = getApp();
+        const pages = getCurrentPages()
+        const route = pages[pages.length - 1].route
+        // 判断是否登录
+        if ((wx.getStorageSync('token') == null || wx.getStorageSync('token') == '') && !app.globalData.isLogin && route != 'pages/login/login') {
+            console.log("需要登录")
+            // 需重新登录
+            app.isLogin()
+            
+        }
+        // 如果有token 将token塞入data
+        if ((wx.getStorageSync('token') != null && wx.getStorageSync('token') != '') && route != 'pages/login/login') {
+            params.token = wx.getStorageSync('token');
+        }
+
+
         // 签名
-       
-        params.source = '2';
+
+        params.source = '1';
         params.xcx_version = '1.0.25';
         var tmp = Date.parse(new Date()).toString();
         tmp = tmp.substr(0, 10);
@@ -83,11 +99,10 @@ class ServiceBase {
         let dataStr = urlEncode(params);
 
         if (dataStr !== '') {
-            console.log(dataStr)
             if (dataStr.indexOf('&') === 0) {
                 dataStr = dataStr.substr(1, dataStr.length);
             }
-            
+
             params.signature = hex_sha1(dataStr + 'xcx_jilianclub');
 
         }
@@ -128,7 +143,7 @@ class ServiceBase {
             }
 
             let paramStr = '';
-            let t = typeof(param);
+            let t = typeof (param);
             if ((t == 'string' && param != '') || t == 'number' || t == 'boolean') {
                 if (t == 'number') {
                     param = param.toString();
@@ -461,7 +476,7 @@ class ServiceBase {
                 wx.showToast({
                     title: '加载中',
                     icon: 'loading',
-                    duration: 10000,
+                    duration: 100,
                     mask: !0,
                 })
                 return request
@@ -472,7 +487,7 @@ class ServiceBase {
             },
             response: (response) => {
                 response.responseTimestamp = new Date().getTime()
-                console.log('拦截器:',response)
+                
                 if (response.data.code === '-1') {
                     // 接口异常
                     console.log('服务端错误 联系管理员');
@@ -498,22 +513,12 @@ class ServiceBase {
                         duration: 2000
                     })
                 }
-                if (response.data.code == 40002) {
-                    console.log(response.data.msg)
-                    // wx.showToast({
-                    //     title: response.data.msg,
-                    //     icon: 'none',
-                    //     duration: 2000
-                    // })
-                }
                 if (response.data.code == 40003) {
+                    let app = getApp()
                     app.globalData.user = {};
                     wx.removeStorageSync('token');
                     console.log('token验证失败');
                     app.globalData.isLogin = false
-                    //   wx.reLaunch({
-                    //       url: './../setInfo/setInfo'
-                    //   })
                     if (!app.globalData.isLogin) {
                         app.isLogin();
                     }
@@ -523,9 +528,32 @@ class ServiceBase {
                     console.log(app.globalData.isLogin)
                     return false
                 }
+                if (response.data.code == 30402) {
+                    console.log(response.data.msg)
+                    wx.showToast({
+                        title: response.data.msg,
+                        icon: 'none',
+                        duration: 1000
+                    })
+                    let app = getApp();
+                    setTimeout(function () {
+                        app.logout();
+                    }, 1000);
+                }
+                
+                
+
                 if (response.data.code == 40004) {
                     wx.hideLoading();
                     console.log('API接口参数错误');
+                }
+                if (response.data.code == 40099) {
+                    console.log('请求方式有误');
+                    wx.showToast({
+                        title: response.data.msg,
+                        icon: 'none',
+                        duration: 2000
+                    })
                 }
                 if (response.data.code == 40005) {
                     wx.hideLoading();
@@ -537,7 +565,7 @@ class ServiceBase {
                         url: '/pages/login/index'
                     })
                 }
-                wx.hideToast()
+                // wx.hideToast()
                 return response
             },
             responseError: (responseError) => {

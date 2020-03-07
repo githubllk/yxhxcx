@@ -3,13 +3,13 @@
 	<radio-group class="radio-group" bindchange="xuanbind">
 		<view wx:for="{{goodlist}}" wx:key="key" class="main">
 			<view class="left">
-				<radio class="radio" value="{{index}}" data-name="{{item.name}}" color="#bda54f"></radio>
+				<radio class="radio" value="{{index}}" data-name="{{item.goods_name}}" color="#bda54f"></radio>
 			</view>
 			<view class="middle">
-				<image src="{{item.image}}"></image>
+				<image src="{{item.cover_image}}"></image>
 			</view>
 			<view class="right">
-				<text>{{item.name}}</text>
+				<text>{{item.goods_name}}</text>
 			</view>
 		</view>
 	</radio-group>

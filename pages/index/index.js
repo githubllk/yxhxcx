@@ -1,17 +1,24 @@
 // pages/agent/index/index.js
 var array = require('../common/pickertime.js')
 
-const app = getApp()
+const App = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    page: 1,
+    limit: 4,
+    nomore: false,
     agentarray: {
       array: array.pickertime(),
       option_active: 1,
       isCustomTime: false,
+      statistics:{"turnover":0,"place_order":0,"chengjiao":0,"ruku":0,"chuku":0,"shoukuan":0,"not_chuku":0,"shouhuo":0},
+      dealer_count:0,
+      startDate:'',
+      endDate:'',
     },
     array: array.pickertime(),
     option_active: 1,
@@ -21,121 +28,13 @@ Page({
     day: '',
     keeperarray: {
       option_active: 0,
-      option_list: [{
-        'id': 1,
-        'name': '折扣系列',
-      }, {
-        'id': 2,
-        'name': '新品上市',
-      }, {
-        'id': 3,
-        'name': '高级系列',
-      }, {
-        'id': 4,
-        'name': '青铜系列',
-      }, {
-        'id': 5,
-        'name': '钻石上市',
-      },],
-      goodlist:[
-        {
-          'id':1,
-          'good_name':'你好你好你好你好你好你好你好你好你好你好你好你好你好..',
-          'pieces':1000,
-          'price': 1000.00,
-          'image': '/pages/images/lll.jpg',
-          'status':1
-        },{
-          'id':2,
-          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
-          'pieces':2000,
-          'image': '/pages/images/lll.jpg',
-          'price': '2000.00',
-          'status':8
-        },
-        {
-          'id':3,
-          'good_name':'你好你好你好你好你好你好你好你好你好你好你好你好你好..',
-          'pieces':1000,
-          'price': 1000.00,
-          'image': '/pages/images/lll.jpg',
-          'status':1
-        },{
-          'id':4,
-          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
-          'pieces':2000,
-          'image': '/pages/images/lll.jpg',
-          'price': '2000.00',
-          'status':8
-        },
-        {
-          'id':5,
-          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
-          'pieces':2000,
-          'image': '/pages/images/lll.jpg',
-          'price': '2000.00',
-          'status':8
-        },
-      ]
+      option_list: [],
+      goods_list: []
     },
     dealerarray: {
       option_active: 0,
-      option_list: [{
-        'id': 1,
-        'name': '折扣系列',
-      }, {
-        'id': 2,
-        'name': '新品上市',
-      }, {
-        'id': 3,
-        'name': '高级系列',
-      }, {
-        'id': 4,
-        'name': '青铜系列',
-      }, {
-        'id': 5,
-        'name': '钻石上市',
-      },],
-      goodlist:[
-        {
-          'id':1,
-          'good_name':'你好你好你好你好你好你好你好你好你好你好你好你好你好..',
-          'pieces':1000,
-          'price': 1000.00,
-          'image': '/pages/images/lll.jpg',
-          'status':1
-        },{
-          'id':2,
-          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
-          'pieces':2000,
-          'image': '/pages/images/lll.jpg',
-          'price': '2000.00',
-          'status':8
-        },
-        {
-          'id':3,
-          'good_name':'你好你好你好你好你好你好你好你好你好你好你好你好你好..',
-          'pieces':1000,
-          'price': 1000.00,
-          'image': '/pages/images/lll.jpg',
-          'status':1
-        },{
-          'id':4,
-          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
-          'pieces':2000,
-          'image': '/pages/images/lll.jpg',
-          'price': '2000.00',
-          'status':8
-        },
-        {
-          'id':5,
-          'good_name':'2小豆子化妆品小豆子化妆品小豆子化妆品小豆子化妆品',
-          'pieces':2000,
-          'image': '/pages/images/lll.jpg',
-          'price': '2000.00',
-          'status':8
-        },
-      ]
+      option_list: [],
+      goods_list: []
     }
   },
 
@@ -144,13 +43,20 @@ Page({
    */
   onLoad: function (options) {
     var role = wx.getStorageSync('role')[0]
+
+    if (!role) {
+      wx.reLaunch({
+        url: '/pages/login/login'
+      })
+      return false
+    }
     console.log(role)
 
     wx.hideTabBar()
     this.setData({
       role: role
     })
-    app.onTabBar(role);
+    App.onTabBar(role);
   },
 
   /**
@@ -164,9 +70,96 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // -------------------库管------------------------------------
+    if (this.data.role == 'keeper') {
+      this.keepertongjibind()
+      this.setData({
+        'listurl': App.Config.getKeeperGoodsListUrl
+      })
+      this.getoption()
+    }
+    // -------------------经销商------------------------------------
+    else if (this.data.role == 'dealer') {
+      this.setData({
+        'listurl': App.Config.getDealerGoodsListUrl
+      })
+      this.getoption()
+    }
+    // -------------------代理商------------------------------------
+    else if (this.data.role == 'agent') {
+      this.gettongji({'date_type':1})
+      App.HttpService.getData(App.Config.getCountDealerUrl).then(dataa => {
+        if (dataa.code == 0) {
+          this.setData({
+            'agentarray.dealer_count':dataa.data
+          })
+        }
+      });
+    }
+    // this.getGoodsList()
 
   },
+  d_option_select: function (e) {
 
+    let num = e.currentTarget.dataset.num
+    let role = this.data.role
+    let option_active = `${role}array.option_active`
+    let goods_list = `${role}array.goods_list`
+    this.setData({
+      page: 1,
+      [goods_list]: [],
+      nomore: false
+    })
+    this.getGoodsList(num)
+    this.setData({
+      [option_active]: num
+    })
+  },
+  getoption() {
+    let role = this.data.role
+    App.HttpService.getData(App.Config.getCategoryListUrl).then(dataa => {
+      if (dataa.code == 0) {
+        this.getGoodsList(dataa.data[0].id)
+        let option_list = `${role}array.option_list`
+        let option_active = `${role}array.option_active`
+        this.setData({
+          [option_list]: dataa.data,
+          [option_active]: dataa.data[0].id,
+        })
+      }
+    });
+  },
+  getGoodsList(category_id) {
+    if (this.data.nomore) {
+      return false
+    }
+    let url = this.data.listurl
+    let role = this.data.role
+    App.HttpService.getData(url, {
+      page: this.data.page,
+      limit: this.data.limit,
+      category_id: category_id
+    }).then(data => {
+      if (data.code == 0) {
+        let goods_list = `${role}array.goods_list`
+        this.setData({
+          [goods_list]: this.data[role + 'array'].goods_list.concat(data.data)
+        })
+
+        if (data.data.length != 0) {
+          this.setData({
+            page: this.data.page + 1,
+            nomore: false
+          })
+        } else {
+          this.setData({
+            nomore: true
+          })
+        }
+
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -192,7 +185,16 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    if (this.data.role == 'keeper') {
 
+    } else
+      // -------------------经销商------------------------------------
+      if (this.data.role == 'dealer') {
+
+        let role = this.data.role
+        let option_active = this.data[role + 'array'].option_active
+        this.getGoodsList(option_active)
+      }
   },
 
   /**
@@ -207,11 +209,22 @@ Page({
     isCustomTime = false
     if (e.target.dataset.num == 4) { //自定义时间
       isCustomTime = true
+    }else{
+      this.gettongji({'date_type':e.target.dataset.num})
     }
     this.setData({
       'agentarray.option_active': e.target.dataset.num,
       'agentarray.isCustomTime': isCustomTime
     })
+  },
+  gettongji(param){
+    App.HttpService.getData(App.Config.getAgentCountUpUrl,param).then(dataa => {
+      if (dataa.code == 0) {
+        this.setData({
+          'agentarray.statistics':dataa.data
+        })
+      }
+    });
   },
   bindStartDateChange: function (e) {
     this.setData({
@@ -287,7 +300,7 @@ Page({
       let startDatea = this.data.agentarray.startDatea
       if (!startDatea) {
         const newdate = new Date();
-        startDatea = newdate.getFullYear() + '-' + newdate.getMonth() + 1 + '-' + newdate.getDate();
+        startDatea = newdate.getFullYear() + '-' + 0 + Number(newdate.getMonth() + 1) + '-' + newdate.getDate();
       }
       this.setData({
         'agentarray.startDate': startDatea
@@ -296,11 +309,17 @@ Page({
       let endDatea = this.data.agentarray.endDatea
       if (!endDatea) {
         const newdate = new Date();
-        endDatea = newdate.getFullYear() + '-' + newdate.getMonth() + 1 + '-' + newdate.getDate();
+        endDatea = newdate.getFullYear() + '-' + 0 + Number(newdate.getMonth() + 1) + '-' + newdate.getDate();
       }
       this.setData({
         'agentarray.endDate': endDatea
       })
+    }
+    // 两个时间选择完发出请求
+    let startDate = this.data.agentarray.startDate
+    let endDate = this.data.agentarray.endDate
+    if (!!endDate&&!!startDate) {
+      this.gettongji({'date_type':4,'start_date':startDate,'end_date':endDate})
     }
     this.setData({
       'agentarray.showpickertime': 0
@@ -322,23 +341,34 @@ Page({
   },
 
   // --------------------------------------- 经销商 -----------------------------------------
-  d_option_select:function(e){
-    this.setData({
-      'dealerarray.option_active': e.target.dataset.num,
-    })
-  },
-  goodsitembind:function(e){
+  // d_option_select: function (e) {
+  //   this.setData({
+  //     'dealerarray.option_active': e.target.dataset.num,
+  //   })
+  // },
+  goodsitembind: function (e) {
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/dealer/gooddetail/gooddetail?id='+id,
+      url: '/pages/dealer/gooddetail/gooddetail?goods_id=' + id,
     })
   },
   // --------------------------------------- 库管 -----------------------------------------
 
-  goodsitem:function(e){
+
+  goodsitem: function (e) {
     let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/keeper/stockgsdetails/stockgsdetails?id='+id,
+      url: '/pages/keeper/stockgsdetails/stockgsdetails?id=' + id,
     })
   },
+  //统计
+  keepertongjibind() {
+    App.HttpService.getData(App.Config.getKeeperCountUpUrl).then(data => {
+      if (data.code == 0) {
+        this.setData({
+          'keeperarray.tongji': data.data
+        })
+      }
+    });
+  }
 })

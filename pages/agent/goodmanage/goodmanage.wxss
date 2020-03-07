@@ -76,7 +76,7 @@
 
 .title {
     font-size: 30rpx;
-    width: 50%;
+    /* width: 50%; */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -137,6 +137,7 @@
     width: 50%;
     line-height: 98rpx;
     color: #B79547;
+    background:#fff;
 }
 
 .addgood {

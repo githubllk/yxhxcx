@@ -1,107 +1,142 @@
 <!--pages/agent/custommanage/custommanage.wxml-->
 <!-- 新建/管理总代理 -->
-<view wx:if="{{type==1}}">
-	<view class="main white-bgc">
-		<view class="left">名称</view>
-		<view class="right">
-			<input placeholder="{{qsr}}"></input>
+<form bindsubmit="formSubmit" bindreset="formReset">
+	<!-- <input wx:if="{{edit}}" value="{{detail.admin_id}}" class="{{detail.admin_id}}" name="id" hidden="1"></input> -->
+	<view wx:if="{{type==1}}">
+		<view class="main white-bgc">
+			<view class="left">名称</view>
+			<view class="right">
+				<input name="name" placeholder="{{qsr}}" value="{{edit?detail.username:''}}" data-name="name"></input>
+			</view>
+		</view>
+		<view class="main white-bgc">
+			<view class="left">手机号</view>
+			<view class="right">
+				<input name="mobile" placeholder="{{qsr}}" value="{{edit?detail.mobile:''}}" data-name="mobile"></input>
+			</view>
+		</view>
+		<view class="main white-bgc">
+			<view class="left">密码</view>
+			<view class="right">
+				<input name="pwd" placeholder="{{qsr}}" value="" data-name="pwd"></input>
+			</view>
+		</view>
+		<view wx:if="{{edit}}">
+			<view class="foot1">
+				<view class="fenlei" bindtap="delbind">删除账号</view>
+				<button class="addgood" form-type="submit">
+					保存修改
+				</button>
+			</view>
+		</view>
+		<view wx:else>
+			<button form-type="submit" class="foot">
+				新建
+			</button>
+		</view>
+
+	</view>
+	<view wx:if="{{type==2}}">
+		<view class="main white-bgc">
+			<view class="left">名称</view>
+			<view class="right">
+				<input name="name" placeholder="{{qsr}}" value="{{edit?detail.username:''}}" data-name="name"></input>
+			</view>
+		</view>
+		<view class="main white-bgc">
+			<view class="left">手机号</view>
+			<view class="right">
+				<input name="mobile" placeholder="{{qsr}}" value="{{edit?detail.mobile:''}}" data-name="mobile"></input>
+			</view>
+		</view>
+		<view class="main white-bgc">
+			<view class="left">密码</view>
+			<view class="right">
+				<input name="pwd" placeholder="{{qsr}}" data-name="pwd"></input>
+			</view>
+		</view>
+		<view wx:if="{{edit}}">
+			<view class="foot1">
+				<view class="fenlei" bindtap="delbind">删除账号</view>
+				<button class="addgood" form-type="submit">
+					保存修改
+				</button>
+			</view>
+		</view>
+		<view wx:else>
+			<button form-type="submit" class="foot">
+				新建
+			</button>
+		</view>
+
+	</view>
+	<view wx:if="{{type==3}}">
+		<view class="shadow" hidden="{{hiddenn}}" bindtap="shadowbind"></view>
+		<view class="main white-bgc">
+			<view class="left">总代理选择</view>
+			<view class="right" style="margin-right:20rpx;" bindtap="selbind" data-type="agent">
+				<text>{{agenttext?agenttext:qsr}}</text>
+				<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
+			</view>
+		</view>
+		<view class="main white-bgc">
+			<view class="left">名称</view>
+			<view class="right">
+				<input name="name" placeholder="{{qsr}}" data-name="name" value="{{edit?detail.dealer_name:''}}"></input>
+			</view>
+		</view>
+		<view class="main white-bgc">
+			<view class="left">手机号</view>
+			<view class="right">
+				<input name="mobile" placeholder="{{qsr}}" data-name="mobile" value="{{edit?detail.mobile:''}}"></input>
+			</view>
+		</view>
+		<view class="main white-bgc">
+			<view class="left">密码</view>
+			<view class="right">
+				<input name="pwd" type="password" placeholder="{{qsr}}" data-name="pwd"></input>
+			</view>
+		</view>
+		<view class="main white-bgc">
+			<view class="left">会员等级</view>
+			<view class="right" style="margin-right:20rpx;" bindtap="selbind" data-type="user">
+				<text>{{usertext?usertext:qsr}}</text>
+				<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
+			</view>
+		</view>
+		<view wx:if="{{edit}}">
+			<view class="foot1">
+				<view class="fenlei" bindtap="delbind">删除账号</view>
+				<button class="addgood" form-type="submit">
+					保存修改
+				</button>
+			</view>
+		</view>
+		<view wx:else>
+			<button form-type="submit" class="foot">
+				新建
+			</button>
+		</view>
+		<!-- 选择组件 -->
+		<view class="picker-view" hidden="{{hiddenn}}">
+			<view style="background-color:#F7F7F7;display:flex;align-items: center;height:100rpx;font-size:34rpx;position: fixed;bottom: 376rpx;width: 100%;color:#666666;">
+				<view bindtap="paickerQuxiao" style="margin-left: 50rpx">取消</view>
+				<view bindtap="paickerQueding" style="margin-left: 514rpx">确定</view>
+			</view>
+			<picker-view indicator-style="" style="" value="{{isagent?agentval:userval}}" data-name="activeTime" bindchange="inputVal">
+				<picker-view-column>
+					<view wx:for="{{arr}}" wx:key="key">{{!isagent?item.name:item.username}}</view>
+				</picker-view-column>
+			</picker-view>
 		</view>
 	</view>
-	<view class="main white-bgc">
-		<view class="left">手机号</view>
-		<view class="right">
-			<input placeholder="{{qsr}}"></input>
-		</view>
-	</view>
-	<view class="main white-bgc">
-		<view class="left">密码</view>
-		<view class="right">
-			<input placeholder="{{qsr}}"></input>
-		</view>
-	</view>
-	<view class="foot">
-		新建
-	</view>
-</view>
-<view wx:if="{{type==2}}">
-	<view class="main white-bgc">
-		<view class="left">名称</view>
-		<view class="right">
-			<input placeholder="{{qsr}}"></input>
-		</view>
-	</view>
-	<view class="main white-bgc">
-		<view class="left">手机号</view>
-		<view class="right">
-			<input placeholder="{{qsr}}"></input>
-		</view>
-	</view>
-	<view class="main white-bgc">
-		<view class="left">密码</view>
-		<view class="right">
-			<input placeholder="{{qsr}}"></input>
-		</view>
-	</view>
-	<view class="foot">
-		新建
-	</view>
-</view>
-<view wx:if="{{type==3}}">
-	<view class="shadow" hidden="{{hiddenn}}" bindtap="shadowbind"></view>
-	<view class="main white-bgc">
-		<view class="left">总代理选择</view>
-		<view class="right" style="margin-right:20rpx;" bindtap="selbind" data-type="agent">
-			<text>{{agenttext?agenttext:qsr}}</text>
-			<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
-		</view>
-	</view>
-	<view class="main white-bgc">
-		<view class="left">名称</view>
-		<view class="right">
-			<input placeholder="{{qsr}}"></input>
-		</view>
-	</view>
-	<view class="main white-bgc">
-		<view class="left">手机号</view>
-		<view class="right">
-			<input placeholder="{{qsr}}"></input>
-		</view>
-	</view>
-	<view class="main white-bgc">
-		<view class="left">密码</view>
-		<view class="right">
-			<input placeholder="{{qsr}}"></input>
-		</view>
-	</view>
-	<view class="main white-bgc">
-		<view class="left">会员等级</view>
-		<view class="right" style="margin-right:20rpx;" bindtap="selbind" data-type="user">
-			<text>{{usertext?usertext:qsr}}</text>
-			<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;"></image>
-		</view>
-	</view>
-	<view class="foot">
-		新建
-	</view>
-	<!-- 选择组件 -->
-	<view class="picker-view" hidden="{{hiddenn}}">
-		<view style="background-color:#F7F7F7;display:flex;align-items: center;height:100rpx;font-size:34rpx;position: fixed;bottom: 376rpx;width: 100%;color:#666666;">
-			<view bindtap="paickerQuxiao" style="margin-left: 50rpx">取消</view>
-			<view bindtap="paickerQueding" style="margin-left: 514rpx">确定</view>
-		</view>
-		<picker-view indicator-style="" style="" value="{{val}}" data-name="activeTime" bindchange="inputVal">
-			<picker-view-column>
-				<view wx:for="{{arr}}" wx:key="key">{{item.name}}</view>
-			</picker-view-column>
-		</picker-view>
-	</view>
-</view>
+</form>
 <!-- 管理页面 -->
 <view wx:if="{{type==4||type==5||type==6}}">
 	<view class="main white-bgc" style="color:#333333;" bindtap="managebind" data-type="{{type_}}" data-id="{{item.id}}" wx:for="{{arrlist}}" wx:key="key">
-		<view class="left">{{item.name}}</view>
+		<view class="left">{{item.username}}</view>
 		<view class="right">
-			<text>{{item.phone}}</text>
+			<text>{{item.mobile}}</text>
 			<image src="/pages/images/xiangyou.png" style="width:25rpx;height:25rpx;padding-left:10rpx;margin:0 30rpx 0 20rpx"></image>
 		</view>
 	</view>

@@ -34,7 +34,7 @@
 			<view class="stock-left">数量</view>
 			<view class="stock-right">
 				<view hidden="{{!hiddenn}}">
-					<input placeholder="{{form.num?form.num:'请输入'}}" type="number" placeholder-style="color:#BDBDBDFF; font-size:28rpx; align-items: center;line-height: 90rpx;" bindblur="numinputbind" bindconfirm="numinputbind"></input>
+					<input placeholder="{{form.num?form.num:'请输入'}}" type="number" placeholder-style="color:#BDBDBDFF; font-size:28rpx; align-items: center;line-height: 90rpx;" bindblur="numinputbind" bindconfirm="numinputbind" value="{{num?num:''}}" ></input>
 				</view>
 				<view style=" width: 100rpx;margin-right: 25rpx; text-align:left; color:#BDBDBDFF" hidden="{{hiddenn}}">
 					{{form.num?form.num:'请输入'}}
@@ -54,7 +54,9 @@
 	</view>
 	<picker-view indicator-style="" style="" value="{{val}}" data-name="activeTime" bindchange="inputVal">
 		<picker-view-column>
-			<view wx:for="{{array}}" wx:key="key">{{item.name}}</view>
+			<view wx:for="{{array}}" wx:key="key" wx:if="{{isstock}}">{{item.keeper_name}}</view>
+			<view wx:for="{{array}}" wx:key="key" wx:if="{{isclassify}}">{{item.name}}</view>
+			<view wx:for="{{array}}" wx:key="key" wx:if="{{isattr}}">{{item.name}}</view>
 		</picker-view-column>
         <picker-view-column wx:if="{{isattr}}">
 			<view wx:for="{{attritem}}" wx:key="key">{{item.name}}</view>

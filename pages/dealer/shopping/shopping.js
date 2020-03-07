@@ -14,33 +14,34 @@ Page({
     // 默认展示数据
     hasList: true,
     // 商品列表数据
-    list: [{
-      id: 1,
-      title: '园艺大师抗皱精华露',
-      image: '../../images/lll.jpg',
-      pro_name: "30ml",
-      num: 1,
-      price: 180,
-      selected: true
-    },
-    {
-      id: 2,
-      title: '伊芙琳玫瑰护手霜',
-      image: '../../images/lll.jpg',
-      pro_name: "25g",
-      num: 1,
-      price: 62,
-      selected: true
-    },
-    {
-      id: 2,
-      title: '燕麦山羊乳舒缓护手霜',
-      image: '../../images/lll.jpg',
-      pro_name: "75ml",
-      num: 1,
-      price: 175,
-      selected: true
-    }
+    list: [
+    //   {
+    //   id: 1,
+    //   title: '园艺大师抗皱精华露',
+    //   image: '../../images/lll.jpg',
+    //   pro_name: "30ml",
+    //   num: 1,
+    //   price: 180,
+    //   selected: true
+    // },
+    // {
+    //   id: 2,
+    //   title: '伊芙琳玫瑰护手霜',
+    //   image: '../../images/lll.jpg',
+    //   pro_name: "25g",
+    //   num: 1,
+    //   price: 62,
+    //   selected: true
+    // },
+    // {
+    //   id: 2,
+    //   title: '燕麦山羊乳舒缓护手霜',
+    //   image: '../../images/lll.jpg',
+    //   pro_name: "75ml",
+    //   num: 1,
+    //   price: 175,
+    //   selected: true
+    // }
     ],
     // 金额
     totalPrice: 0, // 总价，初始为0
@@ -72,7 +73,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      list:wx.getStorageSync('shoppinglist')
+    })
   },
 
   /**
@@ -114,6 +117,7 @@ Page({
   count_price() {
     // 获取商品列表数据
     let list = this.data.list;
+
     // 声明一个变量接收数组列表price
     let total = 0;
     // 循环列表得到每个数据
@@ -153,6 +157,8 @@ Page({
     this.setData({
       list: list
     });
+    wx.setStorageSync('shoppinglist', list)
+
     // 调用计算金额方法
     this.count_price();
   },
@@ -173,6 +179,8 @@ Page({
     this.setData({
       list: list
     });
+    wx.setStorageSync('shoppinglist', list)
+
     // 计算金额方法
     this.count_price();
   },
@@ -190,11 +198,13 @@ Page({
     for (let i = 0; i < list.length; i++) {
       list[i].selected = selectAllStatus;
     }
+
     // 页面重新渲染
     this.setData({
       selectAllStatus: selectAllStatus,
       list: list
     });
+    wx.setStorageSync('shoppinglist', list)
     // 计算金额方法
     this.count_price();
   },
@@ -216,6 +226,8 @@ Page({
           that.setData({
             list: list
           });
+          wx.setStorageSync('shoppinglist', list)
+
           // 如果数据为空
           if (!list.length) {
             that.setData({
@@ -254,6 +266,7 @@ Page({
         break;
       }
     }
+    wx.setStorageSync('shoppinglist', list)
     // 重新渲染数据
     that.setData({
       list: list,
@@ -262,4 +275,15 @@ Page({
     // 调用计算金额方法
     that.count_price();
   },
+  // 下单按钮
+  confirmorderbind(){
+      wx.navigateTo({
+        url: '../orderdetail/orderdetail?type=shopping',
+      })
+  },
+  guangbind(){
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  }
 })

@@ -9,7 +9,7 @@
 </view>
 <view wx:elif="{{role == 'dealer'}}">
   <import src="/pages/dealer/index/index.wxml" />
-  <template is="dealerindex" data="{{dealerarray}}"/>
+  <template is="dealerindex" data="{{dealerarray,nomore,page}}"/>
 </view>
 
 

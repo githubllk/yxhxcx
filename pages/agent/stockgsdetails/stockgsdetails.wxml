@@ -1,25 +1,25 @@
 <!--库存详情页-->
 <view class="header" bindtap="stocklogbind">
 	<view class="header-left">
-		<image src="../../images/lll.jpg"></image>
+		<image src="{{goods_detail.cover_image}}"></image>
 	</view>
 	<view class="header-right">
-		<text>哈哈哈哈哈哈哈</text>
-		<text class="jian">1000件</text>
+		<text>{{goods_detail.goods_name}}</text>
+		<text class="jian">{{goods_detail.total_stock}}件</text>
 	</view>
 </view>
 <view class="attr">
-	<view class="attr-list" wx:for="{{goodslist}}" wx:key="listkey">
+	<view class="attr-list" wx:for="{{goods_spec}}" wx:key="listkey">
 		<view class="attr-item line">
 			<view>{{item.name}}</view>
-			<view>{{item.num}}件</view>
+			<view>{{item.spec_stock}}件</view>
 		</view>
-		<view class="attr-item" wx:for="{{item.attr}}" wx:for-index="itemkey" wx:for-item="itemattr" wx:key="itemkey">
+		<view class="attr-item" wx:for="{{item.spec_item}}" wx:for-index="itemkey" wx:for-item="itemattr" wx:key="itemkey">
 			<view>{{itemattr.name}}</view>
-			<view wx:if="{{!isedit}}">{{itemattr.num}}件</view>
+			<view wx:if="{{!isedit}}">{{itemattr.stock_count}}件</view>
 			<view class="btn-box" wx:else>
-				<view wx:if="{{itemattr.num > 0}}" class="jiannum" bindtap="numminus" data-good_key="{{index}}" data-attr_key="{{itemkey}}">-</view>
-				<input placeholder-class="num" type="number" value="{{itemattr.num}}"  data-good_key="{{index}}" data-attr_key="{{itemkey}}" bindblur="inputeditstock" bindconfirm="inputeditstock"></input>
+				<view wx:if="{{itemattr.stock_count > 0}}" class="jiannum" bindtap="numminus" data-good_key="{{index}}" data-attr_key="{{itemkey}}">-</view>
+				<input disabled="" placeholder-class="num" type="number" value="{{itemattr.stock_count}}"  data-good_key="{{index}}" data-attr_key="{{itemkey}}" bindblur="inputeditstock" bindconfirm="inputeditstock"></input>
 				<view class="jia" bindtap="numadd" data-good_key="{{index}}" data-attr_key="{{itemkey}}">+</view>
 			</view>
 		</view>

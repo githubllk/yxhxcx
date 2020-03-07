@@ -8,20 +8,30 @@ Page({
     data: {
         qsr: '请输入',
         hiddenn: 1,
-        value: [0, 1, 1],
-        agentext: '',
-        usertext: '',
-        arrlist: [],
+        value: [0, 0, 0],
         provincearr: [],
         cityarr: [],
         countyarr: [],
+        form: {},
+        address: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        if (options.id) {
+            App.HttpService.getData(App.Config.getAddressDefaultUrl,{'id':options.id}).then(data => {
+                if (data.code == 0) {
+                    let addr = data.data.detail
+                    this.setData({
+                        value: addr.value,
+                        form:addr,
+                        address:data.data.address1
+                    })
+                }
+            }); 
+        }
     },
 
     /**
@@ -51,7 +61,7 @@ Page({
                 })
             }
         });
-        App.HttpService.getData(App.Config.getcitylist, { 'city_id': 1 }).then(data => {
+        App.HttpService.getData(App.Config.getcitylist, { 'city_id': 2 }).then(data => {
             if (data.code == 0) {
                 that.setData({
                     countyarr: data.data.list
@@ -59,7 +69,16 @@ Page({
             }
         });
     },
-
+    savebind() {
+        let form = this.data.form
+        App.HttpService.postData(App.Config.addDealerAddressUrl,form).then(data => {
+            if (data.code == 0) {
+                wx.redirectTo({
+                  url: '../addrmanage/addrmanage',
+                })
+            }
+        });
+    },
     /**
      * 生命周期函数--监听页面隐藏
      */
@@ -96,24 +115,8 @@ Page({
     },
     //弹出选项框
     selbind: function (e) {
-
-        let type = e.currentTarget.dataset.type
-        let arr
-        let isagent
-        console.log(type)
-        if (type == 'agent') {
-            arr = this.data.agentarr
-            isagent = 1
-        } else {
-            arr = this.data.userarr
-            isagent = 0
-
-        }
         this.setData({
             hiddenn: 0,
-            arr: arr,
-            val: [0],
-            isagent: isagent,
         })
     },
     // 阴影层消失
@@ -130,9 +133,26 @@ Page({
         })
     },
     paickerQueding: function () { //确定按钮
-        console.log(this.data.val)
+        let value = this.data.value
+        var provincearr = this.data.provincearr
+        var cityarr = this.data.cityarr
+        var countyarr = this.data.countyarr
+        var provinceNum = value[0]
+        var cityNum = value[1]
+        var countyNum = value[2]
+        let address1 = provincearr[provinceNum].name
+        let address2 = cityarr[cityNum].name
+        let address3 = countyarr[countyNum].name
+        let province_id = provincearr[provinceNum].id
+        let city_id = cityarr[cityNum].id
+        let county_id = countyarr[countyNum].id
+
         this.setData({
             hiddenn: 1,
+            address: address1 + address2 + address3,
+            'form.province_id': province_id,
+            'form.city_id': city_id,
+            'form.county_id': county_id,
         })
     },
     provincebind: function (e) {
@@ -148,61 +168,80 @@ Page({
             }
         });
     },
-    getcitylist:function (params) {
+    getcitylist: function (params) {
         App.HttpService.getData(App.Config.getcitylist, params).then(data => {
             return data;
             // if (data.code == 0) {
 
         });
     },
+    inputbind(e) {
+        const val = e.detail.value //修改的数据
+        const name = e.currentTarget.dataset.name
+        let form = {}
+        form = `form.${name}`
+        console.log(form)
+        this.setData({
+            [form]: val
+        })
+    },
     inputVal: function (e) {
         var value = e.detail.value
         var provincearr = this.data.provincearr
         var cityarr = this.data.cityarr
+        var countyarr = this.data.countyarr
         var provinceNum = value[0]
         var cityNum = value[1]
         var countyNum = value[2]
-        let that = this
+
         console.log(value)
         // 如果省份选择项和之前不一样，表示滑动了省份，此时市默认是省的第一组数据，
         if (this.data.value[0] != provinceNum) {
             var id = provincearr[provinceNum].id
-            App.HttpService.getData(App.Config.getcitylist, {'province_id':id}).then(data => {
+
+            App.HttpService.getData(App.Config.getcitylist, { 'province_id': id }).then(data => {
                 let city_ = data.data.list
-                console.log('333333333333',city_[0].id)
                 App.HttpService.getData(App.Config.getcitylist, { 'city_id': city_[0].id }).then(data1 => {
                     if (data.code == 0) {
                         this.setData({
                             cityarr: data.data.list,
                             value: [provinceNum, 0, 0],
                             countyarr: data1.data.list,
-    
+
+
                         })
                     }
                 });
-                
-    
+
+
             });
-            
+
         }
         else if (this.data.value[1] != cityNum) {
             // 滑动选择了第二项数据，即市，此时区显示省市对应的第一组数据
+
             var id = cityarr[cityNum].id
             App.HttpService.getData(App.Config.getcitylist, { 'city_id': id }).then(data => {
                 if (data.code == 0) {
                     this.setData({
                         countyarr: data.data.list,
                         value: [provinceNum, cityNum, 0],
+
                     })
                 }
             });
-        } 
-        // else {
-        //     // 滑动选择了区
-        //     this.setData({
-        //         value: [provinceNum, cityNum, countyNum]
-        //     })
-        // }
+        }
+        else if (this.data.value[2] != countyNum) {
+            // 滑动选择了区
+
+            var id = cityarr[cityNum].id
+            this.setData({
+
+            })
+        }
+        // address = provincearr[provinceNum].name + cityarr[cityNum].name +countyarr[countyNum].name
+
+
     }
 
 

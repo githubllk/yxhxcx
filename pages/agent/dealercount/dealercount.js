@@ -1,11 +1,12 @@
 // pages/agent/dealercount/dealercount.js
+const App = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+      list:[]
     },
 
     /**
@@ -19,6 +20,13 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
+      App.HttpService.getData(App.Config.getAgentDealerListUrl).then(data => {
+        if (data.code == 0) {
+            this.setData({
+                list: data.data,
+            })
+        }
+    });
 
     },
 
@@ -64,9 +72,10 @@ Page({
 
     },
     //绑定跳转
-    dealerdetailbind(){
+    dealerdetailbind(e){
+        let dealer_id = e.currentTarget.dataset.dealer_id
         wx.navigateTo({
-          url: '../dealercountd/dealercountd',
+          url: '../dealercountd/dealercountd?dealer_id='+dealer_id,
         })
     }
 })

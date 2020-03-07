@@ -1,17 +1,17 @@
 <view class="shadow" hidden="{{hiddenn}}" bindtap="shadowbind"></view>
 <view class="main-list white-bgc">
 	<view class="main-left">
-		<image src="../../images/lll.jpg"></image>
+		<image src="{{detail.cover_image}}"></image>
 	</view>
 	<view class="main-right">
-		<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+		<view class="main-title">{{detail.goodsname}}</view>
 		<view class="main-attr">
-			<text class="attr-name">黑色</text>
-			<text class="attr-g">100g</text>
-			<text class="attr-piece">10000件</text>
+			<text class="attr-name">{{detail.spec_name}}</text>
+			<text class="attr-g">{{detail.spec_item_name}}</text>
+			<text class="attr-piece">{{detail.count}}件</text>
 		</view>
 		<view class="main-attr">
-			<text>18:40:30 2019/08/20</text>
+			<text>{{detail.create_time}}</text>
 		</view>
 	</view>
 </view>
@@ -21,11 +21,11 @@
 	</view>
 	<view class="right1">
 		<view class="top1">
-			<view class="name">张三</view>
-			<view class="mobile">13223232323 </view>
+			<view class="name">{{detail.address.name}}</view>
+			<view class="mobile">{{detail.address.phone}}</view>
 		</view>
 		<view class="addr">
-			北京市海淀区西二旗西北旺路23号中兴通大厦
+			{{detail.address.province_name}}{{detail.address.city_name}}{{detail.address.region_name}}{{detail.address.detail}}
 		</view>
 	</view>
 </view>
@@ -33,7 +33,7 @@
 	<view class="stock-sel">
 		<view class="stock-left">物流选择</view>
 		<view class="stock-right" bindtap="selbind">
-			<text>{{expresstext}}</text>
+			<text>{{form.company?form.company:'请输入'}}</text>
 			<image src="../../images/xiangyou.png"></image>
 		</view>
 	</view>
@@ -46,7 +46,7 @@
 		</view>
 	</view>
 </view>
-<view class="foot">
+<view class="foot" bindtap="affirmchukubind">
 	确定出库
 </view>
 <!-- 选择组件 -->
@@ -57,7 +57,7 @@
 	</view>
 	<picker-view indicator-style="" style="" value="{{val}}" data-name="activeTime" bindchange="inputVal">
 		<picker-view-column>
-			<view wx:for="{{arr}}" wx:key="key">{{item.name}}</view>
+			<view wx:for="{{expressarr}}" wx:key="key">{{item.express_name}}</view>
 		</picker-view-column>
 	</picker-view>
 </view>

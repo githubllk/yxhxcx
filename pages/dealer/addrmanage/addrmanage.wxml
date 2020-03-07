@@ -1,58 +1,26 @@
 <!--pages/dealer/addrmanage/addrmanage.wxml-->
-<view class="addr-list df white-bgc">
-	<view class="a-left">
-		<image src="../../images/fang.png"></image>
+<view class="addr-list df white-bgc" wx:for="{{list}}" wx:key="key">
+	<view class="a-left" bindtap="selbind" wx:if="{{item.id==address_id}}" >
+		<image src="../../images/fang-act.png" ></image>
+	</view>
+	<view class="a-left" bindtap="selbind" data-index="{{index}}" data-id="{{item.id}}" wx:else>
+		<image src="../../images/fang.png" ></image>
 	</view>
 	<view class="a-cen ">
 		<view class="a-top df">
-			<view class="name">李四</view>
-			<view class="mobile">13223232323</view>
+			<view class="name">{{item.name}}</view>
+			<view class="mobile">{{item.phone}}</view>
 		</view>
 		<view class="a-bottom">
-			北京市北京市北京市北京市北京市
+			{{item.province_name}}{{item.city_name}}{{item.region_name}}{{item.detail}}
 		</view>
 	</view>
 	<view class="a-right">
-		<view class="a-edit">编辑</view>
-		<view class="a-del">删除</view>
+		<view class="a-edit" bindtap="editbind" data-id="{{item.id}}">编辑</view>
+		<view class="a-del" bindtap="delbind" data-id="{{item.id}}">删除</view>
 	</view>
 </view>
-<view class="addr-list df white-bgc">
-	<view class="a-left">
-		<image src="../../images/fang-act.png"></image>
-	</view>
-	<view class="a-cen ">
-		<view class="a-top df">
-			<view class="name">李四</view>
-			<view class="mobile">13223232323</view>
-		</view>
-		<view class="a-bottom">
-			北京市北京市北京市北京市北京市
-		</view>
-	</view>
-	<view class="a-right">
-		<view class="a-edit">编辑</view>
-		<view class="a-del">删除</view>
-	</view>
-</view>
-<view class="addr-list df white-bgc">
-	<view class="a-left">
-		<image src="../../images/fang.png"></image>
-	</view>
-	<view class="a-cen ">
-		<view class="a-top df">
-			<view class="name">李四</view>
-			<view class="mobile">13223232323</view>
-		</view>
-		<view class="a-bottom">
-			北京市北京市北京市北京市北京市
-		</view>
-	</view>
-	<view class="a-right">
-		<view class="a-edit">编辑</view>
-		<view class="a-del">删除</view>
-	</view>
-</view>
+
 <navigator hover-class="none" url="../addradd/addradd">
 	<view class="add-btn white-bgc">
 		新增收货地址

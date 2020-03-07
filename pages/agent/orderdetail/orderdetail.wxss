@@ -223,3 +223,25 @@ picker-view-column view {
     top: 0rpx;
     background-color: #0000004D;
 }
+
+.wuliu-top1{
+    width: 580rpx;
+    font-size:28rpx;
+    color: #242424;
+}
+.wuliu-time{
+    color: #BDBDBD;
+    font-size:24rpx;
+}
+
+.foot1{
+    font-size: 32rpx;
+    color: #fff;
+    background-image: linear-gradient(to right, #bda54f, #9e722d);
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    position: fixed;
+    bottom: 0rpx;
+    width: 100%;
+  }

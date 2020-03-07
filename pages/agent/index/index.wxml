@@ -42,7 +42,7 @@
 		<view class="turnover">
 			<view class="turnover-son">
 				<text style="color:#A3A3A3">营业额</text>
-				<text style="color:#B79547">￥1000.00</text>
+				<text style="color:#B79547">￥{{agentarray.statistics.turnover}}</text>
 			</view>
 		</view>
 		<!-- 总量 -->
@@ -50,21 +50,21 @@
 			<view class="main-gross">
 				<view class="main-gross-son gross-right">
 					<text class="gross-font font-color-A3">下单总量</text>
-					<text class="gross-num">1000</text>
+					<text class="gross-num">{{agentarray.statistics.place_order}}</text>
 				</view>
 				<view class="main-gross-son">
-					<text class="font-color-A3">下单总量</text>
-					<text>1000</text>
+					<text class="font-color-A3">成交总量</text>
+					<text>{{agentarray.statistics.chengjiao}}</text>
 				</view>
 			</view>
 			<view class="main-gross">
 				<view class="main-gross-son gross-right">
 					<text class="gross-font font-color-A3">入库总量</text>
-					<text class="gross-num">1000</text>
+					<text class="gross-num">{{agentarray.statistics.ruku}}</text>
 				</view>
 				<view class="main-gross-son">
 					<text class="font-color-A3">出库总量</text>
-					<text>1000</text>
+					<text>{{agentarray.statistics.chuku}}</text>
 				</view>
 			</view>
 		</view>
@@ -73,28 +73,29 @@
 	<view class="statistics-bottom">
 		<view class="btn">
 			<text>代收款</text>
-			<text>10</text>
+			<text>{{agentarray.statistics.shoukuan}}</text>
 		</view>
 		<view class="btn">
 			<text>待出库</text>
-			<text>10</text>
+			<text>{{agentarray.statistics.not_chuku}}</text>
 		</view>
 		<view class="btn">
 			<text>待收货</text>
-			<text>10</text>
+			<text>{{agentarray.statistics.shouhuo}}</text>
 		</view>
 	</view>
 	<!-- 经销商统计 -->
-	<view class="dealer-statistics">
-		<navigator hover-class="none" url="/pages/agent/dealercount/dealercount">
+	<navigator hover-class="none" url="/pages/agent/dealercount/dealercount">
+		<view class="dealer-statistics">
 			<view class="btn1">
 				经销商统计
 			</view>
 			<view class="btn2">
-				<text>18</text>
+				<text>{{agentarray.dealer_count}}</text>
 				<image src="/pages/images/xiangyou.png"></image>
 			</view>
-		</navigator>
-	</view>
+		</view>
+	</navigator>
+	<view wx:if="{{agentarray.isCustomTime}}" class="blank"></view>
 	<!-- <template is="tabBar" data="{{agentarray.tabBar:tabBar}}"></template> -->
 </template>

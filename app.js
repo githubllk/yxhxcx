@@ -1,46 +1,25 @@
-// App({
-//     onLaunch: function () {
-//         // wx.connectSocket({
-//         //     url: 'ws://localhost:8001/'
-//         // })
-//         // wx.onSocketOpen(function(res){
-//         //     console.log('WebSocket连接已打开！')
-//         // })
-//         // wx.onSocketError(function(res){
-//         //     console.log('WebSocket连接打开失败，请检查！')
-//         // })
-//         // wx.onSocketMessage(function(res){
-//         //     console.log(res);
-//         // })
-//     },
-//     onShow: function () {
-//         //String2
-//     },
-//     onHide: function () {
-//         //String3
-//     },
-//     onError: function (msg) {
-//         //String4
-//     }
-// });
-
 import HttpResource from 'helpers/HttpResource'
 import HttpService from 'helpers/HttpService'
 // import WxService from 'helpers/WxService'
 // import Tools from 'helpers/Tools'
 import Config from './config/config'
+var util = require('./utils/util.js');
 
 App({
   onLaunch() {
+    if (!wx.getStorageSync("token")||!wx.getStorageSync("role")) {
+      wx.reLaunch({
+        url: '/pages/login/login'
+      })
+    }
     wx.hideTabBar()
-    //调用API从本地缓存中获取数据
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-   
+    // this.isLogin()
   },
   onShow() {
     console.log('onShowq')
+  },
+  globalData: {
+    isLogin:false
   },
   onHide() {
     console.log('onHide')
@@ -58,6 +37,12 @@ App({
   //     })
   // },
   // 自定义显示tabbar
+  logout(){
+    wx.reLaunch({
+      url: '/pages/login/login'
+    })
+    wx.clearStorage()
+  },
   onTabBar: function (key) {
 
     var _curPageArr = getCurrentPages();
@@ -122,14 +107,14 @@ App({
           "clas": "tabbar-item",
           "active": true
 
-        },{
+        }, {
           "pagePath": "/pages/keeper/ruku/ruku",
           "text": "入库",
           "iconPath": "/pages/images/ruku.png",
           "selectedIconPath": "/pages/images/ruku-active.png",
           "clas": "tabbar-item",
           "active": true
-        },{
+        }, {
           "pagePath": "/pages/keeper/chuku/chuku",
           "text": "出库",
           "iconPath": "/pages/images/chuku.png",
@@ -202,8 +187,19 @@ App({
         }
       ]
     },
-    
+
   },
+  isLogin: util.throttle(function () {
+    var self = this;
+    if (!self.globalData.isLogin) {
+      self.globalData.isLogin = true
+      wx.reLaunch({
+        url: '/pages/login/login',
+      })
+      return false
+    }
+  }, 1000),
+
   // WxValidate: (rules, messages) => new WxValidate(rules, messages),
   HttpResource: (url, paramDefaults, actions, options) => new HttpResource(url, paramDefaults, actions, options).init(),
   HttpService: new HttpService,

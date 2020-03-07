@@ -88,8 +88,12 @@
     background-image: linear-gradient(to right, #bda54f, #9e722d);
 }
 
-.container-column{
-    height: 778rpx;
+.container-column {
+    height: 100%;
+    background-color: #fff;
+    z-index: 10;
+
+
 }
 
 .buydes-dialog-container {
@@ -98,8 +102,8 @@
     justify-content: space-between;
     background-color: rgba(0, 0, 0, 1);
     opacity: 0.4;
-    position: fixed;
-    z-index: 9998;
+    position: absolute;
+    top: 0;
 }
 
 .buydes-dialog-container-top {
@@ -107,27 +111,37 @@
 }
 
 .buydes-dialog-container-bottom {
-    /* flex-grow: 0; */
-    position: fixed;
+    position: absolute;
     width: 100%;
     bottom: 0;
-
+    z-index: 10;
 }
 
 
 .arrr-top {
     display: flex;
+    background-color: #fff;
+    opacity: 1;
 }
-.attr-image{
-    border-radius:8rpx;
-    border:4rpx solid rgba(255,255,255,1);
+.arrr-top .price{
+    position: relative;
+    left: 248rpx;
+    bottom: 62rpx;
+}
+.attr-image {
+    position: absolute;
+    border-radius: 8rpx;
+    border: 4rpx solid rgba(255, 255, 255, 1);
     margin: 0 20rpx 20rpx 28rpx;
+    background: #CCCCCC;
+    z-index: 10;
+    bottom: 550rpx;
 }
+
 .arrr-top image {
     width: 196rpx;
     height: 196rpx;
-    border-radius:8rpx;
-
+    border-radius: 8rpx;
 }
 
 .attr-list {
@@ -152,16 +166,19 @@
     margin: 0rpx 20rpx 30rpx 0;
 
 }
-.act{
+
+.act {
     background: #B79547;
     color: #fff;
-    border:2rpx solid rgba(255,255,255,1);
+    border: 2rpx solid rgba(255, 255, 255, 1);
 
 }
-.price{
+
+.price {
     margin-top: 124rpx;
 }
-.attr-num{
+
+.attr-num {
     display: flex;
     justify-content: space-between;
     margin-left: 30rpx;
@@ -169,34 +186,38 @@
     height: 124rpx;
     line-height: 124rpx;
 }
-.btn-box{
+
+.btn-box {
     margin-top: 30rpx;
     display: flex;
     height: 64rpx;
     line-height: 64rpx;
-    border: 2rpx solid rgba(230,230,230,1);
+    border: 2rpx solid rgba(230, 230, 230, 1);
     text-align: center;
     color: #242424;
 
 }
-.btn-box input{
+
+.btn-box input {
     height: 64rpx;
     line-height: 64rpx;
     width: 102rpx;
     text-align: center;
 }
+
 .jiannum {
     height: 64rpx;
     width: 64rpx;
     line-height: 64rpx;
-    border-right:2rpx solid rgba(230,230,230,1);
+    border-right: 2rpx solid rgba(230, 230, 230, 1);
     font-size: 50rpx;
 }
-.jia{
+
+.jia {
     height: 64rpx;
     width: 64rpx;
     line-height: 64rpx;
-    border-left:2rpx solid rgba(230,230,230,1);
+    border-left: 2rpx solid rgba(230, 230, 230, 1);
     font-size: 50rpx;
 
 }

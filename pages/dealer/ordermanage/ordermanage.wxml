@@ -1,41 +1,44 @@
 <view class="header white-bgc">
-	<view class="subnav {{option_active == 1?'act':''}}" bindtap="option_select" data-num="1">全部</view>
-	<view class="subnav {{option_active == 2?'act':''}}" bindtap="option_select" data-num="2">代付款</view>
-	<view class="subnav {{option_active == 3?'act':''}}" bindtap="option_select" data-num="3">待收货</view>
+	<view class="subnav {{option_active == -1?'act':''}}" bindtap="option_select" data-num="-1">全部</view>
+	<view class="subnav {{option_active == 0?'act':''}}" bindtap="option_select" data-num="0">代付款</view>
+	<view class="subnav {{option_active == 1?'act':''}}" bindtap="option_select" data-num="1">待收货</view>
 	<view class="subnav {{option_active == 4?'act':''}}" bindtap="option_select" data-num="4">已完成</view>
 </view>
-<view class="order-list  white-bgc">
+<view class="order-list  white-bgc" wx:for="{{list}}" wx:key="key">
 	<view class="order-sn">
 		<view>订单编号:
-			<text>123456789012345678901</text>
+			<text>{{item.order_sn}}</text>
 		</view>
 	</view>
-	<navigator url="../orderdetail-d/orderdetail" hover-class="none">
-		<view class="main-list">
+	<navigator url="../orderdetail-d/orderdetail?order_id={{item.id}}" hover-class="none">
+		<view class="main-list" wx:for="{{item.order_item}}" wx:for-index="order_index" wx:for-item="order_item" wx:key="idx">
 			<view class="main-left">
-				<image src="../../images/lll.jpg"></image>
+				<image src="{{order_item.goods_image}}"></image>
 			</view>
 			<view class="main-right">
-				<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+				<view class="main-title">{{order_item.goods_name}}</view>
 				<view class="main-attr">
-					<text class="attr-name">黑色</text>
-					<text class="attr-g">100g</text>
+					<text class="attr-name">{{order_item.spec_name}}</text>
+					<text class="attr-g">{{order_item.spec_item_name}}</text>
 				</view>
 				<view class="main-attr bom">
-					<view class="price">¥<text>1366.00</text></view>
-					<text class="num">X1</text>
+					<view class="price">¥<text>{{order_item.goods_price}}</text></view>
+					<text class="num">X{{order_item.quantity}}</text>
 				</view>
 			</view>
 		</view>
 	</navigator>
 
-	<view class="order-btn" wx:if="{{option_active == 1||option_active == 2}}">
+	<view class="order-btn" wx:if="{{item.order_status == 0}}">
 		<view class="cancle o-btn">取消订单</view>
 		<view class="affirm o-btn">已付款</view>
 	</view>
-	<view wx:elif="{{option_active == 3}}" class="order-btn">
+	<view wx:elif="{{item.order_status >=1 && item.order_status < 4 }}" class="order-btn">
 		<view class="cancle o-btn">查看物流</view>
 		<view class="affirm o-btn">确认收货</view>
 	</view>
 
+</view>
+<view class="" style="text-align:center;font-size:26rpx;color:#999;{{(list.length==0&&page==1)?'line-height:400rpx':'line-height:100rpx'}}" wx:if="{{nomore||(page==1&&list.length==0)}}">
+	没有更多数据
 </view>

@@ -6,11 +6,11 @@
 		</view>
 		<view class="main phone">
 			<image src="../images/phone.png"></image>
-			<input type="numbeer" focus="true" name="phone" placeholder="请输入手机号"></input>
+			<input type="number" focus="true" name="phone" placeholder="请输入手机号"></input>
 		</view>
 		<view class="main mima">
 			<image src="../images/mima.png"></image>
-			<input type="numbeer" focus="true" name="pwd" placeholder="请输入密码" password="ture"></input>
+			<input type="password" name="pwd" placeholder="请输入密码" password="ture"></input>
 		</view>
 		<view class="main btn">
 			<button form-type='submit' class="submit" style="width:550rpx;color:#fff;hight:88rpx;">

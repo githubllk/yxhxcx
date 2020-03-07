@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/login/login",
         "pages/index/index",
+        "pages/login/login",
         "pages/me/me",
         "pages/template/tabbar",
         "pages/agent/index/index",
@@ -39,7 +39,7 @@
     "window": {
         "navigationBarBackgroundColor": "#FFFFFF",
         "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "测试",
+        "navigationBarTitleText": "优享会",
         "backgroundTextStyle": "light",
         "enablePullDownRefresh": false
     },

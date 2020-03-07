@@ -1,7 +1,7 @@
 <import src="../template/tabbar.wxml" />
 <view wx:if="{{role == 'agent' && admin == 0}}">
   <import src="/pages/agent/me/me.wxml" />
-  <template is="agentme" data="{{agentarray}}"/>
+  <template is="agentme" data="{{custom}}"/>
 </view>
 <view wx:elif="{{role == 'agent' && admin == 'soleagent'}}">
   <import src="/pages/agent/me/me.wxml" />
@@ -9,11 +9,11 @@
 </view>
 <view wx:elif="{{role == 'dealer'}}">
   <import src="/pages/dealer/me/me.wxml" />
-  <template is="dealerme" data="{{dealerarray}}"/>
+  <template is="dealerme" data="{{custom}}"/>
 </view>
 <view wx:elif="{{role == 'keeper'}}">
   <import src="/pages/keeper/me/me.wxml" />
-  <template is="keeperme" data="{{keeperarray}}"/>
+  <template is="keeperme" data="{{custom}}"/>
 </view>
 
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>

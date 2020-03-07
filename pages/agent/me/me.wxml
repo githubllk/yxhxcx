@@ -1,8 +1,8 @@
 <!--pages/agent/me/me.wxml-->
 <template name="agentme">
 	<view class="main white-bgc">
-		<view>北京总代理</view>
-		<view>15223232323</view>
+		<view>{{custom.name}}</view>
+		<view>{{custom.mobile}}</view>
 	</view>
 	<navigator hover-class="none" url="/pages/agent/me/me">
 
@@ -21,14 +21,16 @@
 
 <!-- 普通代理 -->
 <view class="general-agent" wx:if="{{agent}}">
-	<view class="pass white-bgc"> <input type="password" placeholder="请设置6-16位字母.数字新密码" placeholder-class="gai-place"></input> </view>
-	<view class="pass white-bgc"> <input type="password" placeholder="请再次输入密码" placeholder-class="gai-place"></input> </view>
-	<view class="foot">
-		保存
-	</view>
+	<form bindsubmit='submit'>
+		<view class="pass white-bgc"> <input type="password" name="password" placeholder="请设置6-16位字母.数字新密码" placeholder-class="gai-place"></input> </view>
+		<view class="pass white-bgc"> <input type="password" name="r_password" placeholder="请再次输入密码" placeholder-class="gai-place"></input> </view>
+		<button form-type='submit' class="foot">
+			保存
+		</button>
+	</form>
+
 </view>
 <!-- 总代理 -->
-
 <template name="soleagentme">
 	<view class="sole-agent white-bgc">
 		<view class="sole-agent-title">新建</view>

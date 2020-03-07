@@ -1,36 +1,63 @@
 // pages/keeper/shipments/shipments.js
+var util = require('../../../utils/util.js')
+const App = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        expressarr: [{
-            'name': '申通快递',
-            'id': 1
-        }, {
-            'name': '圆通快递',
-            'id': 2
-        }, {
-            'name': '顺丰快递',
-            'id': 3
-        }, {
-            'name': '中通快递',
-            'id': 4
-        },],
+        expressarr: [],
         hiddenn: 1,
         val: [0],
         expresstext: '请选择',
-        
+        form: {
+            express_id: 0,
+            express_no: 0,
+            company: '',
+            log_id: 0
+        }
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        const log_id = options.log_id
+        App.HttpService.getData(App.Config.keeperShipmentsItemUrl, {
+            log_id: log_id
+        }).then(data => {
+            if (data.code == 0) {
+                this.setData({
+                    detail: data.data
+                    , 'form.log_id': log_id
+                })
+            }
+        });
+        App.HttpService.getData(App.Config.getExpressListUrl).then(data => {
+            if (data.code == 0) {
+                this.setData({
+                    expressarr: data.data
+                })
+            }
+        });
 
     },
+    affirmchukubind() {
+        App.HttpService.postData(App.Config.chukuUpdateUrl, this.data.form).then(data => {
+            if (data.code == 0) {
+                wx.switchTab({
+                    url: '../chuku/chuku',
+                    success: function (e) {
+                        var page = getCurrentPages().pop();
+                        if (page == undefined || page == null) return;
+                        page.onLoad();
+                    }
 
+                })
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -81,10 +108,10 @@ Page({
     },
     //弹出选项框
     selbind: function (e) {
-        let arr = this.data.expressarr
+        // let arr = this.data.expressarr
         this.setData({
             hiddenn: 0,
-            arr: arr,
+            // arr: arr,
             val: [0],
         })
     },
@@ -102,17 +129,30 @@ Page({
         })
     },
     paickerQueding: function () { //确定按钮
+        let val = this.data.val ? this.data.val : '[0]'
+        let expresstext = this.data.expressarr[val[0]].express_name
+        let express_id = this.data.expressarr[val[0]].express_id
         console.log(this.data.val)
         this.setData({
             hiddenn: 1,
+            'form.express_id': express_id,
+            'form.company': expresstext,
         })
     },
     inputVal: function (e) {
         let val = e.detail.value ? e.detail.value : '[0]'
-        let expresstext = this.data.expressarr[val[0]].name
+        // let expresstext = this.data.expressarr[val[0]].express_name
+        // let express_id = this.data.expressarr[val[0]].express_id
+        console.log(val)
         this.setData({
-            expressval: val,
-            expresstext: expresstext,
+            val: val
         })
+    },
+    numinputbind: function (e) {
+        let express_no = e.detail.value //修改的数据
+        this.setData({
+            'form.express_no': express_no
+        })
+
     },
 })

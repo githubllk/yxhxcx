@@ -1,18 +1,18 @@
 // pages/agent/stocklog/stocklog.js
+const App = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        option_active : 1
+        option_active: 1
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
     },
 
     /**
@@ -21,12 +21,23 @@ Page({
     onReady: function () {
 
     },
+    getstocklog(type) {
+        App.HttpService.getData(App.Config.getStockLogUrl, {
+            type: type,
+        }).then((ret) => {
+            if (ret.code == 0) {
+                this.setData({
+                    list: ret.data
+                })
+            }
+        })
+    },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        this.getstocklog(this.data.option_active)
     },
 
     /**
@@ -63,7 +74,8 @@ Page({
     onShareAppMessage: function () {
 
     },
-    option_select:function(e){
+    option_select: function (e) {
+        this.getstocklog(e.target.dataset.num)
         this.setData({
             option_active: e.target.dataset.num
         })

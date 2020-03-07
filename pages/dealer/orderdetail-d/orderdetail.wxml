@@ -1,15 +1,15 @@
 <!-- 代付款订单详情 -->
-<view class="header white-bgc">
+<view class="header white-bgc" wx:if="{{order_detail.order_status==0}}">
 	<view class="left">
 		<image src="../../images/time.png"></image>
 	</view>
 	<view class="right">
 		<view class="top">
-			<view class="sk">代收款</view>
+			<view class="sk">代付款</view>
 			<view class="time">支付剩余时间:{{timeLeft}} </view>
 		</view>
 		<view class="down">
-			应付金额：¥1000.00
+			应付金额：¥{{order_detail.amount_money}}X{{order_detail.discounts_price}}={{order_detail.payable_payment}}
 		</view>
 	</view>
 </view>
@@ -19,53 +19,76 @@
 	</view>
 	<view class="right1">
 		<view class="top1">
-			<view class="name">张三</view>
-			<view class="mobile">13223232323 </view>
+			<view class="name">{{order_detail.name}}</view>
+			<view class="mobile">{{order_detail.phone}} </view>
 		</view>
 		<view class="addr">
-			北京市海淀区西二旗西北旺路23号中兴通大厦
+			{{order_detail.province}}{{order_detail.city}}{{deorder_detailtail.county}}{{order_detail.detail}}
+		</view>
+	</view>
+</view>
+<view class="header white-bgc" wx:if="{{order_detail.order_status>=3}}">
+	<view class="left">
+		<image style="width:50rpx;height:34rpx" src="../../images/wuliu.png"></image>
+	</view>
+	<view class="wuliu">
+		<view class="wuliu-top1">
+			物流信息
+		</view>
+		<view class="wuliu-time">
+			2020-12-12 12:12
 		</view>
 	</view>
 </view>
 <view class="order-main white-bgc">
 	<view class="order-sn">
-		<view>订单编号:123456789012345678901</view>
+		<view>订单编号:{{order_detail.order_sn}}</view>
 	</view>
-	<view class="main-list">
+	<view class="main-list" wx:for="{{order_detail.order_item}}" wx:key="key">
 		<view class="main-left">
-			<image src="../../images/lll.jpg"></image>
+			<image src="{{item.goods_image}}"></image>
 		</view>
 		<view class="main-right">
-			<view class="main-title">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呜呜呜呜呜呜呜呜无无无无无无无无</view>
+			<view class="main-title">{{item.goods_name}}</view>
 			<view class="main-attr">
-				<text class="attr-name">黑色</text>
-				<text class="attr-g">100g</text>
+				<text class="attr-name">{{item.spec_name}}</text>
+				<text class="attr-g">{{item.spec_item_name}}</text>
 			</view>
 			<view class="main-attr bom">
-				<view class="price">¥<text>1366.00</text></view>
-				<text class="num">X1</text>
+				<view class="price">¥<text>{{item.goods_price}}</text></view>
+				<text class="num">X{{item.quantity}}</text>
 			</view>
 		</view>
 	</view>
 </view>
-<view class="buy-info white-bgc">
-    <view>北京经销商</view>
-    <view>15223232323</view>
-</view>
+<!-- <view class="buy-info white-bgc">
+	<view>北京经销商</view>
+	<view>15223232323</view>
+</view> -->
 
 <view class="order-info white-bgc">
-    <view class="info">订单信息</view>
-    <view class="time">下单时间:2020-12-12 16:45:45</view>
-    <view class="time">付款时间:2020-12-12 16:45:45</view>
-    <view class="time">下单时间:2020-12-12 16:45:45</view>
-</view>
-<view class="buy-info white-bgc">
-    <view>北京仓库</view>
-    <view>待出库</view>
+	<view class="info">订单信息</view>
+	<view class="time">下单时间:{{order_detail.create_time}}</view>
+	<view class="time" wx:if="{{order_detail.order_status >= 1}}">付款时间:{{order_detail.payment_time}}</view>
+	<view class="time" wx:if="{{order_detail.order_status >= 3}}">发货时间:{{order_detail.send_time}}</view>
+	<view class="time" wx:if="{{order_detail.order_status == 4}}">收货时间:{{order_detail.end_time}}</view>
 </view>
 
 <view class="blank"></view>
-<view class="foot">
-	<view class="cancel white-bgc" bindtap="cancelorderbind">取消订单</view>
-	<view class="confirm" bindtap="confirmorderbind">已付款</view>
+
+<view wx:if="{{order_detail.order_status == 0}}">
+	<view class="foot">
+		<view class="cancel white-bgc" bindtap="cancelorderbind">取消订单</view>
+		<view class="confirm" bindtap="confirmoneybind">已付款</view>
+	</view>
+</view>
+<view wx:if="{{order_detail.order_status == 1}}">
+	<view class="foot1">
+		<text>未发货</text>
+	</view>
+</view>
+<view wx:if="{{order_detail.order_status == 3}}">
+	<view class="foot1" bindtap="querenshouhuobind">
+		<text>确认收货</text>
+	</view>
 </view>

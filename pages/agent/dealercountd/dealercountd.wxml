@@ -28,21 +28,21 @@
 			<view class="main-gross">
 				<view class="main-gross-son gross-right">
 					<text class="gross-font font-color-A3">下单总量</text>
-					<text class="gross-num">1000</text>
+					<text class="gross-num">{{statistics.place_order}}</text>
 				</view>
 				<view class="main-gross-son">
-					<text class="font-color-A3">下单总量</text>
-					<text>1000</text>
+					<text class="font-color-A3">成交总量</text>
+					<text>{{statistics.chengjiao}}</text>
 				</view>
 			</view>
 			<view class="main-gross">
 				<view class="main-gross-son gross-right">
-					<text class="gross-font font-color-A3">入库总量</text>
-					<text class="gross-num">1000</text>
+					<text class="gross-font font-color-A3">出库总量</text>
+					<text class="gross-num">{{statistics.chuku}}</text>
 				</view>
 				<view class="main-gross-son">
-					<text class="font-color-A3">出库总量</text>
-					<text>1000</text>
+					<text class="font-color-A3">成交额</text>
+					<text>{{statistics.chengjiao_m}}</text>
 				</view>
 			</view>
 		</view>

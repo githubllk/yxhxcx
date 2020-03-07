@@ -21,7 +21,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.0.0",
+	"libVersion": "1.1.0",
 	"appid": "wx57c42361fa7f8017",
 	"projectname": "%E6%B4%BB%E5%8A%A8",
 	"debugOptions": {
@@ -272,10 +272,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 31,
 					"name": "pages/dealer/orderdetail-d/orderdetail",
 					"pathName": "pages/dealer/orderdetail-d/orderdetail",
-					"query": "",
+					"query": "order_id= 29",
 					"scene": null
 				},
 				{
@@ -311,6 +311,181 @@
 					"name": "pages/agent/dealercountd/dealercountd",
 					"pathName": "pages/agent/dealercountd/dealercountd",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/gooddetail/gooddetail",
+					"pathName": "pages/agent/gooddetail/gooddetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/goodmanage/goodmanage",
+					"pathName": "pages/agent/goodmanage/goodmanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/classifymanage/classifymanage",
+					"pathName": "pages/agent/classifymanage/classifymanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/goodmanage/goodmanage",
+					"pathName": "pages/agent/goodmanage/goodmanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/stock/stock",
+					"pathName": "pages/agent/stock/stock",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/stockgsdetails/stockgsdetails",
+					"pathName": "pages/agent/stockgsdetails/stockgsdetails",
+					"query": "keeper_id=1&goods_id=6",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/stocklog/stocklog",
+					"pathName": "pages/agent/stocklog/stocklog",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/custommanage/custommanage",
+					"pathName": "pages/agent/custommanage/custommanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/custommanage/custommanage",
+					"pathName": "pages/agent/custommanage/custommanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/me/me",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/keeper/ruku/ruku",
+					"pathName": "pages/keeper/ruku/ruku",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 49,
+					"name": "pages/dealer/gooddetail/gooddetail",
+					"pathName": "pages/dealer/gooddetail/gooddetail",
+					"query": "goods_id=9",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/orderdetail/orderdetail",
+					"pathName": "pages/dealer/orderdetail/orderdetail",
+					"query": "goods_id=4",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/addrmanage/addrmanage",
+					"pathName": "pages/dealer/addrmanage/addrmanage",
+					"query": "goods_id=4",
+					"scene": null
+				},
+				{
+					"id": 52,
+					"name": "pages/dealer/addradd/addradd",
+					"pathName": "pages/dealer/addradd/addradd",
+					"query": "id=4",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/addrmanage/addrmanage",
+					"pathName": "pages/dealer/addrmanage/addrmanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/ordermanage/ordermanage",
+					"pathName": "pages/dealer/ordermanage/ordermanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/ordermanage/ordermanage",
+					"pathName": "pages/agent/ordermanage/ordermanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 56,
+					"name": "pages/agent/orderdetail/orderdetail",
+					"pathName": "pages/agent/orderdetail/orderdetail",
+					"query": "order_id= 21",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/keeper/chuku/chuku",
+					"pathName": "pages/keeper/chuku/chuku",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/shopping/shopping",
+					"pathName": "pages/dealer/shopping/shopping",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dealer/orderdetail-d/orderdetail",
+					"pathName": "pages/dealer/orderdetail-d/orderdetail",
+					"query": "order_id=36",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/dealercount/dealercount",
+					"pathName": "pages/agent/dealercount/dealercount",
+					"query": "order_id=36",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/agent/dealercountd/dealercountd",
+					"pathName": "pages/agent/dealercountd/dealercountd",
+					"query": "dealer_id=5",
 					"scene": null
 				}
 			]

@@ -6,13 +6,13 @@
 			<image src="../../images/xuan.png" wx:else></image>
 		</view>
 		<view class="main-left">
-			<image src="{{item.image}}"></image>
+			<image src="{{item.cover_image}}"></image>
 		</view>
 		<view class="main-right">
-			<view class="main-title">{{item.title}}</view>
+			<view class="main-title">{{item.goods_name}}</view>
 			<view class="main-attr">
-				<view class="attr-name">黑色</view>
-				<view class="attr-g">100g</view>
+				<view class="attr-name">{{item.spec_name}}</view>
+				<view class="attr-g">{{item.spec_item_name}}</view>
 				<view class="btn-box">
 					<view wx:if="{{item.num>0}}" class="jiannum" bindtap="btn_minus" data-index="{{index}}">-</view>
                     <label class="num"  bindinput='input_num' data-index="{{index}}">{{item.num}}</label>
@@ -31,7 +31,8 @@
 	<view class="foot">
 		<view class="cancel white-bgc">
 			<view class="quanxuan" bindtap="selectAll">
-				<image src="../../images/xuan.png"></image>
+				<image src="../../images/xuan.png" wx:if="{{!selectAllStatus}}"></image>
+				<image src="../../images/xuanzhong.png" wx:else></image>
 			</view>
              <view class="qx-text">全选</view>
              <view class="heji">合计:¥{{totalPrice}}</view>
@@ -44,7 +45,7 @@
 		<image src="../../images/gouwchekong.png"></image>
 	</view>
 	<view class="s-font font-color-A3">购物车还是空的...</view>
-	<view class="s-btn">去逛逛</view>
+	<view class="s-btn" bindtap="guangbind">去逛逛</view>
 </view>
 
 <template is="tabBar" data="{{tabBar:tabBar}}"></template>

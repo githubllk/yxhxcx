@@ -1,7 +1,7 @@
 <view class="header">
 	<scroll-view class="scroll-view_H" scroll-x="true">
 		<view class="classify">
-			<view wx:for="{{option_list}}" wx:key="key" class="classify-son {{option_active == index?'act':''}}" bindtap="option_select" data-num="{{index}}">{{item.name}}</view>
+			<view wx:for="{{option_list}}" wx:key="key" class="classify-son {{option_active == item.id?'act':''}}" bindtap="option_select" data-num="{{item.id}}">{{item.name}}</view>
 		</view>
 	</scroll-view>
 	<view class="right">
@@ -11,18 +11,18 @@
 <view class="main" wx:for="{{goodlist}}" wx:key="key">
 	<view class="good-top">
 		<view class="good-left">
-			<image src="{{item.image}}"></image>
+			<image src="{{item.cover_image}}"></image>
 		</view>
 		<view class="good-right">
-			<text class="title">{{item.good_name}}</text>
-			<text class="pieces">{{item.pieces}}件</text>
+			<text class="title">{{item.goods_name}}</text>
+			<text class="pieces">{{item.stock_count}}件</text>
 			<text class="price">¥{{item.price}}</text>
 		</view>
 	</view>
 	<view class="good-button">
-		<view class="good-edit bor color-b7">编辑</view>
-		<view class="good-shangjia bor {{item.status==1?'color-b7':'color-a3'}}" bindtap="jiabind" data-goodid="{{item.id}}" data-index="{{index}}">{{item.status==1?'上架':'下架'}}</view>
-		<view class="good-del bor color-a3" bindtap="delbid">删除</view>
+		<view class="good-edit bor color-b7" bindtap="editbind" data-id="{{item.id}}">编辑</view>
+		<view class="good-shangjia bor {{item.status==1?'color-b7':'color-a3'}}" bindtap="jiabind" data-goodid="{{item.id}}" data-index="{{index}}">{{item.status==8?'上架':'下架'}}</view>
+		<view class="good-del bor color-a3" data-index="{{index}}" bindtap="delbind" data-goodid="{{item.id}}">删除</view>
 	</view>
 </view>
 <!-- <view class="main">
@@ -42,6 +42,7 @@
 		<view class="good-del bor color-a3">删除</view>
 	</view>
 </view> -->
+<view class="blank"></view>
 <view class="foot">
 	<view class="fenlei" bindtap="classifymanagebind">分类管理</view>
 	<view class="addgood" bindtap="addgoodbind">添加商品</view>

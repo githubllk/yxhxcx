@@ -43,7 +43,7 @@ class HttpResource {
                 wx.showToast({
                     title: '加载中', 
                     icon: 'loading', 
-                    duration: 10000, 
+                    duration: 100, 
                     mask: !0, 
                 })
                 return request

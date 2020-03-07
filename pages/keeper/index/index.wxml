@@ -2,27 +2,27 @@
 <template name="keeperindex">
 	<view class="k-header white-bgc">
 		<view class="total-inventory">
-			库存总量：<text class="">1000</text>
+			库存总量：<text class="">{{keeperarray.tongji.stock_total}}</text>
 		</view>
 		<view class="down">
 			<view class="tongji">
 				<view class="tongji-sub" style="border-right: 2rpx #F5F5F5 solid;">
 					<view class="t-title">累计入库总量</view>
-					<view>1000</view>
+					<view>{{keeperarray.tongji.history_ruku}}</view>
 				</view>
 				<view class="tongji-sub">
 					<view class="t-title">今日入库总量</view>
-					<view>1000</view>
+					<view>{{keeperarray.tongji.today_ruku}}</view>
 				</view>
 			</view>
 			<view class="tongji">
 				<view class="tongji-sub" style="border-right: 2rpx #F5F5F5 solid;">
 					<view class="t-title">累计出库总量</view>
-					<view>1000</view>
+					<view>{{keeperarray.tongji.history_chuku}}</view>
 				</view>
 				<view class="tongji-sub">
-					<view class="t-title">累计出库总量</view>
-					<view>1000</view>
+					<view class="t-title">今日出库总量</view>
+					<view>{{keeperarray.tongji.today_chuku}}</view>
 				</view>
 			</view>
 		</view>
@@ -30,7 +30,7 @@
 	<view class="k-nav  white-bgc">
 		<scroll-view class="scroll-view_H" scroll-x="true">
 			<view class="classify">
-				<view wx:for="{{keeperarray.option_list}}" wx:key="key" class="classify-son {{keeperarray.option_active == index?'act':''}}" bindtap="option_select" data-num="{{index}}">{{item.name}}</view>
+				<view wx:for="{{keeperarray.option_list}}" wx:key="key" class="classify-son {{keeperarray.option_active == item.id?'act':''}}" bindtap="d_option_select" data-num="{{item.id}}">{{item.name}}</view>
 			</view>
 		</scroll-view>
 		<view class="right">
@@ -38,12 +38,12 @@
 		</view>
 	</view>
 	<view class="k-main" >
-		<view class="mian-item" bindtap="goodsitem" data-id="{{item.id}}" wx:for="{{keeperarray.goodlist}}" wx:key="key">
+		<view class="mian-item" bindtap="goodsitem" data-id="{{item.id}}" wx:for="{{keeperarray.goods_list}}" wx:key="key">
 			<view>
-				<image src="{{item.image}}"></image>
+				<image src="{{item.cover_image}}"></image>
 			</view>
-			<view class="title">{{item.good_name}}</view>
-			<view class="stock-num">{{item.price}}件</view>
+			<view class="title">{{item.goods_name}}</view>
+			<view class="stock-num">{{item.stock_count}}件</view>
 		</view>
 	</view>
     <view class="blank"></view>

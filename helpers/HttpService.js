@@ -90,7 +90,7 @@ class Service extends ServiceBase {
                     //其他额外的formdata，可不写
                     'type': type,
                     'use': use,
-                    'source': 2,
+                    'source': 1,
                     'token': wx.getStorageSync("token"),
                     'side': side
                 },
@@ -105,7 +105,7 @@ class Service extends ServiceBase {
                         })
                         reject(false)
                     }
-                    resolve(data)
+                    resolve(ll)
                 },
                 fail: function(res) {
                     wx.showToast({
@@ -115,9 +115,7 @@ class Service extends ServiceBase {
                     })
                 },
                 complete: function() { // 接口调用结束的回调函数（调用成功、失败都会执行）
-                    // console.log(url)
-                    // console.log(use)
-                    // console.log(type)
+                    
 
                 }
             })

@@ -1,84 +1,53 @@
 // pages/agent/stockadd/stockadd.js
+const App = getApp()
 Page({
-
     /**
      * 页面的初始数据
      */
     data: {
-        stocklist: [
-            {
-                'name': '北京仓库',
-                'id': 1
-            }, {
-                'name': '上海仓库',
-                'id': 2
-            }, {
-                'name': '天津仓库',
-                'id': 3
-            },
-        ],
-        classify: [
-            {
-                'name': '新品上线',
-                'id': 1
-            }, {
-                'name': '折扣系列',
-                'id': 2
-            }, {
-                'name': '高级系列',
-                'id': 3
-            }, {
-                'name': '钻石系列',
-                'id': 4
-            },
-        ],
-        attrlist: [
-            {
+        stocklist: [],
+        classify: [],
+        attrlist: [{
+            'id': 1,
+            'name': '补水保湿'
+        }, {
+            'id': 4,
+            'name': '控油洁面'
+        }, {
+            'id': 5,
+            'name': '祛痘保湿'
+        },],
+        attrlist1: {
+            "1": [{
                 'id': 1,
-                'name': '补水保湿'
+                'name': '150g'
             }, {
+                'id': 2,
+                'name': '100g'
+            }, {
+                'id': 3,
+                'name': '200g'
+            },],
+            "4": [{
                 'id': 4,
-                'name': '控油洁面'
+                'name': '50g'
             }, {
                 'id': 5,
-                'name': '祛痘保湿'
-            },
-        ],
-        attrlist1: {
-            "1": [
-                {
-                    'id': 1,
-                    'name': '150g'
-                }, {
-                    'id': 2,
-                    'name': '100g'
-                }, {
-                    'id': 3,
-                    'name': '200g'
-                },
-            ], "4": [
-                {
-                    'id': 4,
-                    'name': '50g'
-                }, {
-                    'id': 5,
-                    'name': '100g'
-                }, {
-                    'id': 6,
-                    'name': '150g'
-                },
-            ], "5": [
-                {
-                    'id': 7,
-                    'name': '150g'
-                }, {
-                    'id': 8,
-                    'name': '100g'
-                }, {
-                    'id': 9,
-                    'name': '200g'
-                },
-            ],
+                'name': '100g'
+            }, {
+                'id': 6,
+                'name': '150g'
+            },],
+            "5": [{
+                'id': 7,
+                'name': '150g'
+            }, {
+                'id': 8,
+                'name': '100g'
+            }, {
+                'id': 9,
+                'name': '200g'
+            },],
         },
         hiddenn: 1,
         val: [0],
@@ -90,51 +59,76 @@ Page({
         attrtext: '请选择',
         classifytext: '请选择',
         goodtext: '请选择',
-        form: {  //提交表单
+        form: { //提交表单
             'stock': [0],
             'attr': [0, 0],
             'classify': [0],
             'num': 0,
             'goodid': 0,
             'goodname': ''
-        }
+        },
+        stockadd: {
+            keeper_id: 0
+        },
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let goodid = options.goodid
-        if (goodid) {
-            stockadd['goodid'] = goodid
-            stockadd['goodname'] = options.goodname
-            this.setData({
-                form: stockadd,
-                goodtext: options.goodname ? options.goodname : '',
-            })
-        }
-
+        //商品列表
+        this.stocklist()
+        //分类列表
+        this.classify()
         let stockadd = wx.getStorageSync('stockadd')
-        stockadd = stockadd ? stockadd : this.data.form
-        let stocktext = wx.getStorageSync('stocktext')
-        let attrtext = wx.getStorageSync('attrtext')
-        let classifytext = wx.getStorageSync('classifytext')
+
+        // stockadd = stockadd ? stockadd : this.data.form
+        let stocktext = stockadd.stocktext
+        let attrtext = stockadd.attrtext //wx.getStorageSync('attrtext')
+        let classifytext = stockadd.classifytext //wx.getStorageSync('classifytext')
+        let num = stockadd.num 
         if (stocktext) {
             this.setData({
-                stocktext: stocktext
+                stocktext: stocktext,
+                attrtext: attrtext,
+                classifytext: classifytext,
+                num: num
             })
         }
-        if (attrtext) {
-            this.setData({
-                attrtext: attrtext
-            })
-        }
-        if (classifytext) {
-            this.setData({
-                classifytext: classifytext
-            })
-        }
+        
 
+    },
+    //规格列表
+    speclist(goods_id) {
+        App.HttpService.getData(App.Config.getGoodsSpecListUrl, { 'goods_id': goods_id }).then(data => {
+            if (data.code == 0) {
+                this.setData({
+                    attrlist: data.data.spec_list,
+                    attrlist1: data.data.spec_item_list,
+                })
+            }
+        });
+    },
+    //分类列表
+    classify() {
+        App.HttpService.getData(App.Config.getCategoryListUrl).then(data => {
+            if (data.code == 0) {
+                this.setData({
+                    classify: data.data
+                })
+            }
+        });
+    },
+    //仓库列表
+    stocklist: function () {
+        var self = this;
+        App.HttpService.getData(App.Config.getKeeperListUrl).then((ret) => {
+            console.log(ret)
+            if (ret.code == 0) {
+                self.setData({
+                    stocklist: ret.data
+                })
+            }
+        })
     },
 
     /**
@@ -149,6 +143,18 @@ Page({
      */
     onShow: function () {
 
+        let stockadd = wx.getStorageSync('stockadd')
+        let goods_id = stockadd.goods_id
+        let goods_name = stockadd.goods_name
+        if (!!goods_id && goods_id != 'undefined') {
+            this.setData({
+                goods_name: goods_id,
+                goods_id: goods_name,
+                goodtext: goods_name,
+            })
+            //规格列表
+            this.speclist(goods_id)
+        }
     },
 
     /**
@@ -221,6 +227,7 @@ Page({
     },
     // 仓库选择
     stockselbind: function () {
+        console.log(this.data.stocklist)
         this.setData({
             hiddenn: 0,
             array: this.data.stocklist,
@@ -256,49 +263,67 @@ Page({
         })
     },
     paickerQuxiao: function () { //取消按钮
-
         this.setData({
             hiddenn: 1,
         })
     },
     goodselbind: function () {
-        wx.navigateTo({
-            url: '../goodlist/goodlist',
-        })
+        let stockadd = wx.getStorageSync('stockadd')
+        let category_id = stockadd.classify_id
+        if (!category_id) {
+            wx.showModal({
+                title: '提示',
+                content: '请先选择分类',
+                showCancel: false
+            })
+        } else {
+            wx.navigateTo({
+                url: '../goodlist/goodlist?category_id=' + category_id,
+            })
+        }
     },
     paickerQueding: function () { //确定按钮
-
+        let stockadd = wx.getStorageSync('stockadd')
+        stockadd = stockadd ? stockadd : {}
         if (this.data.isattr == 1) {
             const inputval = this.data.form.attr
-            const attr1 = this.data.attrlist[inputval[0]]//大分类
-            const attr2 = this.data.attrlist1[attr1.id][inputval[1]]//多少克
+            const attr1 = this.data.attrlist[inputval[0]] //大分类
+            const attr2 = this.data.attrlist1[attr1.id][inputval[1]] //多少克
             const attrtext = attr1.name + ',' + attr2.name
             this.setData({
                 attrtext: attrtext
             })
+            stockadd.spec_id = attr1.id
+            stockadd.spec_item_id = attr2.id
+
+            stockadd.attrtext = attrtext
             wx.setStorage({
-                data: attrtext,
-                key: 'attrtext',
+                data: stockadd,
+                key: 'stockadd',
             })
         } else if (this.data.isclassify == 1) { //分类
             const classifytext = this.data.classify[this.data.form.classify[0]].name
+            const classify_id = this.data.classify[this.data.form.classify[0]].id
             this.setData({
                 classifytext: classifytext
             })
+            stockadd.classify_id = classify_id
+            stockadd.classifytext = classifytext
             wx.setStorage({
-                data: classifytext,
-                key: 'classifytext',
+                data: stockadd,
+                key: 'stockadd',
             })
         } else if (this.data.isstock == 1) { //仓库
-            let stocktext = this.data.stocklist[this.data.form.stock[0]].name
-            console.log(stocktext)
-
+            let stocktext = this.data.stocklist[this.data.form.stock[0]].keeper_name
+            let keeper_id_ = this.data.stocklist[this.data.form.stock[0]].id
+            stockadd.keeper_id = keeper_id_
+            stockadd.stocktext = stocktext
             this.setData({
                 stocktext: stocktext
             })
             wx.setStorage({
-                data: stocktext,
-                key: 'stocktext',
+                data: stockadd,
+                key: 'stockadd',
             })
         }
         this.setData({
@@ -313,8 +338,11 @@ Page({
             })
         }
     },
+    validateNumber(val) {
+        return val.replace(/\D/g, '')
+    },
     numinputbind: function (e) {
-        const editnum = e.detail.value //修改的数据
+        let editnum = this.validateNumber(e.detail.value) //修改的数据
         this.setData({
             'form.num': editnum
         })
@@ -326,19 +354,20 @@ Page({
         })
     },
     rukubind: function () {
-        console.log(this.data.form)
-        //提交成功清除缓存
-        wx.setStorage({
-            data: [],
-            key: 'stockadd',
+        let stockadd = wx.getStorageSync('stockadd')
+        App.HttpService.postData(App.Config.agentAddStockUrl, stockadd).then((ret) => {
+            if (ret.code == 0) {
+                wx.removeStorageSync('stockadd')
+                // wx.setStorage({
+                //     data: {},
+                //     key: 'stockadd',
+                // })
+                wx.redirectTo({
+                    url: '../stock/stock',
+                })
+            }
         })
-        wx.setStorage({ data: '', key: 'stocktext' })
-        wx.setStorage({ data: '', key: 'attrtext', })
-        wx.setStorage({ data: '', key: 'goodtext', })
-        wx.setStorage({ data: '', key: 'classifytext', })
-        wx.redirectTo({
-          url: '../stock/stock',
-        })
-        
+
+
     }
 })

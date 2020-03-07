@@ -70,9 +70,13 @@
 .right {
     /* position: fixed; */
     /* right: 30rpx; */
-    line-height: 92rpx;
+    line-height: 124rpx;
     margin-left: 10rpx;
 
+}
+.right image{
+    width: 48rpx;
+    height: 48rpx;
 }
 
 .d-nav-right image {
@@ -102,6 +106,7 @@
     -webkit-box-orient: vertical;
     word-break: break-all;
     font-size: 28rpx;
+    color: #242424;
 }
 .stock-num{
     font-size: 32rpx;

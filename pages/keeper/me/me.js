@@ -1,4 +1,5 @@
 // pages/agent/me/me.js
+const App = getApp()
 Page({
 
   /**
@@ -63,5 +64,16 @@ Page({
   onShareAppMessage: function () {
 
   },
-  
+  submit(e) {
+    let param = []
+    param.password = e.detail.value.password
+    param.r_password = e.detail.value.r_password
+    App.HttpService.postData(App.Config.editPasswordUrl, param).then(dataa => {
+      if (dataa.code == 0) {
+          wx.navigateBack({
+            detail:1
+          })
+      }
+    })
+  }
 })

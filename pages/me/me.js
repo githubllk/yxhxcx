@@ -23,7 +23,13 @@ Page({
     // 页面渲染完成
   },
   onShow: function () {
-
+    app.HttpService.getData(app.Config.getCustomItemUrl).then(dataa => {
+      if (dataa.code == 0) {
+          this.setData({
+            custom:dataa.data
+          })
+      }
+    })
   },
   onHide: function () {
     // 页面隐藏

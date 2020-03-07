@@ -16,36 +16,42 @@
 		历史记录
 	</view>
 	<view class="top">
-		<view class="main white-bgc" wx:for="{{getSearch}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
-			<text wx:if="{{itemName != ''}}" data-text="{{itemName}}" bindtap='this_value'>{{itemName}} </text>
-			<view>
+		<view class="main-top  white-bgc" wx:for="{{getSearch}}" wx:for-index="idx" wx:for-item="itemName" wx:key="idx">
+			<view class="main" data-text="{{itemName}}" bindtap='this_value'>
+				<text wx:if="{{itemName != ''}}" >{{itemName}} </text>
+			</view>
+			<view data-index="{{idx}}" catchtap="delbind">
 				<image src="../../images/del.png" style="height:28rpx;width:28rpx"></image>
 			</view>
 		</view>
+
 		<view class="clear white-bgc" bindtap="clearsearchbind">
 			清空历史记录
 		</view>
 	</view>
 </view>
 <view hidden="{{!modalHidden}}">
-	<view class="nodata" wx:if="{{goodlist.length<=0}}">
+	<view class="nodata" wx:if="{{goods_list.length<=0}}">
 		<view>
 			<image src="../../images/search-blank.png" style=""></image>
 		</view>
 		<view><text class="font-color-A3">没有搜到相关产品</text></view>
 	</view>
-	<view class="d-good white-bgc" bindtap="gooddetailbind" data-goodid="{{item.id}}" wx:for="{{goodlist}}" wx:key="key">
+	<view class="d-good white-bgc" bindtap="gooddetailbind" data-goodid="{{item.goods_id}}" wx:for="{{goods_list}}" wx:key="key">
 		<view class="d-good-left">
-			<image src="{{item.image}}"></image>
+			<image src="{{item.cover_image}}"></image>
 		</view>
 		<view class="d-good-right">
 			<view>
-				<text>{{item.title}}</text>
+				<text>{{item.goods_name}}</text>
 			</view>
 			<view class="d-good-b">
-                <text class="price">¥{{item.price}}</text>
-                <text class="jian">{{item.num}}件</text>
+				<text class="price">¥{{item.price}}</text>
+				<text class="jian">{{item.stock_count}}件</text>
 			</view>
 		</view>
+	</view>
+	<view class="" style="text-align:center;font-size:26rpx;color:#999;{{(goods_list.length==0&&page==1)?'line-height:400rpx':'line-height:100rpx'}}" wx:if="{{nomore||(page==1&&goods_list.length==0)}}">
+		没有更多数据
 	</view>
 </view>

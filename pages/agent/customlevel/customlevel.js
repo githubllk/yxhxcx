@@ -1,4 +1,5 @@
 // pages/agent/customlevel/customlevel.js
+const App = getApp()
 Page({
 
     /**
@@ -11,31 +12,54 @@ Page({
         val: [0],
         leveltext: '',
         arrlist: [],
-        levelarr: [{
-            'name': '7折',
-            'id': 1
-        }, {
-            'name': '7.5折',
-            'id': 2
-        }, {
-            'name': '8折',
-            'id': 3
-        }, {
-            'name': '8.5折',
-            'id': 4
-        }, {
-            'name': '9折',
-            'id': 5
-        }, {
-            'name': '9.5折',
-            'id': 6
-        },],
+        levelarr: [],
+        list: [],
+        detail: false,
+        id: 0
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+
+        if (!!options.id) {
+            App.HttpService.getData(App.Config.customLevelDiscountlUrl).then(data => {
+                if (data.code == 0) {
+                    this.setData({
+                        levelarr: data.data,
+                        arr: data.data,
+                        id: options.id
+                    })
+                    App.HttpService.getData(App.Config.customLeveldetailUrl, { 'id': options.id }).then(dataa => {
+                        let levelarr = data.data
+                        let detail = dataa.data
+                        let val
+                        if (data.code == 0) {
+                            for (var i = 0; i < levelarr.length; i++) {
+                                if (levelarr[i].name == detail.discount) {
+                                    val = [i]
+                                }
+                            }
+                            this.setData({
+                                detail: detail,
+                                type: 'edit',
+                                val: val,
+                                leveltext: detail.discount + '折'
+                            })
+                        }
+                    });
+                }
+            });
+        } else {
+            App.HttpService.getData(App.Config.customLevelUrl).then(data => {
+                if (data.code == 0) {
+                    this.setData({
+                        list: data.data
+                    })
+                }
+            });
+        }
 
     },
 
@@ -94,11 +118,19 @@ Page({
     },
     //弹出选项框
     selbind: function (e) {
-        let arr = this.data.levelarr
+        if (!this.data.id) {
+            App.HttpService.getData(App.Config.customLevelDiscountlUrl).then(data => {
+                if (data.code == 0) {
+                    this.setData({
+                        arr: data.data
+                        , levelarr: data.data
+                    })
+                }
+            });
+        }
 
         this.setData({
             hiddenn: 0,
-            arr: arr,
             val: [0],
         })
     },
@@ -126,7 +158,35 @@ Page({
         let leveltext = this.data.levelarr[val[0]].name
         this.setData({
             levelval: val,
-            leveltext: leveltext,
+            leveltext: leveltext + '折',
         })
     },
+    submit() {
+        let param = []
+        if (this.data.id) {
+            param.id = this.data.id
+        }
+        param.discount = this.data.levelval? this.data.levelval[0]:this.data.detail.discount
+        param.name = this.data.levelname?this.data.levelname:this.data.detail.name
+        console.log(param)
+        App.HttpService.postData(App.Config.customLevelEditlUrl, param).then(data => {
+            if (data.code == 0) {
+                wx.switchTab({
+                    url:'/pages/me/me',
+                })
+            }
+        });
+    },
+    detailbind(e) {
+        let id = e.currentTarget.dataset.id
+        wx.navigateTo({
+            url: '../customlevel/customlevel?id=' + id,
+        })
+    },
+    inputbind(e){
+        const name = e.detail.value //修改的数据
+        this.setData({
+            'levelname': name
+        })
+    }
 })

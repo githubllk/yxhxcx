@@ -6,7 +6,7 @@
 					<image src="/pages/images/search.png"></image>
 				</view>
 				<view class="search-right">
-					<input placeholder-style="color:#999999" placeholder="请输入商品名称"></input>
+					<input placeholder-style="color:#999999" placeholder="请输入商品名称" disabled="true"></input>
 				</view>
 			</view>
 			<view class="search-btn">
@@ -18,7 +18,7 @@
 	<view class="d-nav white-bgc">
 		<scroll-view class="scroll-view_H" scroll-x="true">
 			<view class="classify">
-				<view wx:for="{{dealerarray.option_list}}" wx:key="key" class="classify-son {{dealerarray.option_active == index?'act':''}}" bindtap="d_option_select" data-num="{{index}}">{{item.name}}</view>
+				<view wx:for="{{dealerarray.option_list}}" wx:key="key" class="classify-son {{dealerarray.option_active == item.id?'act':''}}" bindtap="d_option_select" data-num="{{item.id}}">{{item.name}}</view>
 			</view>
 		</scroll-view>
 		<view class="d-nav-right">
@@ -26,13 +26,16 @@
 		</view>
 	</view>
 	<view class="k-main">
-		<view class="mian-item" bindtap="goodsitembind" data-id="{{item.id}}" wx:for="{{dealerarray.goodlist}}" wx:key="key">
+		<view class="mian-item" bindtap="goodsitembind" data-id="{{item.goods_id}}" wx:for="{{dealerarray.goods_list}}" wx:key="key">
 			<view>
-				<image src="{{item.image}}"></image>
+				<image src="{{item.cover_image}}"></image>
 			</view>
-			<view class="title">{{item.good_name}}</view>
-			<view class="stock-num">{{item.price}}件</view>
+			<view class="title">{{item.goods_name}}</view>
+			<view class="price">{{item.price}}</view>
 		</view>
+	</view>
+	<view class="" style="text-align:center;font-size:26rpx;color:#999;{{(dealerarray.goods_list.length==0&&page==1)?'line-height:400rpx':'line-height:100rpx'}}" wx:if="{{nomore||(page==1&&dealerarray.goods_list.length==0)}}">
+		没有更多数据
 	</view>
 	<view class="blank"></view>
 </template>

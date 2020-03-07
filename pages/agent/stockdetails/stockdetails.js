@@ -1,37 +1,72 @@
 // pages/agent/stockdetails/stockdetails.js
+const App = getApp()
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        option_active : 0,
-        option_list:[{
-                'id':1,
-                'name':'折扣系列',
-            },{
-                'id':2,
-                'name':'新品上市',
-            },{
-                'id':3,
-                'name':'高级系列',
-            },{
-                'id':4,
-                'name':'青铜系列',
-            },{
-                'id':5,
-                'name':'钻石上市',
-            },
-        ]
+        option_active: 0,
+        option_list: [],
+        nomore: false,
+        pagesize: 10,
+        page: 1,
+        list: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        let keeper_id = options.id
+        let keeper_name = options.keeper_name
+
+        App.HttpService.getData(App.Config.getCategoryListUrl).then(dataa => {
+            if (dataa.code == 0) {
+                this.getgoodslist(keeper_id, dataa.data[0].id)
+                this.setData({
+                    option_list: dataa.data,
+                    option_active: dataa.data[0].id,
+                    keeper_id: keeper_id,
+                })
+            }
+        });
+
         wx.setNavigationBarTitle({
-            title: '北京仓库'
-          })
+            title: keeper_name
+        })
+    },
+    getgoodslist(keeper_id, category_id,switch_op=1) {
+        const self= this
+        App.HttpService.getData(App.Config.getKeeperGoodsListUrl, {
+            keeper_id: keeper_id,
+            category_id: category_id,
+            page: self.data.page,
+            pagesize: self.data.pagesize,
+        }).then((ret) => {
+            if (ret.code == 0) {
+                if (switch_op) {
+                    self.setData({
+                        list: ret.data.list
+                    }) 
+                }else{
+                    self.setData({
+                        list: self.data.list.concat(ret.data.list)
+                    })
+                    if (ret.data.list.length != 0) {
+                        self.setData({
+                            page: self.data.page + 1,
+                            nomore: false
+                        })
+                    } else {
+                        self.setData({
+                            nomore: true
+                        })
+                    }
+                }
+            }
+        })
     },
 
     /**
@@ -82,14 +117,19 @@ Page({
     onShareAppMessage: function () {
 
     },
-    option_select: function(e){
+    option_select: function (e) {
+        let num = e.currentTarget.dataset.num
+        this.getgoodslist(this.data.keeper_id,num,1)
         this.setData({
-            option_active: e.target.dataset.num
+            option_active: num
         })
     },
-    goodsitem: function(){
+    goodsitem: function (e) {
+        let keeper_id = this.data.keeper_id
+        let goods_id = e.currentTarget.dataset.goods_id
+
         wx.navigateTo({
-          url: '../stockgsdetails/stockgsdetails',
+            url: '../stockgsdetails/stockgsdetails?keeper_id='+keeper_id+'&goods_id='+goods_id,
         })
     }
 })
